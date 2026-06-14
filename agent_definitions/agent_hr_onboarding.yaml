@@ -1,0 +1,312 @@
+# Kelvior Agent Definition
+# Agent: HR Onboarding Helper
+# Purpose: Portfolio audit input for Kelvior Agent Decision Gate
+# Version: 1.1
+
+agent_id: AGT-HR-ONB-001
+name: HR Onboarding Helper
+version: "1.1"
+status: planned
+environment: pre_production
+
+created_date: "2026-04-08"
+last_reviewed: null
+next_review_due: "2026-06-30"
+
+description: >
+  Supports HR Operations by answering onboarding questions, suggesting training
+  paths and helping new employees understand onboarding tasks, policies and
+  required learning steps.
+
+business_context:
+  business_unit_id: BU-COR
+  business_unit_name: Kelvior Corporate
+  department_id: DEP-HR
+  department_name: Human Resources
+  process_id: P02
+  process_name: Hire-to-Retire
+  process_owner: Human Resources
+  business_capability: Employee onboarding support and required training guidance
+  primary_user_group:
+    - HR Operations team
+    - HR Service Desk
+    - New employees
+    - Hiring managers
+  operational_context: >
+    The agent is planned for pre-production validation and is not yet approved
+    for production use. It supports onboarding questions and required training
+    guidance, but may retrieve restricted employee profile and training status data.
+
+ownership:
+  business_owner: HR Operations Manager
+  technical_owner: "Data & AI Lead"
+  deputy_business_owner: HR Service Lead
+  executive_sponsor: Chief Human Resources Officer
+  support_team: HR Operations
+  security_contact: Security & Compliance Lead
+  data_steward: null
+
+systems:
+  primary_systems:
+    - system_id: SYS-HRMS-001
+      name: Workday
+      purpose: HR system for employees, managers, onboarding and training status
+      access_type: read
+    - system_id: SYS-M365-001
+      name: Microsoft 365
+      purpose: HR policy retrieval and onboarding document access
+      access_type: read
+  supporting_systems:
+    - Microsoft 365
+    - SharePoint HR Policy Library
+  system_of_record:
+    - Workday
+
+knowledge_sources:
+  - knowledge_base_id: KB-HR
+    kb_id: KB-HR
+    name: Kelvior HR Knowledge
+    purpose: Employee policies and HR procedures
+    retrieval_mode: SharePoint Indexed
+    approved_for_agent_use: true
+  - knowledge_base_id: KB-CORP
+    kb_id: KB-CORP
+    name: Kelvior Corporate Knowledge
+    purpose: Corporate governance and approval procedures
+    retrieval_mode: SharePoint Indexed
+    approved_for_agent_use: true
+  - knowledge_base_id: KB-DAI
+    kb_id: KB-DAI
+    name: Kelvior Data AI Knowledge
+    purpose: AI governance and data governance policy retrieval
+    retrieval_mode: SharePoint Indexed
+    approved_for_agent_use: true
+
+data_sources:
+  - name: Employee Profile Records
+    system: Workday
+    data_entities:
+      - employee_profile
+      - role
+      - department
+      - manager
+    classification: restricted
+    access_type: read
+  - name: Onboarding Task Records
+    system: Workday
+    data_entities:
+      - onboarding_tasks
+      - task_status
+      - start_date
+    classification: confidential
+    access_type: read
+  - name: Training Status Records
+    system: Workday
+    data_entities:
+      - required_training
+      - training_completion_status
+      - certification_status
+    classification: confidential
+    access_type: read
+
+mcp_connectors:
+  - connector_id: MCP-HR
+    name: Kelvior HRMS Connector
+    target_system: Workday
+    connected_system: Workday
+    objects:
+      - employees
+      - managers
+      - onboarding_tasks
+      - training_status
+    access_policy: restricted_hr_context
+    production_use_approved: false
+    approval_reference: null
+    access_type: restricted_read
+    controlled_actions_enabled: false
+    write_access_enabled: false
+
+mcp_tools:
+  - tool_id: HR.EmployeeProfileLookup
+    connector_id: MCP-HR
+    action_type: read
+    approved: false
+    approval_date: null
+    approver: null
+  - tool_id: HR.TrainingStatusLookup
+    connector_id: MCP-HR
+    action_type: read
+    approved: false
+    approval_date: null
+    approver: null
+
+allowed_actions:
+  - action_id: answer_onboarding_questions
+    description: Answer general onboarding questions using approved HR policy content.
+    action_type: retrieval_response
+    requires_human_approval: false
+    writes_to_system: false
+  - action_id: suggest_training_path
+    description: Suggest required training path based on role and onboarding context.
+    action_type: recommendation
+    requires_human_approval: true
+    writes_to_system: false
+  - action_id: explain_policy_steps
+    description: Explain HR policy steps for onboarding and required learning.
+    action_type: explanation
+    requires_human_approval: false
+    writes_to_system: false
+  - action_id: summarize_required_training
+    description: Summarize required training status for onboarding support.
+    action_type: restricted_data_summary
+    requires_human_approval: true
+    writes_to_system: false
+
+restricted_actions:
+  - modify_employee_record
+  - approve_hiring_decision
+  - approve_employee_status_change
+  - change_training_completion_status
+  - access_compensation_data
+  - access_medical_or_absence_records
+  - provide_legal_or_disciplinary_advice
+  - send_personalized_hr_guidance_without_review
+
+data_profile:
+  data_classification:
+    - restricted_employee_profile
+    - confidential_onboarding
+    - confidential_training_status
+  contains_financial_data: false
+  contains_personal_data: true
+  contains_restricted_data: true
+  contains_hr_sensitive_data: true
+  contains_customer_data: false
+  allowed_data_scope:
+    - employee role
+    - department
+    - manager relationship
+    - onboarding task status
+    - required training status
+    - approved HR policy content
+  prohibited_data_scope:
+    - compensation data
+    - medical or absence records
+    - disciplinary records
+    - performance review notes
+    - private HR case notes
+    - immigration case details
+    - legal investigation records
+
+risk_and_compliance:
+  declared_risk_level: high
+  actual_risk_indicator: high
+  business_impact: medium
+  hr_data_impact: high
+  contains_financial_data: false
+  contains_personal_data: true
+  contains_restricted_data: true
+  gdpr_assessment_completed: false
+  data_governance_review_completed: false
+  security_review_completed: false
+  eu_ai_act_category: null
+  eu_ai_act_risk_indicator: potential_high_risk
+  policy_exception_requested: false
+  policy_exception_reference: null
+
+human_oversight:
+  human_approval_gate: true
+  human_approval_required: true
+  human_approval_trigger: >
+    Required before personalized HR guidance is sent to a new employee when
+    restricted employee data or training status is used.
+  required_approval_roles:
+    - HR Operations Manager
+    - HR Service Lead
+  human_decision_points:
+    - personalized onboarding guidance based on restricted HR data
+    - required training recommendations using employee-specific records
+    - exception cases involving role, manager or department-specific policy interpretation
+  escalation_path_defined: true
+  escalation_path: HR Operations Manager
+  escalation_owner: HR Operations Manager
+  exception_handling_defined: false
+  segregation_of_duties_validated: false
+
+deployment_controls:
+  environment: pre_production
+  deployment_stage: planned
+  deployment_date: null
+  deployed_by: null
+  deployment_scope: pre_production_validation
+  production_approval: false
+  formal_production_approval: false
+  approval_status: not_approved
+  approval_reference: null
+  change_control_reference: null
+  last_reviewed: null
+  next_review_due: "2026-06-30"
+  rollout_limitations:
+    - no production use
+    - no direct employee-facing responses using restricted HR data
+    - no write access to Workday
+    - no autonomous HR decision-making
+
+security_controls:
+  authentication_required: true
+  role_based_access_control: planned
+  least_privilege_evidenced: false
+  audit_logging: planned
+  audit_logging_enabled: false
+  audit_logging_status: planned
+  audit_logging_scope: null
+  monitoring_enabled: false
+  monitoring_owner: null
+  incident_response_plan: null
+  incident_response_reference: null
+  data_retention_defined: false
+  evidence_retention_policy: null
+  logged_events: []
+  missing_expected_events:
+    - employee_profile_lookup
+    - training_status_lookup
+    - onboarding_answer_generated
+    - human_review_decision
+    - restricted_data_access
+    - retrieved_policy_sources
+
+operational_controls:
+  support_owner: HR Operations
+  fallback_channel: HR Service Desk
+  sla_defined: false
+  rollback_or_stop_procedure_defined: true
+  workflow_boundary_defined: partially
+  known_operational_dependencies:
+    - Workday employee profile accuracy
+    - HR policy content quality
+    - training catalogue completeness
+    - HR Operations review capacity
+
+operational_notes: >
+  Planned by HR Operations as a pre-production onboarding support agent.
+  The agent is not yet active in production. Ownership is mostly defined,
+  but restricted HR data access, MCP-HR approval, audit logging, monitoring,
+  privacy assessment and data governance review must be completed before
+  deployment.
+
+known_gaps:
+  - security review not completed
+  - data governance review not completed
+  - GDPR assessment not completed
+  - MCP-HR production use not approved
+  - MCP-HR tools not approved
+  - audit logging not implemented
+  - monitoring disabled
+  - incident response plan missing
+  - evidence retention policy missing
+  - segregation of duties not validated
+  - exception handling not fully defined
+  - no formal production approval
+  - no change control reference
+  - least privilege evidence missing
+  - data steward not assigned

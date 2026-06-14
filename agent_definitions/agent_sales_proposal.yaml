@@ -1,0 +1,232 @@
+# Kelvior Agent Definition
+# Agent: Sales Proposal Agent
+# Purpose: Portfolio audit input for Kelvior Agent Decision Gate
+# Version: 1.0
+
+agent_id: AGT-SAL-PRO-001
+name: Sales Proposal Agent
+description: >
+  Active AI agent that retrieves approved customer and product context and drafts
+  sales proposal content for Sales teams. The agent supports proposal preparation
+  but does not approve pricing, commit offers, send proposals, or modify CRM records.
+
+status: active
+environment: production_limited
+
+business_context:
+  business_unit_id: BU-OUT
+  business_unit_name: Kelvior Outdoor
+  department_id: DEP-SAL
+  department_name: Sales
+  process_id: P04
+  process_name: Order-to-Cash
+  process_owner: Sales and Finance
+  business_capability: Sales proposal preparation and customer opportunity support
+  primary_user_group:
+    - Sales representatives
+    - Account managers
+    - Sales operations coordinators
+
+ownership:
+  business_owner: Sales Director
+  technical_owner: Data & AI Lead
+  executive_sponsor: Commercial Director
+  security_contact: Security & Compliance Advisor
+  data_steward: Sales Operations Data Steward
+  deputy_business_owner: Sales Operations Manager
+
+systems:
+  primary_systems:
+    - Dynamics 365 Sales
+    - Microsoft 365
+  supporting_systems:
+    - SharePoint
+  system_of_record:
+    - Dynamics 365 Sales
+
+knowledge_sources:
+  - knowledge_base_id: KB-CORP
+    name: Kelvior Corporate Knowledge
+    purpose: Corporate policies, strategy and governance
+    retrieval_mode: SharePoint Indexed
+    approved_for_agent_use: true
+
+  - knowledge_base_id: KB-PROD
+    name: Kelvior Product Academy Legal Knowledge
+    purpose: Product, academy, legal and compliance documents
+    retrieval_mode: SharePoint Indexed
+    approved_for_agent_use: true
+
+  - knowledge_base_id: KB-DAI
+    name: Kelvior Data AI Knowledge
+    purpose: AI, data governance and Foundry IQ guidance
+    retrieval_mode: SharePoint Indexed
+    approved_for_agent_use: true
+
+mcp_connectors:
+  - connector_id: MCP-CRM
+    name: Kelvior CRM Connector
+    target_system: Dynamics 365 Sales
+    objects:
+      - customers
+      - leads
+      - opportunities
+    access_policy: read-only for agent queries
+    production_use_approved: true
+    approval_reference: MCP-CRM-APPROVAL-2026-01
+    access_type: read_only
+    controlled_actions_enabled: false
+    write_access_enabled: false
+
+allowed_actions:
+  - action_id: retrieve_customer_context
+    description: Retrieve approved customer, lead and opportunity context from Dynamics 365 Sales.
+    action_type: retrieval
+    requires_human_approval: false
+    writes_to_system: false
+
+  - action_id: draft_sales_proposal
+    description: Draft proposal text using approved customer context, product information and sales guidance.
+    action_type: content_drafting
+    requires_human_approval: true
+    writes_to_system: false
+
+restricted_actions:
+  - approve_discount
+  - change_pricing
+  - modify_opportunity_stage
+  - create_binding_offer
+  - send_proposal_to_customer
+  - update_customer_record
+  - commit_delivery_timeline
+  - approve_contract_terms
+  - accept_customer_order
+
+data_profile:
+  data_classification:
+    - internal
+    - confidential_commercial
+    - customer_related
+  contains_personal_data: true
+  contains_restricted_data: false
+  contains_financial_data: limited
+  contains_hr_sensitive_data: false
+  contains_customer_data: true
+  contains_contractual_data: limited
+  allowed_data_scope:
+    - customer account summary
+    - lead context
+    - opportunity metadata
+    - approved product descriptions
+    - approved proposal templates
+    - non-binding commercial recommendations
+  prohibited_data_scope:
+    - payment details
+    - private customer notes
+    - unapproved discount logic
+    - confidential contract negotiation notes
+    - legal commitments
+    - binding offer approval
+
+risk_and_compliance:
+  declared_risk_level: medium
+  actual_risk_indicator: medium
+  business_impact: medium
+  customer_impact: medium
+  financial_control_impact: limited
+  gdpr_assessment_completed: true
+  data_governance_review_completed: true
+  security_review_completed: true
+  eu_ai_act_category: null
+  eu_ai_act_risk_indicator: potential_high_risk
+  policy_exception_required: false
+  risk_acceptance_required: false
+
+human_oversight:
+  human_approval_gate: true
+  approval_required_for:
+    - external proposal sharing
+    - customer-facing final proposal
+    - pricing assumptions
+    - discounts
+    - delivery commitments
+    - non-standard terms
+  human_decision_points:
+    - proposal quality review
+    - sales manager approval
+    - pricing review
+    - legal review for non-standard terms
+  escalation_path_defined: true
+  escalation_owner: Sales Operations Manager
+  escalation_gap: >
+    Standard escalation exists for pricing and legal review, but the proposal quality
+    review SLA is not yet formally defined for AI-assisted drafts.
+  exception_handling_defined: true
+  exception_handling_gap: >
+    Exceptions for pricing, discounts and legal terms are routed to existing Sales,
+    Finance and Legal processes, but quality review timing for generated proposal
+    drafts requires formal SLA definition.
+
+deployment_controls:
+  production_approval: conditional
+  approval_status: limited_production_approved
+  approval_reference: PROD-SAL-PRO-2026-03
+  deployment_scope: sales_team_limited_production
+  active_user_group:
+    - Sales representatives
+    - Account managers
+    - Sales operations coordinators
+  rollout_limitations:
+    - Draft-only use.
+    - No CRM write actions.
+    - No external sending by the agent.
+    - No pricing approval by the agent.
+    - No contract or legal approval by the agent.
+  last_reviewed: "2026-05-25"
+  next_review_due: "2026-07-25"
+  change_control_reference: CHG-SAL-PRO-2026-05
+
+security_controls:
+  authentication_required: true
+  role_based_access_control: true
+  least_privilege_evidenced: true
+  audit_logging: enabled
+  logged_events:
+    - user_query
+    - customer_context_retrieved
+    - retrieved_knowledge_source
+    - proposal_draft_generated
+    - restricted_action_refusal
+    - human_review_required
+  monitoring_enabled: true
+  monitoring_owner: Data & AI Lead
+  incident_response_plan: defined
+  incident_response_reference: IRP-DAI-AGENTS-2026
+  data_retention_defined: true
+  retention_period_days: 180
+
+operational_controls:
+  support_owner: Sales Operations
+  fallback_channel: Sales Operations Support
+  sla_defined: partially_defined
+  proposal_quality_review_sla_defined: false
+  user_feedback_enabled: true
+  model_output_review_frequency: monthly
+  knowledge_review_frequency: quarterly
+  known_operational_dependencies:
+    - Dynamics 365 Sales data quality
+    - Product knowledge freshness
+    - Approved proposal template availability
+    - Sales manager review capacity
+
+known_gaps:
+  - Proposal quality review SLA is not formally defined.
+  - AI-generated proposal drafts require stronger sampling review before broader rollout.
+  - Sales users need clearer guidance on prohibited use cases.
+  - Customer-facing proposal approval remains manual and must be reinforced in training.
+
+recommended_next_steps:
+  - Define proposal quality review SLA for AI-assisted drafts.
+  - Add sales-user guidance for prohibited actions and required human review.
+  - Add monthly sample review of generated proposals.
+  - Complete post-deployment review before expanding beyond limited production scope.

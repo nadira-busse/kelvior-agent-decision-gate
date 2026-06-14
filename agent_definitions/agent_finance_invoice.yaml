@@ -1,0 +1,329 @@
+# Kelvior Agent Definition
+# Agent: Finance Invoice Assistant
+# Purpose: Audit input for Kelvior Agent Decision Gate
+# Version: 1.1
+
+agent_id: AGT-FIN-INV-001
+name: Finance Invoice Assistant
+version: "1.1"
+status: active
+environment: production
+
+created_date: "2026-03-12"
+last_reviewed: null
+next_review_due: null
+
+description: >
+  Prepares invoice approval recommendations based on vendor master data,
+  purchase orders, invoice records and procurement policy. The agent can
+  initiate payment review workflows in the ERP system on behalf of the
+  Finance Operations team.
+
+business_context:
+  business_unit_id: BU-COR
+  business_unit_name: Kelvior Corporate
+  department_id: DEP-FIN
+  department_name: Finance
+  related_department_id: DEP-PRO
+  related_department_name: Procurement
+  process_id: P03
+  process_name: Procure-to-Pay
+  process_owner: Procurement/Finance
+  business_capability: Invoice review preparation and payment workflow support
+  primary_user_group:
+    - Finance Operations team
+    - Accounts payable analysts
+    - Procurement reviewers
+  operational_context: >
+    The agent is already active in production and is used during invoice
+    review preparation inside the Procure-to-Pay process.
+
+ownership:
+  business_owner: null
+  technical_owner: "Data & AI Lead"
+  deputy_business_owner: null
+  executive_sponsor: null
+  support_team: Finance Operations
+  security_contact: null
+  data_steward: null
+
+systems:
+  primary_systems:
+    - system_id: SYS-ERP-001
+      name: Dynamics 365 Business Central
+      purpose: ERP system for orders, invoices, inventory and payment status
+      access_type: read_write
+    - system_id: SYS-M365-001
+      name: Microsoft 365
+      purpose: Collaboration and invoice context retrieval
+      access_type: read
+  supporting_systems:
+    - Microsoft 365
+  system_of_record:
+    - Dynamics 365 Business Central
+
+knowledge_sources:
+  - knowledge_base_id: KB-FIN
+    kb_id: KB-FIN
+    name: Kelvior Finance Knowledge
+    purpose: Finance and procurement policy retrieval
+    retrieval_mode: SharePoint Indexed
+    approved_for_agent_use: true
+  - knowledge_base_id: KB-CORP
+    kb_id: KB-CORP
+    name: Kelvior Corporate Knowledge
+    purpose: Corporate governance and approval procedure retrieval
+    retrieval_mode: SharePoint Indexed
+    approved_for_agent_use: true
+  - knowledge_base_id: KB-DAI
+    kb_id: KB-DAI
+    name: Kelvior Data AI Knowledge
+    purpose: AI governance and data governance policy retrieval
+    retrieval_mode: SharePoint Indexed
+    approved_for_agent_use: true
+
+data_sources:
+  - name: ERP Invoice Database
+    system: Dynamics 365 Business Central
+    data_entities:
+      - invoices
+      - payment_status
+      - invoice_amounts
+    classification: confidential
+    access_type: read_write
+  - name: Vendor Master Data
+    system: Dynamics 365 Business Central
+    data_entities:
+      - vendors
+      - bank_details
+      - vendor_status
+    classification: confidential
+    access_type: read
+  - name: Purchase Order Registry
+    system: Dynamics 365 Business Central
+    data_entities:
+      - purchase_orders
+      - goods_receipts
+      - approval_records
+    classification: internal
+    access_type: read
+  - name: Employee Expense Records
+    system: Dynamics 365 Business Central
+    data_entities:
+      - employee_expenses
+      - approver_information
+    classification: restricted
+    access_type: read
+
+mcp_connectors:
+  - connector_id: MCP-ERP
+    name: Kelvior ERP Connector
+    target_system: Dynamics 365 Business Central
+    connected_system: Dynamics 365 Business Central
+    objects:
+      - orders
+      - invoices
+      - inventory
+      - vendors
+    access_policy: read_with_controlled_actions
+    production_use_approved: false
+    approval_reference: null
+    access_type: read_with_controlled_actions
+    controlled_actions_enabled: true
+    write_access_enabled: true
+
+mcp_tools:
+  - tool_id: ERP.InvoiceLookup
+    connector_id: MCP-ERP
+    action_type: read
+    approved: true
+    approval_date: "2026-03-12"
+    approver: IT Operations
+  - tool_id: ERP.PurchaseOrderMatch
+    connector_id: MCP-ERP
+    action_type: read_analysis
+    approved: true
+    approval_date: "2026-03-12"
+    approver: IT Operations
+  - tool_id: ERP.InvoiceApprovalPrepare
+    connector_id: MCP-ERP
+    action_type: controlled_action
+    approved: false
+    approval_date: null
+    approver: null
+  - tool_id: ERP.PaymentReviewTrigger
+    connector_id: MCP-ERP
+    action_type: controlled_action
+    approved: false
+    approval_date: null
+    approver: null
+
+allowed_actions:
+  - action_id: read_invoice
+    description: Retrieve invoice records from Dynamics 365 Business Central.
+    action_type: retrieval
+    requires_human_approval: false
+    writes_to_system: false
+  - action_id: match_purchase_order
+    description: Match invoice records against purchase orders and goods receipts.
+    action_type: analysis
+    requires_human_approval: false
+    writes_to_system: false
+  - action_id: prepare_invoice_approval_recommendation
+    description: Prepare recommendation for invoice approval review.
+    action_type: recommendation
+    requires_human_approval: true
+    writes_to_system: false
+  - action_id: initiate_payment_review_workflow
+    description: Initiate payment review workflow in ERP.
+    action_type: controlled_action
+    requires_human_approval: true
+    writes_to_system: true
+
+restricted_actions:
+  - approve_invoice
+  - approve_payment
+  - release_payment
+  - modify_vendor_bank_details
+  - bypass_purchase_order_matching
+  - override_invoice_exception
+  - approve_employee_expense
+  - create_financial_commitment
+
+data_profile:
+  data_classification:
+    - confidential_financial
+    - restricted_employee_expense
+    - internal_procurement
+  contains_financial_data: true
+  contains_personal_data: true
+  contains_restricted_data: true
+  contains_hr_sensitive_data: limited
+  contains_customer_data: false
+  allowed_data_scope:
+    - invoice records
+    - purchase order records
+    - goods receipt records
+    - vendor status
+    - invoice approval metadata
+    - employee expense metadata
+  prohibited_data_scope:
+    - vendor bank detail modification
+    - payment release approval
+    - employee compensation data
+    - private HR case notes
+    - legal dispute records
+    - security secrets
+    - privileged ERP credentials
+
+risk_and_compliance:
+  declared_risk_level: medium
+  actual_risk_indicator: high
+  business_impact: high
+  financial_control_impact: high
+  contains_financial_data: true
+  contains_personal_data: true
+  contains_restricted_data: true
+  gdpr_assessment_completed: false
+  data_governance_review_completed: false
+  security_review_completed: false
+  eu_ai_act_category: null
+  eu_ai_act_risk_indicator: potential_high_risk
+  policy_exception_requested: false
+  policy_exception_reference: null
+  declared_risk_level_understated: true
+
+human_oversight:
+  human_approval_gate: false
+  human_approval_required: false
+  human_approval_trigger: null
+  required_approval_roles:
+    - Finance Operations Manager
+    - Procurement Manager
+    - Security Officer
+  human_decision_points: []
+  escalation_path_defined: false
+  escalation_path: null
+  escalation_owner: null
+  exception_handling_defined: false
+  segregation_of_duties_validated: false
+
+deployment_controls:
+  environment: production
+  deployment_stage: active
+  deployment_date: "2026-05-20"
+  deployed_by: Finance Operations
+  deployment_scope: uncontrolled_production_use
+  production_approval: false
+  formal_production_approval: false
+  approval_status: not_approved
+  approval_reference: null
+  change_control_reference: null
+  last_reviewed: null
+  next_review_due: null
+  rollout_limitations: []
+
+security_controls:
+  authentication_required: true
+  role_based_access_control: unknown
+  least_privilege_evidenced: false
+  audit_logging: disabled
+  audit_logging_enabled: false
+  audit_logging_scope: null
+  monitoring_enabled: false
+  monitoring_owner: null
+  incident_response_plan: null
+  incident_response_reference: null
+  data_retention_defined: false
+  evidence_retention_policy: null
+  logged_events: []
+  missing_expected_events:
+    - invoice_lookup
+    - purchase_order_match
+    - approval_recommendation_generated
+    - payment_review_workflow_initiated
+    - human_approval_decision
+    - human_override
+    - mcp_tool_execution
+    - retrieved_policy_sources
+
+operational_controls:
+  support_owner: Finance Operations
+  fallback_channel: null
+  sla_defined: false
+  rollback_or_stop_procedure_defined: false
+  workflow_boundary_defined: false
+  known_operational_dependencies:
+    - Dynamics 365 Business Central invoice data quality
+    - Vendor master data accuracy
+    - Purchase order matching controls
+    - Finance Operations review capacity
+
+operational_notes: >
+  Built by the Finance team during the Q1 2026 automation sprint.
+  IT Security was not consulted during build. No formal sign-off was
+  obtained from the Data Governance team. The agent is already active
+  in production and used by Finance Operations for invoice review preparation.
+
+known_gaps:
+  - business owner not assigned
+  - executive sponsor not assigned
+  - security contact not assigned
+  - data steward not assigned
+  - no last review date
+  - no next review date
+  - no formal production approval
+  - no completed security review
+  - no completed data governance review
+  - MCP-ERP production use not approved
+  - controlled MCP tools not approved
+  - no human approval gate
+  - no escalation path
+  - no exception handling
+  - segregation of duties not validated
+  - declared risk level may be understated
+  - GDPR assessment not completed
+  - audit logging disabled
+  - monitoring disabled
+  - no incident response plan
+  - no rollback or stop procedure

@@ -1,0 +1,309 @@
+# Kelvior Agent Definition
+# Agent: IT Ticket Triage
+# Purpose: Portfolio audit input for Kelvior Agent Decision Gate
+# Version: 1.1
+
+agent_id: AGT-ITO-TKT-001
+name: IT Ticket Triage
+version: "1.1"
+status: active
+environment: production
+
+created_date: "2026-02-14"
+last_reviewed: "2026-05-28"
+next_review_due: "2026-08-28"
+
+description: >
+  Supports IT Operations by classifying incoming ServiceNow incidents,
+  suggesting ticket priority, identifying likely assignment groups and
+  recommending next handling steps. The agent does not resolve tickets,
+  close incidents, modify production systems or perform privileged actions.
+
+business_context:
+  business_unit_id: BU-DIG
+  business_unit_name: Kelvior Digital
+  department_id: DEP-ITO
+  department_name: IT Operations
+  process_id: P06
+  process_name: Incident-to-Recovery
+  process_owner: IT Operations
+  business_capability: Incident triage, priority suggestion and assignment group recommendation
+  primary_user_group:
+    - Service Desk Analysts
+    - Service Desk Lead
+    - IT Operations team
+  operational_context: >
+    The agent is active in production as a controlled support agent. It provides
+    read-only incident context and recommendations, while all ServiceNow record
+    changes remain human-controlled.
+
+ownership:
+  business_owner: IT Operations Manager
+  technical_owner: ITSM Platform Owner
+  deputy_business_owner: Service Desk Lead
+  executive_sponsor: Chief Information Officer
+  support_team: IT Operations
+  security_contact: Security & Compliance Lead
+  data_steward: ITSM Data Steward
+
+systems:
+  primary_systems:
+    - system_id: SYS-ITSM-001
+      name: ServiceNow ITSM
+      purpose: IT service management system for incidents, changes and assets
+      access_type: read
+  supporting_systems:
+    - ServiceNow Knowledge Base
+    - Microsoft 365
+    - SharePoint IT Operations Library
+  system_of_record:
+    - ServiceNow ITSM
+
+knowledge_sources:
+  - knowledge_base_id: KB-IT
+    kb_id: KB-IT
+    name: Kelvior IT Operations Knowledge
+    purpose: IT operations and security procedures
+    retrieval_mode: SharePoint Indexed
+    approved_for_agent_use: true
+  - knowledge_base_id: KB-CORP
+    kb_id: KB-CORP
+    name: Kelvior Corporate Knowledge
+    purpose: Corporate governance and approval procedures
+    retrieval_mode: SharePoint Indexed
+    approved_for_agent_use: true
+  - knowledge_base_id: KB-DAI
+    kb_id: KB-DAI
+    name: Kelvior Data AI Knowledge
+    purpose: AI governance and data governance policy retrieval
+    retrieval_mode: SharePoint Indexed
+    approved_for_agent_use: true
+
+data_sources:
+  - name: ITSM Incident Records
+    system: ServiceNow ITSM
+    data_entities:
+      - incident_id
+      - category
+      - priority
+      - short_description
+      - assignment_group
+      - status
+    classification: internal
+    access_type: read
+  - name: IT Asset Context
+    system: ServiceNow ITSM
+    data_entities:
+      - asset_id
+      - asset_type
+      - impacted_service
+    classification: internal
+    access_type: read
+
+mcp_connectors:
+  - connector_id: MCP-ITSM
+    name: Kelvior ITSM Connector
+    target_system: ServiceNow ITSM
+    connected_system: ServiceNow ITSM
+    objects:
+      - incidents
+      - changes
+      - assets
+    access_policy: support_and_it_agents
+    production_use_approved: true
+    approval_reference: MCP-APPROVAL-2026-ITSM-014
+    access_type: read_recommendation_only
+    controlled_actions_enabled: false
+    write_access_enabled: false
+
+mcp_tools:
+  - tool_id: ITSM.IncidentLookup
+    connector_id: MCP-ITSM
+    action_type: read
+    approved: true
+    approval_date: "2026-04-12"
+    approver: Security & Compliance Lead
+  - tool_id: ITSM.ClassificationSuggest
+    connector_id: MCP-ITSM
+    action_type: recommendation
+    approved: true
+    approval_date: "2026-04-12"
+    approver: Security & Compliance Lead
+  - tool_id: ITSM.AssignmentGroupRecommend
+    connector_id: MCP-ITSM
+    action_type: recommendation
+    approved: true
+    approval_date: "2026-04-12"
+    approver: Security & Compliance Lead
+
+allowed_actions:
+  - action_id: classify_ticket
+    description: Classify incoming incidents by category and likely routing.
+    action_type: recommendation
+    requires_human_approval: true
+    writes_to_system: false
+  - action_id: suggest_priority
+    description: Suggest incident priority based on available incident context.
+    action_type: recommendation
+    requires_human_approval: true
+    writes_to_system: false
+  - action_id: recommend_assignment_group
+    description: Recommend likely ServiceNow assignment group.
+    action_type: recommendation
+    requires_human_approval: true
+    writes_to_system: false
+  - action_id: summarize_incident_context
+    description: Summarize incident context for Service Desk review.
+    action_type: summary
+    requires_human_approval: false
+    writes_to_system: false
+
+restricted_actions:
+  - close_ticket
+  - update_incident_status
+  - change_priority_without_review
+  - assign_ticket_without_review
+  - trigger_change_request
+  - access_privileged_credentials
+  - modify_production_system
+  - execute_remediation_action
+
+data_profile:
+  data_classification:
+    - internal_it_operations
+    - sensitive_operational_metadata
+  contains_financial_data: false
+  contains_personal_data: false
+  contains_restricted_data: false
+  contains_hr_sensitive_data: false
+  contains_customer_data: false
+  allowed_data_scope:
+    - incident id
+    - incident category
+    - priority
+    - short description
+    - assignment group
+    - incident status
+    - impacted service
+    - asset type
+  prohibited_data_scope:
+    - privileged credentials
+    - secrets
+    - production system modification data
+    - private employee HR data
+    - customer confidential records
+    - payment or financial records
+
+risk_and_compliance:
+  declared_risk_level: medium
+  actual_risk_indicator: medium
+  business_impact: medium
+  operational_impact: medium
+  contains_financial_data: false
+  contains_personal_data: false
+  contains_restricted_data: false
+  contains_sensitive_operational_data: true
+  gdpr_assessment_completed: true
+  data_governance_review_completed: true
+  security_review_completed: true
+  eu_ai_act_category: null
+  eu_ai_act_risk_indicator: limited_risk
+  policy_exception_requested: false
+  policy_exception_reference: null
+
+human_oversight:
+  human_approval_gate: true
+  human_approval_required: true
+  human_approval_trigger: >
+    Required before ticket priority, assignment group or incident status is
+    changed in ServiceNow. The agent only recommends; a Service Desk Analyst
+    or IT Operations user performs the actual update.
+  required_approval_roles:
+    - Service Desk Analyst
+    - Service Desk Lead
+  human_decision_points:
+    - ticket priority change
+    - assignment group change
+    - incident status update
+    - major incident escalation
+    - security incident escalation
+  escalation_path_defined: true
+  escalation_path: Service Desk Lead
+  escalation_owner: Service Desk Lead
+  exception_handling_defined: true
+  segregation_of_duties_validated: true
+
+deployment_controls:
+  environment: production
+  deployment_stage: active
+  deployment_date: "2026-04-18"
+  deployed_by: IT Operations
+  deployment_scope: controlled_production_use
+  production_approval: true
+  formal_production_approval: true
+  approval_status: approved
+  approval_reference: CHG-2026-0418-ITSM-AI-TRIAGE
+  change_control_reference: CHG-2026-0418-ITSM-AI-TRIAGE
+  last_reviewed: "2026-05-28"
+  next_review_due: "2026-08-28"
+  rollout_limitations:
+    - recommendation-only
+    - read-only MCP access
+    - no autonomous ServiceNow updates
+    - no privileged system actions
+
+security_controls:
+  authentication_required: true
+  role_based_access_control: implemented
+  least_privilege_evidenced: true
+  audit_logging: active
+  audit_logging_enabled: true
+  audit_logging_status: active
+  audit_logging_scope: all_recommendations_and_mcp_calls
+  monitoring_enabled: true
+  monitoring_owner: IT Operations
+  incident_response_plan: IRP-ITSM-AI-2026-004
+  incident_response_reference: IRP-ITSM-AI-2026-004
+  data_retention_defined: true
+  evidence_retention_policy: ERPOL-ITSM-90D
+  logged_events:
+    - incident_lookup
+    - classification_recommendation_generated
+    - priority_suggestion_generated
+    - assignment_group_recommendation_generated
+    - human_review_decision
+    - mcp_tool_execution
+    - retrieved_policy_sources
+  missing_expected_events: []
+
+operational_controls:
+  support_owner: IT Operations
+  fallback_channel: Service Desk Lead
+  sla_defined: true
+  sla_impact_assessed: true
+  rollback_or_stop_procedure_defined: true
+  workflow_boundary_defined: true
+  exception_types_defined:
+    - unclear_incident_category
+    - conflicting_priority_signal
+    - security_related_incident
+    - major_incident_candidate
+    - missing_asset_context
+  escalation_rules:
+    - security_related_incident escalates to Security Operations
+    - major_incident_candidate escalates to IT Operations Manager
+    - unclear_assignment escalates to Service Desk Lead
+  known_operational_dependencies:
+    - ServiceNow incident data quality
+    - IT knowledge base freshness
+    - assignment group taxonomy accuracy
+    - Service Desk review capacity
+
+operational_notes: >
+  Active production support agent for IT Operations. The agent is read-only
+  and recommendation-only. It does not update ServiceNow records directly and
+  does not perform privileged, irreversible or production-changing actions.
+  Human review is required before any ticket priority, assignment group or
+  status change is applied.
+
+known_gaps: []

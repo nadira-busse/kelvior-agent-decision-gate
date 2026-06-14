@@ -1,0 +1,221 @@
+# Kelvior Agent Definition
+# Agent: Learning Policy Coach
+# Purpose: Portfolio audit input for Kelvior Agent Decision Gate
+# Version: 1.0
+
+agent_id: AGT-ACD-LRN-001
+name: Learning Policy Coach
+description: >
+  Pilot AI agent that answers learning policy questions, explains course requirements,
+  and recommends learning paths for Kelvior Academy users based on approved Academy,
+  HR and Data & AI knowledge sources.
+
+status: pilot
+environment: controlled_pilot
+
+business_context:
+  business_unit_id: BU-ACD
+  business_unit_name: Kelvior Academy
+  department_id: DEP-ACD
+  department_name: Academy
+  process_id: P08
+  process_name: Learn-to-Certify
+  process_owner: Academy
+  business_capability: Training, certification and e-learning support
+  primary_user_group:
+    - Kelvior employees
+    - Academy learners
+    - Training coordinators
+
+ownership:
+  business_owner: Academy Manager
+  technical_owner: Data & AI Lead
+  executive_sponsor: Head of Kelvior Academy
+  security_contact: Security & Compliance Advisor
+  data_steward: Academy Knowledge Steward
+  deputy_business_owner: Senior Training Coordinator
+
+systems:
+  primary_systems:
+    - Moodle
+    - Microsoft 365
+  supporting_systems:
+    - SharePoint
+  system_of_record:
+    - Moodle
+
+knowledge_sources:
+  - knowledge_base_id: KB-PROD
+    name: Kelvior Product Academy Legal Knowledge
+    purpose: Product, academy, legal and compliance documents
+    retrieval_mode: SharePoint Indexed
+    approved_for_agent_use: true
+
+  - knowledge_base_id: KB-DAI
+    name: Kelvior Data AI Knowledge
+    purpose: AI, data governance and Foundry IQ guidance
+    retrieval_mode: SharePoint Indexed
+    approved_for_agent_use: true
+
+  - knowledge_base_id: KB-HR
+    name: Kelvior HR Knowledge
+    purpose: Employee learning policy and HR procedure references
+    retrieval_mode: SharePoint Indexed
+    approved_for_agent_use: conditional
+    conditions:
+      - Use only for general employee learning policy questions.
+      - Do not expose restricted HR records or individual employee data.
+      - Redirect personal HR cases to Human Resources.
+
+mcp_connectors:
+  - connector_id: MCP-LMS
+    name: Kelvior LMS Connector
+    target_system: Moodle
+    objects:
+      - courses
+      - enrollments
+      - certifications
+    access_policy: academy_agent
+    production_use_approved: true
+    approval_reference: MCP-LMS-APPROVAL-2026-02
+    access_type: read_only
+    controlled_actions_enabled: false
+    write_access_enabled: false
+
+allowed_actions:
+  - action_id: answer_course_questions
+    description: Answer questions about course content, learning paths and certification requirements.
+    action_type: recommendation
+    requires_human_approval: false
+    writes_to_system: false
+
+  - action_id: recommend_learning_path
+    description: Recommend learning paths based on role, skill target and available Academy catalogue.
+    action_type: recommendation
+    requires_human_approval: false
+    writes_to_system: false
+
+restricted_actions:
+  - approve_certification_exception
+  - modify_training_record
+  - update_employee_learning_status
+  - enroll_user_in_required_training
+  - override_certification_requirement
+  - issue_certificate
+
+data_profile:
+  data_classification:
+    - internal
+    - employee_related
+  contains_personal_data: true
+  contains_restricted_data: false
+  contains_financial_data: false
+  contains_hr_sensitive_data: limited
+  contains_customer_data: false
+  learner_progress_visible: limited_metadata_only
+  allowed_data_scope:
+    - course catalogue
+    - certification requirements
+    - learning path metadata
+    - general enrollment status
+  prohibited_data_scope:
+    - performance reviews
+    - medical data
+    - disciplinary records
+    - compensation data
+    - private HR case notes
+
+risk_and_compliance:
+  declared_risk_level: medium
+  actual_risk_indicator: medium
+  business_impact: medium
+  learner_decision_impact: advisory_only
+  gdpr_assessment_completed: true
+  data_governance_review_completed: true
+  security_review_completed: true
+  eu_ai_act_category: null
+  eu_ai_act_risk_indicator: potential_high_risk
+  policy_exception_required: false
+  risk_acceptance_required: false
+
+human_oversight:
+  human_approval_gate: true
+  approval_required_for:
+    - certification exceptions
+    - disputed eligibility
+    - mandatory training conflicts
+    - learner complaints
+    - policy interpretation conflicts
+  human_decision_points:
+    - certification exception handling
+    - formal learner appeal
+    - HR-sensitive learning accommodation
+  escalation_path_defined: true
+  escalation_owner: Academy Manager
+  escalation_gap: >
+    Escalation exists for standard Academy support, but certification exception routing
+    between Academy, HR and Legal requires clearer ownership and response timing.
+  exception_handling_defined: true
+  exception_handling_gap: >
+    Standard learner support exceptions are handled by Academy Operations, but
+    certification exception ownership is not yet fully formalized across Academy,
+    HR and Legal.
+
+deployment_controls:
+  production_approval: conditional
+  approval_status: pilot_approved
+  approval_reference: PILOT-ACD-LRN-2026-01
+  deployment_scope: controlled_academy_pilot
+  pilot_user_group:
+    - Academy staff
+    - selected internal learners
+  rollout_limitations:
+    - No automatic certification decisions.
+    - No LMS write actions.
+    - No employee record changes.
+    - No certification exception approvals.
+  last_reviewed: "2026-05-20"
+  next_review_due: "2026-07-20"
+  change_control_reference: CHG-ACD-LRN-2026-04
+
+security_controls:
+  authentication_required: true
+  role_based_access_control: true
+  least_privilege_evidenced: true
+  audit_logging: enabled
+  logged_events:
+    - user_query
+    - retrieved_knowledge_source
+    - recommendation_generated
+    - escalation_suggested
+    - restricted_action_refusal
+  monitoring_enabled: true
+  monitoring_owner: Data & AI Lead
+  incident_response_plan: defined
+  incident_response_reference: IRP-DAI-AGENTS-2026
+  data_retention_defined: true
+  retention_period_days: 180
+
+operational_controls:
+  support_owner: Academy Operations
+  fallback_channel: Academy Support Desk
+  sla_defined: partially_defined
+  user_feedback_enabled: true
+  model_output_review_frequency: monthly
+  knowledge_review_frequency: quarterly
+  known_operational_dependencies:
+    - Moodle course catalogue quality
+    - Academy policy versioning
+    - SharePoint knowledge source freshness
+
+known_gaps:
+  - Certification exception escalation path requires clearer cross-department ownership.
+  - SLA for learner support escalation is only partially defined.
+  - HR knowledge source usage requires stricter retrieval filtering before full rollout.
+  - Pilot metrics must be reviewed before production expansion.
+
+recommended_next_steps:
+  - Define final escalation path for certification exceptions across Academy, HR and Legal.
+  - Add explicit SLA for learner support and exception handling.
+  - Validate HR knowledge retrieval filters for employee-related policy questions.
+  - Complete pilot review before expanding beyond controlled Academy user group.

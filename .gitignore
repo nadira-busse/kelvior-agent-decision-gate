@@ -1,0 +1,84 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Python egg / dist info
+*.egg-info/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment variables and secrets
+.env
+.env.*
+*.env
+secrets.*
+*.secret
+*.key
+*.pem
+*.pfx
+*.p12
+
+# Azure / cloud credentials
+.azure/
+.azureconfig/
+*.publishsettings
+local.settings.json
+
+# Azure AI Foundry / AI Search local configs
+*.runsettings
+.foundry/
+ai_search_config.json
+appsettings.local.json
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Local build/output artifacts
+dist/
+build/
+site/
+
+# Jupyter / notebook checkpoints
+.ipynb_checkpoints/
+
+# Local test exports
+exports/
+local_outputs/
+scratch/
+drafts/
+
+# Do not commit private source documents unless explicitly intended
+private/
+internal/
+confidential/
+
+# Keep generated sample outputs only if intentionally included
+# outputs/ is tracked for hackathon sample evidence packs
