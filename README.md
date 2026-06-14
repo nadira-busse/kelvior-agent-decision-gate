@@ -362,6 +362,8 @@ Sample outputs are available in `outputs/` for reference without running the age
 
 ## Demo cases
 
+Demo video: https://youtu.be/CVQdw8PbgjE
+
 The demo focuses on three cases to show risk-based deployment decision logic without overloading the walkthrough.
 
 ### Demo case 1: Finance Invoice Assistant → BLOCK
