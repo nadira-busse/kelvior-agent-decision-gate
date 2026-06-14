@@ -362,26 +362,31 @@ Sample outputs are available in `outputs/` for reference without running the age
 
 ## Demo cases
 
-The demo focuses on two cases to show contrast without overloading the walkthrough.
+The demo focuses on three cases to show risk-based deployment decision logic without overloading the walkthrough.
 
-### Primary demo: Finance Invoice Assistant → BLOCK
+### Demo case 1: Finance Invoice Assistant → BLOCK
 
 This case shows why a governance gate matters.
 
 The Finance Invoice Assistant is blocked because financial automation requires strong governance, approval, audit logging, data review, security review, segregation-of-duties validation and human approval controls.
 
-### Contrast demo: IT Ticket Triage → GO
+### Demo case 2: IT Ticket Triage → GO
 
 This case shows that the Decision Gate does not block everything.
 
 The IT Ticket Triage agent can receive a GO verdict because it is read-only, recommendation-only, approved, logged, monitored and controlled through human review.
 
+### Demo case 3: Sales Proposal Agent → CONDITIONAL GO
+
+This case shows that the Decision Gate can allow limited production use when foundational controls are present but broader rollout still requires remediation.
+
+The Sales Proposal Agent receives a CONDITIONAL GO because it has key governance, security, data and human approval controls in place, but remains limited to a scoped sales-team deployment with required improvements before broader rollout.
+
 ### Additional validated outputs
 
-Three additional sample assessments are included in `outputs/`:
+Additional sample assessments are included in `outputs/`:
 
 - Learning Policy Coach → `CONDITIONAL GO`
-- Sales Proposal Agent → `CONDITIONAL GO`
 - HR Onboarding Helper → `REMEDIATE`
 
 ---
@@ -466,3 +471,9 @@ Kelvior Systems is a fictional enterprise environment. All business data, polici
 This project is released under the MIT License.
 
 Microsoft Foundry, Foundry IQ, Azure and related Microsoft product names are trademarks or product names of Microsoft. This project is an independent synthetic enterprise simulation and is not affiliated with, endorsed by, or sponsored by Microsoft.
+
+## Author
+
+Created by Nadira Büsse.
+
+This project was built as a hackathon submission to demonstrate practical skills in Microsoft Foundry, AI-agent governance, evidence-grounded reasoning, audit traceability, risk assessment and enterprise AI deployment readiness.

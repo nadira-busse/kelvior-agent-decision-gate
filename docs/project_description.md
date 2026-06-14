@@ -154,11 +154,11 @@ The project includes five validated Kelvior AI-agent assessment scenarios.
 
 The primary demo focuses on:
 
-* Finance Invoice Assistant → `BLOCK`
-* IT Ticket Triage → `GO`
-* HR Onboarding Helper → `REMEDIATE`
+- Finance Invoice Assistant → `BLOCK`
+- IT Ticket Triage → `GO`
+- Sales Proposal Agent → `CONDITIONAL GO`
 
-This contrast shows that the system does not simply block all agents. It evaluates evidence, controls, deployment scope and operational readiness before assigning a verdict.
+This contrast shows that the system does not simply approve or block agents. It evaluates evidence, controls, deployment scope and operational readiness before assigning a risk-based deployment verdict.
 
 ---
 
