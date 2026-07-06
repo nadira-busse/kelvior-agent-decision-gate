@@ -144,7 +144,7 @@ Agent definitions + Kelvior evidence
 → Human governance review
 ```
 
-![Kelvior Agent Decision Gate architecture](docs/assets/kelvior_architecture.png)
+![Kelvior Agent Decision Gate architecture](docs/assets/kelvior_architecture.svg)
 
 For the editable Mermaid source, see:
 
@@ -380,11 +380,16 @@ outputs/
 docs/
   architecture_overview.md
   assets/
-    kelvior_architecture.png
+    kelvior_architecture.svg
 
-README.md
-LICENSE
+scripts/
+  check_internal_links.py
+
+.editorconfig
+.gitattributes
 .gitignore
+README.md
+LICENSE    
 ```
 
 ---
@@ -437,13 +442,13 @@ This repository includes a small local validation script for internal Markdown l
 py scripts/check_internal_links.py
 ```
 
-On systems where `python` is configured directly, this also works:
+If `python` is configured directly, this also works:
 
 ```bash
 python scripts/check_internal_links.py
 ```
 
-The repository includes `.editorconfig` for basic editor consistency.
+The repository also includes `.editorconfig` and `.gitattributes` for basic editor consistency and line-ending normalization.
 
 ---
 
@@ -610,6 +615,8 @@ This project is an independent synthetic enterprise simulation. It is not affili
 ## Author
 
 Created by Nadira Büsse.
+
+LinkedIn: [Nadira Büsse](https://www.linkedin.com/in/...)
 
 Originally built and submitted for the Microsoft Agents League Hackathon 2026, Reasoning Agents track.
 

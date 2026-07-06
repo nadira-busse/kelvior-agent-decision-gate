@@ -16,7 +16,7 @@ The implementation is an MVP. It demonstrates the architecture pattern for evide
 
 ```mermaid
 flowchart TD
-    A1["Agent definitions<br/>YAML source files"]
+    A1["Agent definitions<br/>YAML reference files"]
     A2["Governance evidence<br/>AI policy, data governance policy,<br/>security policy, approval procedure,<br/>risk register"]
     A3["Agent evidence documents<br/>Retrieval-optimized Markdown"]
     A4["Evidence Source Manifest<br/>Canonical document IDs<br/>Source traceability"]
@@ -26,7 +26,7 @@ flowchart TD
     A3 --> SRC
     A4 --> SRC
 
-    SRC --> ING["Ingestion Security & Ethics Layer<br/>Sensitivity label validation<br/>Allowed data scope validation<br/>Input sanitization<br/>Misuse prevention checks"]
+    SRC --> ING["Ingestion Security & Ethics Layer<br/>MVP validation boundary<br/>Sensitivity label validation<br/>Allowed data scope validation<br/>Input sanitization<br/>Misuse prevention checks"]
 
     ING --> KB["Foundry IQ Knowledge Base<br/>Kelvior governance and agent evidence"]
 
