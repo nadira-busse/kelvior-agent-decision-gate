@@ -1,137 +1,305 @@
-1. Agent summary
+# Sample Evidence Pack — Learning Policy Coach
 
-The Learning Policy Coach (Agent ID AGT-ACD-LRN-001, version 1.0) is a medium-risk, pilot-status AI agent deployed in a controlled pilot environment within Kelvior Academy (BU-ACD). It is designed to answer learning policy questions, explain course requirements, and recommend learning paths for Academy users. The agent is advisory only, with no write capabilities or autonomous decision-making authority over certifications or employee learning records. The declared risk level and the actual risk indicator are both medium.
+## 1. Agent summary
 
-2. Business context
+| Field | Value |
+| --- | --- |
+| Agent ID | AGT-ACD-LRN-001 |
+| Name | Learning Policy Coach |
+| Version | 1.0 |
+| Status | pilot |
+| Environment | controlled_pilot |
+| Declared Risk Level | medium |
+| Actual Risk Indicator | medium |
+| Business Impact | medium |
+| Learner Decision Impact | advisory_only |
+| Deployment Scope | controlled_academy_pilot |
+| Approval Reference | PILOT-ACD-LRN-2026-01 |
+| Change Control Reference | CHG-ACD-LRN-2026-04 |
+| Last Reviewed | 2026-05-20 |
+| Next Review Due | 2026-07-20 |
 
-The agent operates under the Academy business unit and is associated with the Academy department (DEP-ACD). It supports the Learn-to-Certify business process, aiding users in understanding learning policies and available certification pathways. The pilot approval reference is PILOT-ACD-LRN-2026-01, and the agent is under change control CHG-ACD-LRN-2026-04. The agent is intended for controlled Academy pilot deployment, focusing on advisory interactions without formal certification exception handling or record updates.
+The Learning Policy Coach answers learning policy questions, explains course requirements and recommends learning paths for Kelvior Academy users.
 
-3. Systems and MCP connectors
+It uses approved Academy, HR and Data & AI knowledge sources. It does not make formal certification exceptions or modify records.
 
-The agent accesses the Moodle LMS system through the MCP-LMS connector for course, enrollment, and certification data retrieval. It uses approved Academy, HR, and Data & AI knowledge sources grounded through respective logical knowledge bases. The agent does not perform writes or operate with elevated system privileges. There are clearly defined MCP connectors and no unauthorized access to HR or other restricted systems beyond advisory use.
+---
 
-4. Data classification
+## 2. Business context
 
-The agent processes data classified as restricted employee profile, confidential onboarding, and confidential training status data. It contains personal but not financial data. HR knowledge sources are conditionally approved with restrictions for full rollout, and strict retrieval filtering is necessary before expansion due to the sensitivity of employee-related data. Human approval gates are established for handling exceptions and HR-sensitive learning accommodations. The agent operates with GDPR compliance and completed data governance and security reviews.
+| Field | Value |
+| --- | --- |
+| Business unit | BU-ACD — Kelvior Academy |
+| Department | DEP-ACD — Academy |
+| Business process | Learn-to-Certify |
+| Deployment model | Controlled Academy pilot |
+| Decision impact | Advisory only |
 
-5. Audit domain scores
+The agent supports the Learn-to-Certify process within Kelvior Academy for training and certification workflows.
 
-| Domain       | Score | Rationale                                                                                         |
-|--------------|-------|-------------------------------------------------------------------------------------------------|
-| Inventory    | 95    | Complete agent identification, environment, ownership, MCP connectors, and deployment scope.  |
-| Governance   | 82    | Ownership defined, pilot approval exists; certification exception ownership requires clarification.|
-| Security    | 85    | Security review completed; RBAC, least privilege, audit logging, monitoring, and incident response are evidenced.|
-| Policy      | 80    | Data governance and GDPR reviews done; HR knowledge source conditional approval limits full rollout.|
-| Process     | 78    | Aligned with Learn-to-Certify process; escalation and exception handling exist but cross-department clarity and SLA need strengthening.|
+Its impact on learner decisions is advisory only. It does not make formal changes to employee records, certification status or learning records.
 
-6. Weighted readiness score
+---
 
-Calculated weighted score before final cap:
+## 3. Systems and MCP connectors
 
-= (Inventory 95 × 0.15) + (Governance 82 × 0.25) + (Security 85 × 0.25) + (Policy 80 × 0.20) + (Process 78 × 0.15)
+The Learning Policy Coach uses Academy, HR and Data & AI knowledge sources approved for pilot use.
 
-= 14.25 + 20.5 + 21.25 + 16 + 11.7
+No system write actions are permitted.
 
-= 83.7 (rounded to 84)
+The agent provides recommendations and explanations only. It cannot make system changes.
 
-Final score cap available: maximum 84 due to controlled pilot deployment scope. Actual final weighted readiness score remains 84 because the calculated score is already below the cap.
+MCP connectors and system integrations are defined but controlled for advisory scope.
 
-7. Mandatory blocking rule evaluation
+---
 
-No mandatory blocks are identified. The agent has completed essential foundational controls like data governance review, GDPR assessment, security review, audit logging, monitoring, incident response ownership, and production approval is replaced with documented pilot approval supporting controlled pilot scope. Human approval gates are in place for certification exceptions and HR-sensitive guidance. No missing audit logging or security review gaps affect production or pilot deployment at this stage.
+## 4. Data classification
 
-8. Findings by domain
+| Data / control area | Status |
+| --- | --- |
+| Academy learning and certification data | In scope |
+| HR data | Conditionally approved |
+| GDPR assessment | Completed and positive |
+| Data governance review | Completed |
+| Security review | Completed |
+| EU AI Act risk indicator | potential_high_risk |
+| Learner decision impact | advisory_only |
 
-Inventory: Complete with no identified gaps.
+The HR knowledge source is conditionally approved and requires stricter retrieval filtering before full rollout.
 
-Governance: Ownership roles defined with pilot approval; however, certification exception routing ownership across Academy, HR, and Legal departments requires clarification. Escalation ownership and SLA require further definition.
+The agent operates in an employee-related learning context. This creates sensitivity around HR-linked learning information, but the assessed decision impact remains advisory only.
 
-Security: All critical security controls are implemented, including RBAC, least privilege, audit logging, and incident response ownership. Monitoring is active.
+---
 
-Policy: Data governance and GDPR reviews are complete; however, HR knowledge source requires stricter retrieval filtering before full rollout. Deployment limited to advisory use with conditional restrictions on HR-sensitive data.
+## 5. Audit domain scores
 
-Process: Agent mapped to Learn-to-Certify process with human oversight and exception handling. SLA for learner support escalation is partially defined and should be clarified before broader rollout. Exception handling ownership across departments needs formalization.
+| Domain | Score | Notes |
+| --- | ---: | --- |
+| Inventory | 100 | Complete agent identity, ownership, environment, business unit, process and connector details. |
+| Governance | 80 | Pilot approval exists and ownership is defined. Some escalation and exception ownership gaps require clarification across Academy, HR and Legal. |
+| Security | 85 | Security review completed. RBAC, least privilege, audit logging, monitoring and incident response owner are assigned. |
+| Policy | 82 | AI, data governance and GDPR reviews are completed. HR knowledge source is conditionally approved and requires stronger retrieval controls before production expansion. |
+| Process | 78 | Process alignment is clear with Learn-to-Certify. Advisory use is limited. Exception handling and escalation are defined, but cross-department SLA clarity is still needed. |
 
-9. Evidence references
+---
 
-Document ID: KEL-AGT-ACD-001  
-Document title: Learning Policy Coach Agent Evidence  
-Evidence role: Agent-specific evidence for Learning Policy Coach deployment readiness assessment  
-Foundry IQ source document: 09_learning_policy_coach_evidence.md  
-Citation or source reference: Detailed agent metadata, control evidence, status overview, domain readiness mapping, operational gaps and known remediation from the agent evidence document.
+## 6. Weighted readiness score
 
-Document ID: KEL-SRC-MANIFEST-001  
-Document title: Evidence Source Manifest  
-Evidence role: Source registry for all Foundry IQ evidence documents referenced in assessment  
-Foundry IQ source document: 00_evidence_source_manifest.md  
-Citation or source reference: List and identification of all source documents used in the readiness assessment.
+| Domain | Score | Weight | Weighted contribution |
+| --- | ---: | ---: | ---: |
+| Inventory | 100 | 15% | 15.00 |
+| Governance | 80 | 25% | 20.00 |
+| Security | 85 | 25% | 21.25 |
+| Policy | 82 | 20% | 16.40 |
+| Process | 78 | 15% | 11.70 |
 
-Document ID: KEL-ENT-CTX-001  
-Document title: Kelvior Enterprise Context Excerpt  
-Evidence role: Enterprise business unit, departmental, process, systems and knowledge source context supporting the agent environment and deployment  
-Foundry IQ source document: 01_kelvior_enterprise_context_excerpt.md  
-Citation or source reference: Business context, MCP connectors, enterprise systems, knowledge bases, and process definitions relevant to agent environment.
+Calculated weighted readiness score:
 
-Document ID: KEL-DAI-AIPOL-001  
-Document title: Kelvior AI Policy  
-Evidence role: AI governance and policy evidence for agent approval, data governance, security, monitoring, audit logging, and human oversight  
-Foundry IQ source document: 02_kelvior_ai_policy.md  
-Citation or source reference: Minimum AI governance controls, production approval, data governance review requirements, security needs, audit log mandates and risk acceptance criteria.
+```text
+15 + 20 + 21.25 + 16.4 + 11.7 = 84.35 ≈ 84
+````
 
-Document ID: KEL-DAI-DGOV-001  
-Document title: Kelvior Data Governance Policy  
-Evidence role: Data governance controls for classification, restricted data handling, human approval gates and traceability  
-Foundry IQ source document: 03_kelvior_data_governance_policy.md  
-Citation or source reference: Data classification controls, data owner accountability, access boundaries, human oversight for sensitive data and re-audit triggers.
+Final score cap: because the agent is in controlled pilot scope with conditional pilot approval, a final score cap of maximum 84 applies.
 
-Document ID: KEL-SEC-SECPOL-001  
-Document title: Kelvior Security Policy  
-Evidence role: Security controls covering access review, least privilege, audit logging, monitoring, incident response ownership and connector permissions  
-Foundry IQ source document: 04_kelvior_security_policy.md  
-Citation or source reference: Security readiness control minimums, audit logging requirements, monitoring expectations, incident response and escalation ownership.
+| Score stage                                          | Value |
+| ---------------------------------------------------- | ----: |
+| Calculated weighted readiness score before final cap |    84 |
+| Final weighted readiness score after cap             |    84 |
 
-10. Risk assessment
+---
 
-Triggered risks:
+## 7. Mandatory blocking rule evaluation
 
-* None identified.
+No mandatory blocking rule is triggered for the assessed pilot scope.
 
-Mitigated or not-triggered risks:
+| Control                | Assessment                                                                                           |
+| ---------------------- | ---------------------------------------------------------------------------------------------------- |
+| Data governance review | Completed for the assessed pilot scope.                                                              |
+| Security review        | Completed with audit logging and monitoring active.                                                  |
+| Human approval gates   | Present for learning certification exception scenarios requiring human decision points.              |
+| Production approval    | Pilot-level approval is in place and consistent with the controlled pilot environment.               |
+| Escalation path        | Exists, but certification exception ownership across Academy, HR and Legal needs clearer definition. |
 
-* Data governance review missing — not triggered; review completed for this agent.  
-* Audit logging missing — not triggered; audit logging enabled.  
-* Security review missing — not triggered; security review completed.  
-* Production approval missing — not triggered for pilot scope; pilot approval evidenced.  
-* Incident response owner missing — not triggered; incident response ownership established.  
-* Escalation path missing — not triggered; escalation paths exist but require clarification.  
+The escalation ownership gap is a governance finding. It does not trigger a mandatory block for the controlled pilot scope.
 
-Not applicable risks:
+---
 
-* Segregation of duties for financial workflow — Not applicable; agent does not perform financial operations.  
-* Controlled write access without human approval — Not applicable; agent has no write or controlled actions.  
+## 8. Findings by domain
 
-11. Deployment verdict
+### Inventory
 
+Inventory is complete.
+
+### Governance
+
+Pilot approval is in place.
+
+Certification exception ownership and escalation across Academy, HR and Legal require clarification.
+
+Full production approval is not present, which is expected for the current pilot scope.
+
+### Security
+
+Controls are in place and consistent with the medium-risk pilot scope.
+
+Audit logging, monitoring and security review are complete.
+
+### Policy
+
+HR knowledge source usage requires stronger retrieval filtering before full rollout.
+
+This is acceptable for the monitored pilot scope but remains a condition before broader deployment.
+
+### Process
+
+Escalation and exception handling are defined.
+
+Clearer SLA expectations and cross-department exception ownership are needed before production expansion.
+
+---
+
+## 9. Evidence references
+
+### KEL-AGT-ACD-001
+
+| Field                        | Value                                                                                                                                                                    |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Document title               | Learning Policy Coach Agent Evidence                                                                                                                                     |
+| Evidence role                | Derived evidence representation of the YAML source of truth.                                                                                                             |
+| Foundry IQ source document   | 09_learning_policy_coach_evidence.md                                                                                                                                     |
+| Citation or source reference | Agent identity, environment, risk level, business context, approval references, governance and policy controls, security and process controls for Learning Policy Coach. |
+
+### KEL-ENT-CTX-001
+
+| Field                        | Value                                                                                                                                |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Document title               | Kelvior Enterprise Context Excerpt                                                                                                   |
+| Evidence role                | Enterprise context for business unit, department, process mapping, system and connector scopes.                                      |
+| Foundry IQ source document   | 01_kelvior_enterprise_context_excerpt.md                                                                                             |
+| Citation or source reference | Context of Kelvior Academy, Data & AI, Security & Compliance and IT Operations that support agent environment and process alignment. |
+
+### KEL-DAI-AIPOL-001
+
+| Field                        | Value                                                                                                    |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Document title               | Kelvior AI Policy                                                                                        |
+| Evidence role                | AI governance and policy baseline for inventory, governance, security, policy and process assessment.    |
+| Foundry IQ source document   | 02_kelvior_ai_policy.md                                                                                  |
+| Citation or source reference | Requirements for approval, ownership, production readiness, human approval gate and risk classification. |
+
+### KEL-DAI-DGOV-001
+
+| Field                        | Value                                                                                                 |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Document title               | Kelvior Data Governance Policy                                                                        |
+| Evidence role                | Data governance requirements and controls for agents handling confidential, restricted or HR data.    |
+| Foundry IQ source document   | 03_kelvior_data_governance_policy.md                                                                  |
+| Citation or source reference | Data governance review requirement for restricted data and HR data used by the Learning Policy Coach. |
+
+### KEL-SEC-SECPOL-001
+
+| Field                        | Value                                                                                                               |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Document title               | Kelvior Security Policy                                                                                             |
+| Evidence role                | Security controls including review, audit logging, monitoring and incident response.                                |
+| Foundry IQ source document   | 04_kelvior_security_policy.md                                                                                       |
+| Citation or source reference | Security requirements met for the Learning Policy Coach, including least privilege and incident response ownership. |
+
+### KEL-DAI-APPROC-001
+
+| Field                        | Value                                                                                                    |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Document title               | Kelvior Agent Approval Procedure                                                                         |
+| Evidence role                | Agent approval stages including pilot, conditional production and full production approval requirements. |
+| Foundry IQ source document   | 05_agent_approval_procedure.md                                                                           |
+| Citation or source reference | Pilot approval process evidenced for controlled Academy pilot deployment.                                |
+
+### KEL-RISK-EXC-001
+
+| Field                        | Value                                                                                                     |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Document title               | Kelvior Enterprise Risk Register Excerpt                                                                  |
+| Evidence role                | Risk conditions and controls relevant to governance, security, policy and process for AI agents.          |
+| Foundry IQ source document   | 06_enterprise_risk_register_excerpt.md                                                                    |
+| Citation or source reference | Risk IDs and conditions considered in readiness assessment, including no triggered mandatory block risks. |
+
+---
+
+## 10. Risk assessment
+
+### Triggered risks
+
+None identified.
+
+### Mitigated or not-triggered risks
+
+| Risk area                                                  | Assessment                                                                                         |
+| ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Governance risks from missing production approval          | Mitigated by pilot approval status supporting the current controlled pilot scope.                  |
+| Security risks related to access, logging and monitoring   | Mitigated by completed security reviews and controls.                                              |
+| Policy risks related to HR data management                 | Mitigated by data governance review and GDPR assessment.                                           |
+| Process risks related to escalation and exception handling | Mitigated by established processes, although some operational clarity is needed before production. |
+
+### Not applicable risks
+
+| Risk area                  | Assessment                                                                                |
+| -------------------------- | ----------------------------------------------------------------------------------------- |
+| Finance and payment risks  | Not applicable. The agent does not handle financial data or controlled payment workflows. |
+| Write-capable action risks | Not applicable. The agent is advisory-only with no system write permissions.              |
+
+---
+
+## 11. Deployment verdict
+
+```text
 CONDITIONAL GO
+```
 
-The Learning Policy Coach is suitably controlled and approved for controlled pilot deployment within the Kelvior Academy. All foundational governance, security, data governance, audit logging, monitoring and human oversight controls are present and active for the pilot scope. Full production approval is not evidenced but is not required for controlled pilot status. Known operational and governance gaps remain in certification exception ownership clarity and escalation SLA definition, which should be resolved before broader rollout. HR knowledge source retrieval filtering requires strengthening prior to any full production expansion. Given these factors, the agent is ready to operate under controlled pilot conditions with conditions for broader deployment.
+The Learning Policy Coach is in pilot status with controlled pilot deployment scope.
 
-12. Required remediation plan
+Inventory, security and foundational policy controls are complete, including data governance and GDPR assessment.
 
-- Clarify cross-department ownership and escalation routing for certification exception handling involving Academy, HR, and Legal teams.  
-- Define and formalize SLA for learner support escalation and certification exception response times.  
-- Enhance HR knowledge source retrieval filters to ensure strict control of employee-sensitive data before full rollout.  
-- Complete pilot review metrics and define human oversight cadence to validate agent performance and compliance.  
-- Confirm all exception handling procedures across involved departments and document responsible owners.  
+Governance controls are adequate for pilot approval, although full production approval and clearer cross-department escalation and exception ownership are required for broader rollout.
 
-13. Human approval checklist
+Process controls are largely defined but require SLA and exception ownership clarifications.
 
-- Human approval gates exist for certification exceptions and HR-sensitive learning accommodations.  
-- Human decision points are defined for certification exception handling, learner appeals, mandatory training conflicts and policy interpretation conflicts.  
-- Escalation path is defined with an identified escalation owner (Academy Manager), pending ownership clarity for certification exceptions across departments.  
-- Exception handling procedures are present but require completion and cross-department formalization before full rollout.  
-- Human oversight roles and SLA are partially defined and require explicit documentation and enforcement.
+No mandatory blocking controls are triggered for the assessed pilot scope.
 
-14. Re-audit recommendation
+The overall readiness score of 84 aligns with controlled pilot conditional approval.
 
-Re-audit is recommended after completion of the pilot review, remediation of governance and process gaps including escalation ownership and SLA definition, and validation of enhanced HR knowledge source controls. A re-audit should also follow full production approval request to ensure all mandatory controls are validated for expanded deployment scope.
+---
+
+## 12. Required remediation plan
+
+* Clarify and formalize cross-department ownership and escalation responsibilities for certification exceptions involving Academy, HR and Legal.
+* Implement stricter retrieval filtering for HR knowledge sources before full production rollout.
+* Define and document clear Service Level Agreements for exception handling and escalation timing.
+* Continue pilot monitoring, sampling review and operational readiness validation before expanding deployment beyond pilot scope.
+* Prepare for full production approval by resolving operational control gaps and governance clarity.
+
+---
+
+## 13. Human approval checklist
+
+* Human approval gate is implemented for certification exceptions, disputed eligibility, mandatory training conflicts, learner complaints and policy interpretation conflicts.
+* Escalation path is defined with assigned escalation owner: Academy Manager.
+* Cross-department escalation roles still require clarification.
+* Exception handling procedures are in place for learner support scenarios.
+* Certification exception operational ownership still needs formalization.
+
+---
+
+## 14. Re-audit recommendation
+
+Re-audit is recommended before transition from controlled pilot to full production deployment.
+
+The re-audit should verify remediation completion for:
+
+* governance clarity;
+* operational SLAs;
+* HR knowledge-source controls;
+* confirmed full production approval.
+
+Continued monitoring and sampling review during pilot deployment are recommended to confirm control effectiveness.
+
+

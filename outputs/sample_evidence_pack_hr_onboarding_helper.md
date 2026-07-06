@@ -42,16 +42,25 @@ Process (15% weight): Business process alignment is clear, human decision points
 Final score cap:  
 - Deployment scope is pre-production with no production approval; no final score cap required.  
 
-7. Mandatory blocking rule evaluation  
-- No production approval (mandatory block for production but this is pre-production scope)  
-- Missing data governance review (blocks production deployment readiness)  
-- Missing security review (blocks production deployment readiness)  
-- Audit logging disabled for high risk (blocks production deployment readiness)  
-- Incident response plan missing (blocks production deployment readiness)  
-- No data steward assigned (not a mandatory block standalone)  
-- No production use approved for MCP-HR connector (blocks production)  
-- Write access is disabled, so no lack of human approval gate on writes  
-Conclusion: No mandatory block for current pre-production scope, but missing foundational controls block production deployment readiness.  
+## 7. Mandatory blocking rule evaluation
+
+No production approval completed for this agent which is planned and for pre-production scope only. This blocks production deployment readiness but not the current pre-production scope.
+
+Data governance review missing → mandatory block for production deployment, but agent is pre-production, so not a blocking issue for current scope.
+
+Security review missing for high-risk agent handling restricted HR data; production approval missing → mandatory block for production but pre-production status exempts current scope.
+
+Audit logging disabled → mandatory block for production but not for pre-production.
+
+Incident response plan missing → mandatory block for production but not for pre-production.
+
+No data steward assigned — not a mandatory block but a governance finding.
+
+MCP connector and tools not approved for production — not a mandatory block but a policy finding.
+
+Agent has no write access or controlled actions (no autonomous HR decisions) — passes mandatory block criteria for access.
+
+No mandatory block triggered for current pre-production validation scope.
 
 8. Findings by domain  
 Inventory: Complete agent identity, ownership, systems, connectors, and deployment scope except missing data steward assignment.  

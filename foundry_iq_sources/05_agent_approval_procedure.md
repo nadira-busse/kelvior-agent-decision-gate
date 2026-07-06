@@ -300,7 +300,7 @@ HR agents must provide evidence of:
 * exception handling;
 * re-audit triggers.
 
-HR-specific evidence is not part of the initial MVP Foundry IQ upload set unless the HR Onboarding Agent is added to IQ evaluation.
+HR-specific evidence is included in this source set for HR Onboarding Helper readiness assessment.
 
 ## 13. Approval Requirements for IT Operations Agents
 

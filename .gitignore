@@ -61,6 +61,12 @@ temp/
 *.swp
 *.swo
 
+# Backup archives
+*.zip
+*.7z
+*.rar
+*_backup*
+
 # Local build/output artifacts
 dist/
 build/

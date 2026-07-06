@@ -4,7 +4,7 @@ Agent ID: AGT-FIN-INV-001
 Agent Name: Finance Invoice Assistant  
 Version: 1.0  
 Status: Active  
-Environment: Production (implied by active status and critical deployment context)  
+Environment: Not explicitly evidenced but in active use context  
 Owner Department: DEP-FIN — Finance  
 Business Owner: Finance Operations Manager  
 Technical Owner: ERP Automation Lead  
@@ -13,7 +13,7 @@ Business Process: P03 — Procure-to-Pay
 Systems: Dynamics 365 Business Central, MCP-ERP connector  
 MCP Connectors: MCP-ERP  
 Allowed Actions: Read invoice, validate invoice, create payment recommendation, update payment status (includes controlled or write-adjacent finance actions)  
-Deployment Scope: Active production deployment assumed based on status and critical risk level  
+Deployment Scope: Active finance workflow context; production readiness cannot be confirmed without documented production approval  
 
 2. Business context
 

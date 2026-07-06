@@ -240,7 +240,7 @@ HR agents must provide evidence for:
 * escalation path;
 * incident response ownership.
 
-HR-specific evidence is not part of the initial MVP Foundry IQ upload set unless the HR Onboarding Agent is added to IQ evaluation.
+HR-specific evidence is included in this source set for HR Onboarding Helper readiness assessment.
 
 ## 12. Security Requirements for IT Operations Agents
 

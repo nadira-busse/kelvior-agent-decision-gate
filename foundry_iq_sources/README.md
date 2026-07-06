@@ -1,10 +1,16 @@
 # Foundry IQ Source Set
 
-This folder contains the focused Foundry IQ source set for the Kelvior Agent Decision Gate hackathon submission.
+This folder contains the focused Foundry IQ source set for **Kelvior Agent Decision Gate**.
+
+The files in this folder are input evidence for the Microsoft Foundry reasoning agent. They are not demo outputs, expected verdicts or generated Evidence Packs.
+
+The purpose of this source set is to ground the reasoning agent in synthetic Kelvior enterprise evidence before it evaluates whether an AI agent is ready for deployment.
+
+---
 
 ## Purpose
 
-The source set provides grounded enterprise evidence for a Microsoft Foundry reasoning agent that evaluates AI-agent deployment readiness across five audit domains:
+Kelvior Agent Decision Gate evaluates AI-agent deployment readiness across five audit domains:
 
 - Inventory
 - Governance
@@ -12,7 +18,28 @@ The source set provides grounded enterprise evidence for a Microsoft Foundry rea
 - Policy
 - Process
 
-The MVP uses one physical Foundry IQ knowledge base for submission efficiency. Enterprise knowledge boundaries are preserved through document-level metadata, including:
+The Foundry IQ source set provides the evidence the agent needs for that assessment.
+
+The source documents include governance, security, data, policy, process, risk and agent-specific evidence. The reasoning agent uses this evidence to produce an **Agent Deployment Evidence Pack** with one of four verdicts:
+
+- `GO`
+- `CONDITIONAL GO`
+- `REMEDIATE`
+- `BLOCK`
+
+The verdict should be derived from evidence.
+
+It should not be retrieved from a pre-written answer.
+
+---
+
+## Foundry IQ setup
+
+The MVP uses one physical Foundry IQ knowledge base.
+
+That choice keeps the MVP manageable. Logical evidence boundaries are represented through document-level metadata and source-document separation, but they are not enforced as production access boundaries in this MVP.
+
+The evidence documents include metadata fields such as:
 
 - `kb_id`
 - `mvp_source_set`
@@ -22,26 +49,32 @@ The MVP uses one physical Foundry IQ knowledge base for submission efficiency. E
 - `secondary_domains`
 - `evidence_type`
 
-## Upload Sources
+In a production implementation, these boundaries should be enforced more strongly through scoped retrieval permissions, metadata filters, access control and audit logging.
+
+---
+
+## Upload sources
 
 The following documents are intended for the Foundry IQ upload set:
 
-| File | Role |
-| --- | --- |
-| `00_evidence_source_manifest.md` | Source registry for document IDs, titles, evidence roles and Foundry IQ source mapping |
-| `01_kelvior_enterprise_context_excerpt.md` | Enterprise context, systems, processes and logical knowledge architecture |
-| `02_kelvior_ai_policy.md` | AI governance, oversight and production readiness requirements |
-| `03_kelvior_data_governance_policy.md` | Data classification, source ownership and sensitive-data review requirements |
-| `04_kelvior_security_policy.md` | Security review, access control, logging, monitoring and incident response requirements |
-| `05_agent_approval_procedure.md` | Approval workflow, human oversight and re-audit requirements |
-| `06_enterprise_risk_register_excerpt.md` | Risk evidence for finance automation, audit logging, data governance, production approval and security review gaps |
-| `07_finance_invoice_assistant_evidence.md` | Agent-specific evidence for the Finance Invoice Assistant |
-| `08_it_ticket_triage_evidence.md` | Agent-specific evidence for IT Ticket Triage |
-| `09_learning_policy_coach_evidence.md` | Agent-specific evidence for Learning Policy Coach |
-| `10_sales_proposal_agent_evidence.md` | Agent-specific evidence for Sales Proposal Agent |
-| `11_hr_onboarding_helper_evidence.md` | Agent-specific evidence for HR Onboarding Helper |
+| File                                       | Role                                                                                                                |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
+| `00_evidence_source_manifest.md`           | Source registry for document IDs, titles, evidence roles and Foundry IQ source mapping.                             |
+| `01_kelvior_enterprise_context_excerpt.md` | Enterprise context, systems, processes and logical knowledge architecture.                                          |
+| `02_kelvior_ai_policy.md`                  | AI governance, oversight and production-readiness requirements.                                                     |
+| `03_kelvior_data_governance_policy.md`     | Data classification, source ownership and sensitive-data review requirements.                                       |
+| `04_kelvior_security_policy.md`            | Security review, access control, logging, monitoring and incident-response requirements.                            |
+| `05_agent_approval_procedure.md`           | Approval workflow, human oversight and re-audit requirements.                                                       |
+| `06_enterprise_risk_register_excerpt.md`   | Risk evidence for finance automation, audit logging, data governance, production approval and security review gaps. |
+| `07_finance_invoice_assistant_evidence.md` | Agent-specific evidence for the Finance Invoice Assistant.                                                          |
+| `08_it_ticket_triage_evidence.md`          | Agent-specific evidence for IT Ticket Triage.                                                                       |
+| `09_learning_policy_coach_evidence.md`     | Agent-specific evidence for Learning Policy Coach.                                                                  |
+| `10_sales_proposal_agent_evidence.md`      | Agent-specific evidence for Sales Proposal Agent.                                                                   |
+| `11_hr_onboarding_helper_evidence.md`      | Agent-specific evidence for HR Onboarding Helper.                                                                   |
 
-## Not Uploaded to Foundry IQ
+---
+
+## Not uploaded to Foundry IQ
 
 The following files are intentionally excluded from the Foundry IQ knowledge source:
 
@@ -52,13 +85,18 @@ The following files are intentionally excluded from the Foundry IQ knowledge sou
 - actual Foundry verdicts
 - portfolio matrix conclusions
 - demo outputs
+- generated Evidence Packs
 - root repository README
 
-This prevents circular reasoning. The Foundry reasoning agent must derive readiness findings from evidence, not retrieve pre-written verdicts or test outcomes.
+This prevents circular reasoning.
 
-## Source Design
+The reasoning agent must assess readiness from source evidence, not from retrieved test outcomes or pre-written conclusions.
 
-The agent-specific Foundry IQ evidence files are derived Markdown representations of YAML source-of-truth agent definitions.
+---
+
+## Source design
+
+The agent-specific Foundry IQ evidence files are derived Markdown representations of the YAML source-controlled agent definitions.
 
 The original YAML agent definitions remain in:
 
@@ -72,50 +110,161 @@ The Foundry IQ evidence versions are stored in:
 foundry_iq_sources/
 ```
 
-The Markdown evidence documents are optimized for retrieval and audit traceability. They include the operational facts needed for deployment readiness assessment, but intentionally exclude assessment outcomes.
+This split is intentional.
+
+The YAML files support source control and repository traceability.
+
+The Markdown files support retrieval in Foundry IQ.
+
+The Markdown evidence documents include the operational facts needed for deployment-readiness assessment, but intentionally exclude assessment outcomes.
 
 The evidence documents do not include:
 
-expected verdicts
-actual verdicts
-weighted scores
-test results
-demo results
-Foundry-generated assessment outputs
+- expected verdicts
+- actual verdicts
+- weighted scores
+- test results
+- demo results
+- Foundry-generated assessment outputs
 
-This prevents circular reasoning. The reasoning agent must derive readiness findings from source evidence, not retrieve pre-written conclusions.
+This keeps the retrieval layer clean.
 
-## Evidence Traceability
+The reasoning agent has to derive findings from evidence instead of retrieving the answer.
 
-Each source document is mapped through 00_evidence_source_manifest.md.
+---
+
+## Evidence traceability
+
+Each source document is mapped through:
+
+```text
+00_evidence_source_manifest.md
+```
 
 The manifest defines the authoritative:
 
-Document ID
-Document title
-Evidence role
-Foundry IQ source document
+- document ID
+- document title
+- evidence role
+- Foundry IQ source document
 
-The assessment output uses this mapping in Section 9 of each Agent Deployment Evidence Pack to avoid inferred document IDs, filename-based IDs or ambiguous evidence references.
+The assessment output uses this mapping in Section 9 of each **Agent Deployment Evidence Pack**.
 
-## MVP Scope
+This helps prevent:
 
-The MVP Foundry IQ source set supports deployment readiness assessment for multiple representative AI-agent scenarios across different readiness outcomes.
+- invented document IDs
+- filename-based source IDs
+- ambiguous evidence references
+- unsupported source claims
 
-The current source set includes:
+For the MVP, this traceability is handled through retrieval-visible Markdown.
 
-- a high-risk finance automation BLOCK case
-- an IT operations GO case
-- a learning and policy support case
-- a sales proposal governance case
-- an HR restricted-data remediation case
+In production, this should be strengthened with ingestion metadata, scoped access, evidence versioning and audit logs.
 
-This allows the Kelvior Agent Decision Gate to demonstrate consistent reasoning across different business units, systems, data classes, risk profiles and deployment readiness states.
+---
 
-The MVP uses a focused synthetic enterprise evidence set rather than a full enterprise knowledge base. This keeps the hackathon submission manageable while preserving the core governance, security, data, policy, process and audit logic.
+## MVP scope
 
-## Synthetic Data Notice
+The MVP Foundry IQ source set supports deployment-readiness assessment for multiple representative AI-agent scenarios.
 
-All Kelvior Systems content is synthetic and created for educational, architectural, portfolio and hackathon demonstration purposes.
+The current source set includes evidence for:
 
-No confidential, customer, employee or real company information is included.
+- finance invoice automation
+- IT ticket triage
+- learning and policy support
+- sales proposal drafting
+- HR onboarding support with restricted-data considerations
+
+The scenarios are designed to test whether the Decision Gate can reason across different:
+
+- business units
+- systems
+- data classes
+- risk profiles
+- deployment states
+- governance-control maturity levels
+
+The source set is intentionally focused.
+
+It is not a full enterprise knowledge base.
+
+That boundary matters because the MVP is meant to demonstrate the evidence, retrieval and reasoning pattern before claiming production readiness.
+
+---
+
+## Why expected verdicts are excluded
+
+Expected verdicts are useful for testing, but they do not belong in the Foundry IQ source set.
+
+If expected verdicts are uploaded as retrievable evidence, the reasoning agent may learn the answer instead of performing the assessment.
+
+That would weaken the project.
+
+The Decision Gate should follow this chain:
+
+```text
+source evidence → audit finding → risk assessment → remediation need → deployment verdict
+```
+
+Not this chain:
+
+```text
+retrieved expected verdict → repeated conclusion
+```
+
+The first chain is evidence-grounded reasoning.
+
+The second chain is circular reasoning.
+
+---
+
+## Relation to sample outputs
+
+Generated sample outputs are stored outside this folder:
+
+```text
+outputs/
+```
+
+Those files show what the Decision Gate produced during testing.
+
+They are useful for portfolio review and regression comparison.
+
+They are not part of the Foundry IQ source set.
+
+The source set should stay clean so the agent can be tested against evidence rather than against its own previous conclusions.
+
+---
+
+## Production hardening path
+
+A production implementation would need stronger controls around source ingestion, evidence identity, retrieval scope and access control.
+
+Required hardening would include:
+
+- Microsoft Purview sensitivity labels
+- Azure RBAC
+- managed identities
+- scoped retrieval permissions
+- Azure AI Search / Foundry IQ metadata filters
+- evidence freshness checks
+- source versioning
+- ingestion validation logs
+- audit trail and run history
+- policy-driven access control
+- change management
+- security review
+
+The MVP uses Markdown evidence documents because they are practical for a focused portfolio implementation.
+
+A production version should enforce evidence identity, access scope and retrieval boundaries through platform controls, not only through document structure.
+
+---
+
+## Synthetic data notice
+
+Kelvior Systems is a fictional enterprise simulation environment.
+
+All Kelvior Systems content is synthetic and created for educational, architectural, portfolio and demonstration purposes.
+
+No real confidential customer, employee, vendor or company information is included.

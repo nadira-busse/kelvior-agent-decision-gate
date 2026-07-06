@@ -1,93 +1,132 @@
 # Kelvior Agent Decision Gate
 
-**Microsoft Foundry reasoning agent for enterprise AI-agent deployment readiness assessment.**
+**A Microsoft Foundry reasoning-agent MVP for evidence-based AI-agent deployment decisions.**
 
-Kelvior Agent Decision Gate evaluates whether AI agents are ready for enterprise deployment inside the fictional Kelvior Systems environment.
+I built Kelvior Agent Decision Gate because I do not think every AI agent should automatically go live once it works in a demo.
 
-The project uses Microsoft Foundry, Foundry IQ and governed Kelvior evidence to produce structured deployment-readiness decisions:
+In real organizations, the harder question is not only:
+
+> Can this agent perform the task?
+
+The harder question is:
+
+> Should this agent be allowed to run in this process, with this data, under these controls?
+
+This project explores that question through a Microsoft Foundry-based reasoning agent. The agent evaluates whether an enterprise AI agent is ready for deployment by using synthetic Kelvior governance, security, policy, process and risk evidence.
+
+The output is not a chatbot answer. It is a structured **Agent Deployment Evidence Pack** that connects evidence, risks, gaps, remediation actions and a deployment verdict.
+
+Valid verdicts are:
 
 - `GO`
 - `CONDITIONAL GO`
 - `REMEDIATE`
 - `BLOCK`
 
-The output is a 14-section **Agent Deployment Evidence Pack** with audit-domain scores, mandatory blocking-rule evaluation, evidence references, risk assessment, remediation actions, human approval checklist and re-audit recommendation.
+---
+
+## Project status
+
+This project was originally built and submitted for the **Microsoft Agents League Hackathon 2026**, Reasoning Agents track.
+
+The hackathon phase is complete.
+
+The project is now maintained as a portfolio artifact to show how I think about:
+
+- Microsoft Foundry reasoning agents
+- retrieval-grounded assessment
+- AI-agent governance
+- auditability
+- risk-based deployment decisions
+- evidence traceability
+- honest MVP boundaries
+
+This is a working MVP and architecture demonstration.
+
+It is not a production governance platform, a Microsoft-certified solution or a real enterprise deployment.
 
 ---
 
-## Problem
+## The problem
 
-Enterprise AI agents can move faster than governance teams can review them.
+AI agents can move faster than the controls around them.
 
-Common failure points include:
+That creates a practical governance problem. An agent may look useful, but still be unsafe or incomplete because it has:
 
 - unclear ownership
-- missing data governance review
-- missing security review
-- unclear approval status
+- missing approval status
 - weak audit logging
 - no human approval gate
-- uncontrolled MCP or system access
+- incomplete data governance review
+- incomplete security review
+- uncontrolled connector or MCP access
 - no escalation path
 - weak misuse prevention
 - no evidence trail for deployment decisions
 
-Kelvior Agent Decision Gate acts as a reasoning-based governance gate before an AI agent is approved, expanded or moved toward production.
+Kelvior Agent Decision Gate is designed as a pre-deployment reasoning gate.
 
 It does not deploy agents automatically.
 
-It supports human governance review with structured, evidence-grounded assessment output.
+It helps a human reviewer understand whether an AI agent is ready, conditionally acceptable, in need of remediation or blocked from deployment.
 
 ---
 
-## Key capabilities
-
-- Evidence-grounded deployment readiness assessment
-- Mandatory blocking-rule evaluation
-- Weighted audit-domain scoring with score caps
-- Foundry IQ source traceability
-- Section 9 evidence reference validation
-- Risk classification: triggered, mitigated and not applicable
-- Ethics and misuse-prevention checks
-- Human approval and re-audit decision support
-
----
-
-## What the agent does
+## What the project does
 
 The Decision Gate assesses an AI agent across five audit domains:
 
-| Domain     | Weight | Purpose                                                                                                                |
-| ---------- | -----: | ---------------------------------------------------------------------------------------------------------------------- |
-| Inventory  |    15% | Checks whether the agent identity, owners, process, systems, connectors, actions and deployment scope are defined.     |
-| Governance |    25% | Checks ownership, approval status, human approval gates, monitoring, audit logging, review cadence and accountability. |
-| Security   |    25% | Checks security review, access control, least privilege, logging, incident response and controlled actions.            |
-| Policy     |    20% | Checks alignment with AI policy, data governance policy, security policy and approval procedure.                       |
-| Process    |    15% | Checks operational boundaries, exception handling, escalation paths and human-in-the-loop controls.                   |
+| Domain     | Weight | What it checks                                                                                                       |
+| ---------- | -----: | -------------------------------------------------------------------------------------------------------------------- |
+| Inventory  |    15% | Whether the agent identity, owner, scope, systems, connectors, actions and deployment context are defined.           |
+| Governance |    25% | Whether ownership, approval status, monitoring, audit logging, review cadence and human accountability are in place. |
+| Security   |    25% | Whether access control, least privilege, logging, incident response and controlled actions are sufficiently covered. |
+| Policy     |    20% | Whether the agent aligns with AI policy, data governance policy, security policy and approval procedure evidence.    |
+| Process    |    15% | Whether operational boundaries, exception handling, escalation paths and human-in-the-loop controls are defined.     |
 
-The agent applies:
+The agent then applies:
 
 - mandatory blocking rules
 - weighted readiness scoring
-- score caps for limited or conditional deployments
+- score caps for conditional or limited deployments
 - risk assessment
 - source-grounded evidence references
 - ethics and misuse-prevention checks
 - human approval review logic
 
+The important part is the chain:
+
+```text
+evidence → finding → risk → remediation → verdict
+```
+
+A verdict should never stand on its own.
+
 ---
 
 ## Validated assessment results
 
-The Decision Gate was tested against five Kelvior AI-agent scenarios.
+The Decision Gate was tested against five synthetic Kelvior AI-agent scenarios.
 
-| Agent                     | Verdict          | Why it matters                                                                                                                       | Sample output                                                        |
-| ------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
-| Finance Invoice Assistant | `BLOCK`          | Shows that the gate blocks financial automation when mandatory governance, security, data, approval or process controls are missing. | [View output](outputs/sample_evidence_pack_finance.md)               |
-| IT Ticket Triage          | `GO`             | Shows that the gate can approve a controlled, read-only, recommendation-only IT agent when required evidence is complete.            | [View output](outputs/sample_evidence_pack_it_ticket_triage.md)      |
-| Learning Policy Coach     | `CONDITIONAL GO` | Shows conditional approval for an internal learning-support agent with controlled rollout requirements.                              | [View output](outputs/sample_evidence_pack_learning_policy_coach.md) |
-| Sales Proposal Agent      | `CONDITIONAL GO` | Shows commercial misuse prevention for proposal drafting, discounts, binding offers and human approval requirements.                 | [View output](outputs/sample_evidence_pack_sales_proposal.md)        |
-| HR Onboarding Helper      | `REMEDIATE`      | Shows remediation behavior for a high-risk HR agent in pre-production with restricted HR data and missing foundational controls.                                      | [View output](outputs/sample_evidence_pack_hr_onboarding_helper.md)  |
+| Agent                     | Verdict          | What the case shows                                                                                                                                                                                                                          | Sample output                                                        |
+| ------------------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| Finance Invoice Assistant | `BLOCK`          | A finance automation agent should not go live when mandatory governance, security, data, approval or process controls are missing.                                                                                                           | [View output](outputs/sample_evidence_pack_finance.md)               |
+| IT Ticket Triage          | `GO`             | A read-only, recommendation-only IT agent can pass when ownership, approval, logging, monitoring and human review are in place.                                                                                                              | [View output](outputs/sample_evidence_pack_it_ticket_triage.md)      |
+| Learning Policy Coach     | `CONDITIONAL GO` | A controlled Academy pilot can be acceptable when foundational controls exist, but broader rollout still depends on clearer exception ownership, SLA definition and stricter HR knowledge-source retrieval filtering.                        | [View output](outputs/sample_evidence_pack_learning_policy_coach.md) |
+| Sales Proposal Agent      | `CONDITIONAL GO` | A commercial drafting agent needs clear controls around discounts, binding offers, customer impact and human approval.                                                                                                                       | [View output](outputs/sample_evidence_pack_sales_proposal.md)        |
+| HR Onboarding Helper      | `REMEDIATE`      | A planned pre-production HR agent can be assessed and remediated, but restricted HR data requires stronger privacy, governance, security, audit, monitoring and incident-response controls before production or broader employee-facing use. | [View output](outputs/sample_evidence_pack_hr_onboarding_helper.md)  |
+
+These examples are included to show that the gate does not simply block everything. It makes different decisions based on evidence, scope and risk.
+
+---
+
+## About the sample outputs
+
+The files in `outputs/` are sample Evidence Packs from MVP testing.
+
+They show the reasoning pattern, evidence structure and verdict behavior used in the project. They are not compliance certifications, production deployment approvals or guaranteed outputs for every future run.
+
+Because the assessments are generated by a reasoning agent over retrieved evidence, minor wording variations can occur between runs. In real organizational use, generated Evidence Packs should be reviewed against source evidence, validated through evaluation runs and governed by organization-specific approval rules.
 
 ---
 
@@ -95,31 +134,31 @@ The Decision Gate was tested against five Kelvior AI-agent scenarios.
 
 The system is designed as an evidence-grounded reasoning gate.
 
-High-level flow:
-
 ```text
-Agent definitions + governance evidence
+Agent definitions + Kelvior evidence
 → Ingestion Security and Ethics Layer
 → Foundry IQ Knowledge Base
-→ Evidence retrieval layer
-→ Microsoft Foundry Reasoning Agent
+→ Retrieval layer
+→ Microsoft Foundry reasoning agent
 → Agent Deployment Evidence Pack
-→ Human governance review / deployment decision support
+→ Human governance review
 ```
 
 ![Kelvior Agent Decision Gate architecture](docs/assets/kelvior_architecture.png)
 
-For the editable Mermaid source, see [Architecture Overview](docs/architecture_overview.md).
+For the editable Mermaid source, see:
+
+[docs/architecture_overview.md](docs/architecture_overview.md)
 
 ---
 
-## Architecture principles
+## Core architecture choices
 
 ### 1. Evidence before verdict
 
-The agent must retrieve and use Kelvior evidence before scoring or assigning a verdict.
+The agent must use Kelvior evidence before assigning a score or verdict.
 
-Evidence includes:
+The evidence set includes:
 
 - AI policy
 - data governance policy
@@ -129,37 +168,41 @@ Evidence includes:
 - agent-specific evidence documents
 - Evidence Source Manifest
 
-### 2. One reasoning agent, not multiple hidden services
+This matters because a readiness decision without source evidence is just an opinion.
 
-The audit domains, blocking logic, score caps, risk assessment and traceability checks are internal reasoning controls of the Microsoft Foundry reasoning agent.
+### 2. One Microsoft Foundry reasoning agent
 
-They are not separate external audit services.
+The audit domains, blocking logic, score caps, risk checks and traceability checks are implemented as reasoning controls inside the Microsoft Foundry agent.
 
-### 3. Human decision support
+They are not presented as separate production audit services.
 
-The Decision Gate does not deploy agents.
+That boundary is intentional. This is an MVP reasoning-agent implementation, not a full governance platform.
 
-It produces an evidence pack that supports human governance review, remediation planning and deployment decision-making.
+### 3. Foundry IQ as grounding layer
 
-### 4. Source traceability
+Foundry IQ is used to ground the reasoning agent in the synthetic Kelvior evidence set.
 
-The agent uses a retrieval-visible Evidence Source Manifest to map source documents to canonical document IDs, titles and evidence roles.
+The MVP uses retrieval-optimized Markdown files so the agent can retrieve policy, risk and agent-specific evidence during assessment.
 
-This reduces the risk of invented document IDs or unclear source attribution.
+In a production version, this pattern would need stronger controls around identity, permissions, metadata filtering, access scope and evidence freshness.
+
+### 4. Human decision support
+
+The Decision Gate does not replace a governance board, security reviewer, data owner or business owner.
+
+It produces a structured Evidence Pack so those people can review the decision path more clearly.
 
 ---
 
 ## Foundry IQ source design
 
-The Foundry IQ source set contains multiple synthetic Kelvior enterprise evidence sources.
+The Foundry IQ source set lives in:
 
-The project uses Foundry IQ to ground the reasoning agent in multiple synthetic Kelvior enterprise evidence sources, including enterprise context, AI policy, data governance policy, security policy, approval procedure, enterprise risk register and agent-specific evidence documents.
+```text
+foundry_iq_sources/
+```
 
-For the MVP, these enterprise sources are represented as retrieval-optimized Markdown documents. In a production implementation, the same pattern could connect to governed enterprise repositories such as SharePoint, policy libraries, risk systems, HR systems, CRM systems or indexed document stores with scoped retrieval permissions.
-
-The YAML files are source-controlled agent definitions. Foundry IQ uses retrieval-optimized Markdown evidence documents derived from those YAML definitions.
-
-The source set includes:
+It contains synthetic Kelvior evidence documents:
 
 ```text
 00_evidence_source_manifest.md
@@ -176,49 +219,72 @@ The source set includes:
 11_hr_onboarding_helper_evidence.md
 ```
 
-The MVP uses retrieval-friendly Markdown evidence documents with repeated evidence-source markers near key policy sections to preserve source traceability after chunking.
+The YAML files in `agent_definitions/` are source-controlled agent definitions.
 
-In a production implementation, these markers would be replaced or supplemented by chunk-level metadata fields in the Azure AI Search / Foundry IQ ingestion pipeline.
+The Markdown files in `foundry_iq_sources/` are the retrieval-friendly evidence documents used by Foundry IQ.
 
-The MVP also includes a retrieval-visible Evidence Source Manifest that maps Foundry IQ source documents to canonical document IDs, titles and evidence roles. This provides audit-friendly source identity for the hackathon implementation.
+For the MVP, repeated evidence-source markers are placed near important sections to preserve source traceability after chunking.
 
-In production, this mapping would be enforced through chunk-level metadata fields in the Azure AI Search / Foundry IQ ingestion pipeline.
+In production, those markers should be replaced or strengthened with chunk-level metadata in the Azure AI Search / Foundry IQ ingestion pipeline.
+
+---
+
+## Evidence Source Manifest
+
+The Evidence Source Manifest maps source documents to canonical document IDs, titles and evidence roles.
+
+This reduces the risk of unclear source attribution or invented document references.
+
+In the MVP, this is handled as a retrieval-visible Markdown file.
+
+In production, this source identity should be enforced through ingestion metadata, access policy and audit logging.
 
 ---
 
 ## Ingestion Security and Ethics Layer
 
-The MVP models a minimal **Ingestion Security and Ethics Layer** before retrieval and reasoning.
+The architecture includes a lightweight **Ingestion Security and Ethics Layer** before retrieval and reasoning.
 
-This layer is designed to validate whether incoming agent definitions and evidence are appropriate for assessment before they are grounded through Foundry IQ.
+In this MVP, that layer is a design concept. It represents the checks that should happen before agent definitions and evidence are trusted by the reasoning layer.
 
-The layer addresses four pre-retrieval concerns:
+It covers four concerns:
 
 - sensitivity label validation
 - allowed data scope validation
-- input sanitization for prompt-injection or instruction-override attempts
+- prompt-injection or instruction-override detection
 - ethics and misuse-prevention checks
 
-The Ingestion Security and Ethics Layer is represented as an MVP architecture layer and lightweight validation concept.
+This is not full production enforcement.
 
-Production enforcement would require Microsoft Purview sensitivity labels, Azure RBAC, managed identities, scoped retrieval permissions and policy-driven access control.
+A production version would require controls such as:
+
+- Microsoft Purview sensitivity labels
+- Azure RBAC
+- managed identities
+- scoped retrieval permissions
+- policy-driven access control
+- ingestion validation logs
 
 ---
 
 ## Ethics and misuse prevention
 
-The Decision Gate evaluates whether an assessed agent is used only within its declared:
+The Decision Gate checks whether an assessed agent stays within its declared:
 
-- intended purpose
-- approved business process
-- approved deployment scope
-- approved data scope
-- approved user groups
-- approved systems
-- approved MCP connectors
+- purpose
+- business process
+- deployment scope
+- data scope
+- user groups
+- systems
+- MCP connectors
 - allowed actions
 
-This prevents agents from being approved for uses outside their intended design, such as:
+This is important because many AI-agent risks do not come from the model alone.
+
+They come from using an agent outside the context it was approved for.
+
+Examples of misuse that should be blocked or escalated include:
 
 - unauthorized financial actions
 - HR profiling
@@ -229,7 +295,7 @@ This prevents agents from being approved for uses outside their intended design,
 - access-control decisions
 - customer-impacting decisions without explicit approval and human oversight
 
-Ethics and misuse prevention are assessed as part of Governance, Policy and Process.
+Ethics and misuse prevention are assessed through the Governance, Policy and Process domains.
 
 ---
 
@@ -241,7 +307,7 @@ The MVP includes these guardrails:
 | ------------------------------ | ----------------------------------------------------------------------- |
 | Foundry IQ grounding           | Keeps assessments tied to Kelvior evidence.                             |
 | Evidence Source Manifest       | Preserves canonical document identity and source traceability.          |
-| Mandatory blocking rules       | Prevents GO or CONDITIONAL GO when critical controls are missing.       |
+| Mandatory blocking rules       | Prevents `GO` or `CONDITIONAL GO` when critical controls are missing.   |
 | Risk ID rules                  | Prevents invented risk IDs.                                             |
 | Section 9 evidence references  | Forces source-level evidence traceability.                              |
 | Section 10 risk classification | Separates triggered, mitigated and not-applicable risks.                |
@@ -251,9 +317,9 @@ The MVP includes these guardrails:
 
 ---
 
-## Output format
+## Evidence Pack output
 
-Each full readiness assessment produces exactly 14 sections:
+Each full readiness assessment produces a 14-section **Agent Deployment Evidence Pack**:
 
 1. Agent summary
 2. Business context
@@ -270,7 +336,9 @@ Each full readiness assessment produces exactly 14 sections:
 13. Human approval checklist
 14. Re-audit recommendation
 
-The Evidence Pack is designed to be reviewable by governance, security, data, risk and business stakeholders.
+The Evidence Pack is meant to be readable by governance, security, data, risk and business stakeholders.
+
+Its purpose is to make the reasoning path reviewable.
 
 ---
 
@@ -300,6 +368,7 @@ foundry_iq_sources/
   09_learning_policy_coach_evidence.md
   10_sales_proposal_agent_evidence.md
   11_hr_onboarding_helper_evidence.md
+  README.md
 
 outputs/
   sample_evidence_pack_finance.md
@@ -320,29 +389,73 @@ LICENSE
 
 ---
 
-## How to run
+## How to run the MVP
 
 This project requires a configured Microsoft Foundry project with Foundry IQ connected.
 
-1. Upload the Foundry IQ source set from `foundry_iq_sources/` to your Foundry IQ knowledge base.
+1. Upload the source documents from `foundry_iq_sources/` to a Foundry IQ knowledge base.
 
-2. Configure the Microsoft Foundry reasoning agent using the agent instruction from:
+2. Configure a Microsoft Foundry reasoning agent with the instruction in:
 
    ```text
    agent_instructions/kelvior_agent_decision_gate_instruction.md
    ```
 
-3. Make sure the Foundry IQ knowledge base is connected to the reasoning agent.
+3. Connect the Foundry IQ knowledge base to the reasoning agent.
 
-4. Run an assessment using a prompt such as:
+4. Run an assessment prompt, for example:
 
    ```text
    Perform a full deployment readiness assessment for the Finance Invoice Assistant using the connected Kelvior Foundry IQ knowledge base.
    ```
 
-5. Review the generated Agent Deployment Evidence Pack.
+5. For regression-style testing, use the stricter prompt below:
 
-Sample outputs are available in `outputs/` for reference without running the agent.
+   ```text
+   Perform a full deployment readiness assessment for the [AGENT NAME] using the connected Kelvior Foundry IQ knowledge base. Produce the full 14-section Agent Deployment Evidence Pack. Base the assessment only on retrieved Kelvior evidence. Do not use expected verdicts, sample outputs or prior test results.
+   ```
+
+   Replace `[AGENT NAME]` with one of the assessed agents:
+
+   - `Finance Invoice Assistant`
+   - `IT Ticket Triage`
+   - `Learning Policy Coach`
+   - `Sales Proposal Agent`
+   - `HR Onboarding Helper`
+
+6. Review the generated Agent Deployment Evidence Pack.
+
+Sample outputs are available in `outputs/` if you want to inspect the expected assessment format without running the agent.
+
+---
+
+## Repository checks
+
+This repository includes a small local validation script for internal Markdown links:
+
+```bash
+py scripts/check_internal_links.py
+```
+
+On systems where `python` is configured directly, this also works:
+
+```bash
+python scripts/check_internal_links.py
+```
+
+The repository includes `.editorconfig` for basic editor consistency.
+
+---
+
+## Live environment status
+
+The original Microsoft Foundry / Foundry IQ environment is not maintained as a permanent public demo.
+
+This project was built as a hackathon MVP and is now maintained as a portfolio artifact, not as a hosted product. Azure-backed resources used for Foundry, Foundry IQ or retrieval can create ongoing cost while they exist, even when I am not actively running assessments.
+
+To avoid paying for unused non-commercial demo infrastructure, the original cloud resources are deleted after testing. The repository remains available as the source artifact: it contains the architecture, Foundry IQ source set, agent instruction and sample Evidence Packs needed to understand or reproduce the setup.
+
+Reviewers and organizations can recreate the MVP in their own Microsoft Foundry environment and adapt the evidence sources, approval rules, risk model, retrieval permissions and production controls to their own governance context.
 
 ---
 
@@ -350,56 +463,49 @@ Sample outputs are available in `outputs/` for reference without running the age
 
 - Microsoft Foundry
 - Foundry IQ
-- Azure AI Search-backed retrieval tool/resource provisioned through Foundry IQ
-- Multiple synthetic Kelvior enterprise evidence sources
+- Azure AI Search-backed retrieval through Foundry IQ
+- Synthetic Kelvior enterprise evidence
 - YAML agent definitions
 - Retrieval-optimized Markdown evidence documents
 - Evidence Source Manifest
-- Mermaid architecture diagrams
-- GitHub
+- Mermaid architecture diagram
+- GitHub repository documentation
 
 ---
 
-## Demo cases
+## Demo
 
-Demo video: https://youtu.be/CVQdw8PbgjE
+Demo video:
 
-The demo focuses on three cases to show risk-based deployment decision logic without overloading the walkthrough.
+[https://youtu.be/CVQdw8PbgjE](https://youtu.be/CVQdw8PbgjE)
 
-### Demo case 1: Finance Invoice Assistant → BLOCK
+The demo focuses on three cases.
+
+### Finance Invoice Assistant → BLOCK
 
 This case shows why a governance gate matters.
 
-The Finance Invoice Assistant is blocked because financial automation requires strong governance, approval, audit logging, data review, security review, segregation-of-duties validation and human approval controls.
+The Finance Invoice Assistant is blocked because financial automation requires strong controls around governance, approval, audit logging, data review, security review, segregation of duties and human approval.
 
-### Demo case 2: IT Ticket Triage → GO
+### IT Ticket Triage → GO
 
-This case shows that the Decision Gate does not block everything.
+This case shows that the Decision Gate does not block every agent.
 
-The IT Ticket Triage agent can receive a GO verdict because it is read-only, recommendation-only, approved, logged, monitored and controlled through human review.
+The IT Ticket Triage agent receives a `GO` verdict because it is read-only, recommendation-only, approved, logged, monitored and controlled through human review.
 
-### Demo case 3: Sales Proposal Agent → CONDITIONAL GO
+### Sales Proposal Agent → CONDITIONAL GO
 
-This case shows that the Decision Gate can allow limited production use when foundational controls are present but broader rollout still requires remediation.
+This case shows that limited use can be acceptable when foundational controls exist but broader rollout still needs remediation.
 
-The Sales Proposal Agent receives a CONDITIONAL GO because it has key governance, security, data and human approval controls in place, but remains limited to a scoped sales-team deployment with required improvements before broader rollout.
-
-### Additional validated outputs
-
-Additional sample assessments are included in `outputs/`:
-
-- Learning Policy Coach → `CONDITIONAL GO`
-- HR Onboarding Helper → `REMEDIATE`
+The Sales Proposal Agent receives a `CONDITIONAL GO` because key governance, security, data and human approval controls are present, but the deployment remains limited to a scoped sales-team rollout.
 
 ---
 
-## MVP boundary and production path
+## MVP boundary
 
-This MVP demonstrates the reasoning, grounding, traceability and governance pattern for enterprise AI-agent deployment readiness assessment.
+This project demonstrates the decision pattern first.
 
-It is not a full production enforcement system.
-
-The current implementation focuses on:
+The MVP focuses on:
 
 - evidence-grounded reasoning through Foundry IQ
 - structured deployment-readiness assessment
@@ -407,7 +513,7 @@ The current implementation focuses on:
 - weighted readiness scoring and score caps
 - source traceability through the Evidence Source Manifest
 - ethics and misuse-prevention checks
-- human governance review and deployment decision support
+- human governance review support
 
 The MVP does not implement:
 
@@ -420,8 +526,17 @@ The MVP does not implement:
 - automated approval workflow execution
 - enterprise audit trail storage
 - live CRM, ERP, HR or ITSM system actions
+- continuous control monitoring
 
-A production version would add:
+That boundary is intentional.
+
+I wanted the project to show the reasoning and evidence model before pretending it was a full enterprise platform.
+
+---
+
+## Production hardening path
+
+A production version would need stronger implementation controls, including:
 
 - Microsoft Purview sensitivity labels
 - Azure RBAC
@@ -432,10 +547,19 @@ A production version would add:
 - approval workflow integration
 - audit trail and run history
 - stronger ingestion validation
-- automated evidence freshness checks
-- continuous control monitoring
+- evidence freshness checks
+- monitoring and evaluation pipelines
+- change management
+- security review
 
-The MVP proves the decision pattern first: governed evidence enters the retrieval layer, the Microsoft Foundry reasoning agent evaluates deployment readiness, and the output supports human governance review.
+The reusable pattern is:
+
+```text
+governed evidence enters retrieval
+→ reasoning agent evaluates readiness
+→ Evidence Pack exposes the decision path
+→ humans review the final deployment decision
+```
 
 ---
 
@@ -449,18 +573,23 @@ No real customer, employee, vendor or confidential business data is used.
 
 ---
 
-## Project status
+## What this project demonstrates
 
-Submission-ready MVP status:
+This project demonstrates a portfolio-level implementation of an AI-agent readiness gate.
 
-- Microsoft Foundry reasoning agent configured
-- Foundry IQ knowledge base connected
-- Multiple Kelvior enterprise evidence sources prepared
-- Five sample assessments generated
-- Architecture diagram created
-- Evidence Pack format validated
-- Repository documentation prepared
-- Demo video prepared for submission
+It shows the ability to:
+
+- structure an AI-agent governance problem;
+- design a retrieval-grounded reasoning flow;
+- work with Microsoft Foundry and Foundry IQ;
+- define audit domains, blocking rules and verdict logic;
+- connect evidence to risk, remediation and deployment decisions;
+- separate MVP implementation from production hardening;
+- document limitations without hiding them.
+
+The project is not presented as a finished governance product.
+
+Its value is in the reasoning pattern: making the decision to allow, conditionally allow, remediate or block an AI agent more explicit and evidence-based.
 
 ---
 
@@ -468,14 +597,20 @@ Submission-ready MVP status:
 
 This repository was created for a synthetic enterprise simulation, hackathon submission and portfolio demonstration.
 
-Kelvior Systems is a fictional enterprise environment. All business data, policies, systems, employees, customers, vendors and evidence documents used in this project are synthetic. No real confidential, customer, employee or vendor data is included.
+Kelvior Systems is a fictional enterprise environment. All business data, policies, systems, employees, customers, vendors and evidence documents used in this project are synthetic.
 
 This project is released under the MIT License.
 
-Microsoft Foundry, Foundry IQ, Azure and related Microsoft product names are trademarks or product names of Microsoft. This project is an independent synthetic enterprise simulation and is not affiliated with, endorsed by, or sponsored by Microsoft.
+Microsoft Foundry, Foundry IQ, Azure and related Microsoft product names are trademarks or product names of Microsoft.
+
+This project is an independent synthetic enterprise simulation. It is not affiliated with, endorsed by or sponsored by Microsoft.
+
+---
 
 ## Author
 
 Created by Nadira Büsse.
 
-This project was built as a hackathon submission to demonstrate practical skills in Microsoft Foundry, AI-agent governance, evidence-grounded reasoning, audit traceability, risk assessment and enterprise AI deployment readiness.
+Originally built and submitted for the Microsoft Agents League Hackathon 2026, Reasoning Agents track.
+
+Now maintained as a portfolio project focused on Microsoft Foundry reasoning agents, retrieval-grounded assessment, AI governance, audit traceability and risk-based deployment decisions.
