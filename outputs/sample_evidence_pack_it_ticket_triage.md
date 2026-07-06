@@ -1,4 +1,6 @@
-1. Agent summary
+# Sample Evidence Pack - IT Ticket Triage
+
+## 1. Agent summary
 
 | Field                 | Value            |
 |-----------------------|------------------|
@@ -17,7 +19,7 @@
 
 The IT Ticket Triage agent supports IT Operations by classifying incoming ServiceNow incidents, suggesting ticket priority, identifying likely assignment groups and recommending next handling steps. It is read-only and recommendation-only; it does not autonomously resolve tickets or modify production systems.
 
-2. Business context
+## 2. Business context
 
 | Field               | Value                    |
 |---------------------|--------------------------|
@@ -33,7 +35,7 @@ The IT Ticket Triage agent supports IT Operations by classifying incoming Servic
 
 Agent is aligned with IT Operations Incident-to-Recovery process providing classification and recommendation support.
 
-3. Systems and MCP connectors
+## 3. Systems and MCP connectors
 
 Primary system: ServiceNow ITSM (read-only access)  
 Supporting systems: ServiceNow Knowledge Base, Microsoft 365, SharePoint IT Operations Library  
@@ -47,7 +49,7 @@ MCP connector:
 
 All MCP tools used are approved and limited to read or recommendation actions.
 
-4. Data classification
+## 4. Data classification
 
 | Data Type                  | Status |
 |----------------------------|--------|
@@ -62,7 +64,7 @@ Allowed data scope includes incident id, category, priority, short description, 
 
 Prohibited data scope includes privileged credentials, secrets, production system modification data, private employee HR data, customer confidential records, payment or financial records.
 
-5. Audit domain scores
+## 5. Audit domain scores
 
 | Domain     | Score | Notes                                                                                     |
 |------------|-------|-------------------------------------------------------------------------------------------|
@@ -72,7 +74,7 @@ Prohibited data scope includes privileged credentials, secrets, production syste
 | Policy     | 95    | Data governance review completed, complies with AI, data and security policy             |
 | Process    | 95    | Clear process alignment, operational boundaries, exception handling, escalation defined  |
 
-6. Weighted readiness score
+## 6. Weighted readiness score
 
 Calculation:  
 (Inventory 100 × 0.15) + (Governance 95 × 0.25) + (Security 95 × 0.25) + (Policy 95 × 0.20) + (Process 95 × 0.15) =  
@@ -82,7 +84,7 @@ No domain caps apply as all controls are present with full production approval.
 
 No final score cap applies since full production approval and no remediation is visible.
 
-7. Mandatory blocking rule evaluation
+## 7. Mandatory blocking rule evaluation
 
 No mandatory blocking conditions triggered:  
 - Full production approval is evidenced.  
@@ -92,7 +94,7 @@ No mandatory blocking conditions triggered:
 - Escalation path and exception handling are defined.  
 - No write or controlled actions enabled without human approval.  
 
-8. Findings by domain
+## 8. Findings by domain
 
 Inventory: Complete agent identification and scope definition.
 
@@ -106,7 +108,7 @@ Process: Fully aligned with Incident-to-Recovery process, human approval gates, 
 
 No known gaps or conditional approvals reported.
 
-9. Evidence references
+## 9. Evidence references
 
 Document ID: KEL-AGT-ITO-001  
 Document title: IT Ticket Triage Agent Evidence  
@@ -144,7 +146,7 @@ Evidence role: Enterprise business processes and systems landscape context
 Foundry IQ source document: 01_kelvior_enterprise_context_excerpt.md  
 Citation or source reference: Business process P06 Incident-to-Recovery, IT Operations alignment, and system descriptions.
 
-10. Risk assessment
+## 10. Risk assessment
 
 Triggered risks:  
 * None identified.
@@ -159,20 +161,20 @@ Not applicable risks:
 - Financial, HR confidential, customer personal data risks not applicable due to data scope.  
 - Write-capable controlled actions risk not applicable due to read-only, recommendation-only design.
 
-11. Deployment verdict
+## 11. Deployment verdict
 
 GO
 
-12. Required remediation plan
+## 12. Required remediation plan
 
 No required remediation. Optional continuous improvement items only.
 
-13. Human approval checklist
+## 13. Human approval checklist
 
 - Human approval gate is enabled and mandatory for all recommendations that affect ticket priority, assignment group, or incident status.  
 - Approved user roles defined: Service Desk Analyst, Service Desk Lead.  
 - Required human decision points confirmed and operational.  
 
-14. Re-audit recommendation
+## 14. Re-audit recommendation
 
 Re-audit at next scheduled review interval (2026-08-28) or upon significant agent, system, or policy changes to validate continued compliance and operational effectiveness.

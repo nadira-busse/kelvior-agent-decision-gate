@@ -1,7 +1,7 @@
 ---
 document_id: KEL-AGT-FIN-001
 title: Finance Invoice Assistant Agent Evidence
-version: "1.0"
+version: "1.1"
 source: 03_agent_definitions/agent_finance_invoice.yaml
 source_type: derived_agent_evidence
 kb_id: KB-FIN

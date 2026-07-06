@@ -1,7 +1,7 @@
 ---
 document_id: KEL-AGT-HRO-001
 title: HR Onboarding Helper Agent Evidence
-version: "1.0"
+version: "1.1"
 source: Kelvior Systems Agent Definition YAML
 source_type: derived_agent_evidence
 derived_from_yaml: true

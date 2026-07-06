@@ -1,4 +1,6 @@
-1. Agent summary  
+# Sample Evidence Pack - HR Onboarding Helper
+
+## 1. Agent summary  
 Agent ID: AGT-HR-ONB-001  
 Name: HR Onboarding Helper  
 Version: 1.1  
@@ -14,10 +16,10 @@ MCP connectors: MCP-HR (Kelvior HRMS Connector) – restricted_read, not approve
 Allowed actions: retrieval_response, recommendation (requires human approval), explanation, restricted_data_summary (requires human approval)  
 Deployment scope: pre_production_validation, no production use, no direct employee-facing restricted HR data use, no autonomous HR decisions  
 
-2. Business context  
+## 2. Business context  
 The agent supports HR Operations in answering onboarding questions, suggesting training paths, and helping new employees understand onboarding tasks, policies, and required learning steps. It aligns with the Hire-to-Retire process. Deployment is limited to pre-production validation with no production approval. The agent may access restricted employee profile and confidential training status data. Human approval is mandatory before personalized HR guidance involving restricted data. Rollout limitations prohibit direct employee-facing restricted HR data responses or write actions.
 
-3. Systems and MCP connectors  
+## 3. Systems and MCP connectors  
 Primary systems:  
 - Workday (read-only) - system of record for employee, onboarding, and training status data  
 - Microsoft 365 and SharePoint HR Policy Library for policy and onboarding documents  
@@ -25,17 +27,17 @@ MCP connector: MCP-HR
 - Provides restricted read-only access to restricted HR context data only  
 - Production use and MCP-HR tools (EmployeeProfileLookup, TrainingStatusLookup) are not approved  
 
-4. Data classification  
+## 4. Data classification  
 The agent processes restricted_employee_profile, confidential_onboarding, confidential_training_status data. It does not process financial or customer data but includes personal and restricted HR sensitive data. Prohibited data includes compensation, medical or absence records, disciplinary records, performance reviews, private HR case notes, immigration details, and legal investigations.  
 
-5. Audit domain scores  
+## 5. Audit domain scores  
 Inventory (15% weight): Complete identification, ownership, and scope with minor gaps (no data steward assigned). Score: 95  
 Governance (25% weight): Ownership roles identified, human approval gate required and defined, escalation path defined, but missing production approval, missing data governance review, no data steward assigned, no audit logging accountability, no formal review cadence, no full exception handling, and no formal production approval. Score: 40  
 Security (25% weight): Security review missing, audit logging planned but disabled, monitoring disabled, no incident response plan, role-based access control planned but not implemented, least privilege not evidenced, connector and tool approvals missing. Score: 30  
 Policy (20% weight): Non-compliant with Kelvior AI, data governance and security policies due to missing data governance review, GDPR assessment, security review, human approval gate defined but formal approval missing, incomplete exception handling, no evidence retention policy. Score: 40  
 Process (15% weight): Business process alignment is clear, human decision points and escalation path defined, but exception handling incomplete, SLA not defined, operational boundaries partially defined. Score: 65  
 
-6. Weighted readiness score  
+## 6. Weighted readiness score  
 (Inventory 95 × 0.15) + (Governance 40 × 0.25) + (Security 30 × 0.25) + (Policy 40 × 0.20) + (Process 65 × 0.15)  
 = 14.25 + 10 + 7.5 + 8 + 9.75 = 49.5 ≈ 50  
 
@@ -62,14 +64,14 @@ Agent has no write access or controlled actions (no autonomous HR decisions) —
 
 No mandatory block triggered for current pre-production validation scope.
 
-8. Findings by domain  
+## 8. Findings by domain  
 Inventory: Complete agent identity, ownership, systems, connectors, and deployment scope except missing data steward assignment.  
 Governance: Missing production approval, data governance review, no audit logging accountability, no formal evidence retention policy, incomplete exception handling, no formal review cadence.  
 Security: Security review missing, audit logging disabled, monitoring disabled, no incident response plan, least privilege not evidenced, no MCP connector or tool approvals.  
 Policy: Data governance review and GDPR assessment missing, incomplete exception and retention policies, incomplete approval evidence for production.  
 Process: Business process alignment is clear; human approval gates and escalation path set, but exception handling incomplete and SLA not defined.  
 
-9. Evidence references  
+## 9. Evidence references  
 Document ID: KEL-AGT-HRO-001  
 Document title: HR Onboarding Helper Agent Evidence  
 Evidence role: Agent-specific evidence for HR Onboarding Helper deployment readiness assessment  
@@ -118,7 +120,7 @@ Evidence role: Enterprise context for business units, processes, systems, MCP co
 Foundry IQ source document: 01_kelvior_enterprise_context_excerpt.md  
 Citation or source reference: Business unit, process owner, systems and MCP connector context for HR Onboarding Helper agent  
 
-10. Risk assessment  
+## 10. Risk assessment  
 Triggered risks:  
 * Missing data governance review for restricted HR data access.  
 * Missing GDPR assessment for processing restricted personal data.  
@@ -138,12 +140,12 @@ Not applicable risks:
 * Financial data handling risks are not applicable since the agent does not process financial data.  
 * IT operations incident response risks are not applicable for this HR-specific agent.  
 
-11. Deployment verdict  
+## 11. Deployment verdict  
 REMEDIATE  
 
 The agent is in planned pre-production and lacks foundational controls critical for safe validation and production deployment. Missing controls include data governance review, GDPR assessment, security review, production approval, audit logging, monitoring, incident response, role-based access control implementation, MCP connector and tool approvals, and exception handling completeness. These gaps require remediation before expanding into production or broader employee-facing operational use.  
 
-12. Required remediation plan  
+## 12. Required remediation plan  
 - Complete GDPR and privacy assessment for restricted HR data use.  
 - Complete formal data governance review including data steward assignment.  
 - Complete formal security review for MCP-HR connector, Workday, and Microsoft 365 access.  
@@ -158,12 +160,12 @@ The agent is in planned pre-production and lacks foundational controls critical 
 - Document evidence retention and data audit requirements.  
 - Implement change control procedures and secure deployment documentation.  
 
-13. Human approval checklist  
+## 13. Human approval checklist  
 - Human approval gate is required and defined for all personalized onboarding guidance involving restricted employee data or training status.  
 - Personalized onboarding messages or training recommendations must not be sent without prior HR Operations Manager or delegated approval.  
 - All restricted data summaries require human review before release.  
 - Exception cases involving role, manager, or department-specific policy interpretation must be escalated for human decision.  
 - Ensure user guidance and training cover human approval process clearly to all operational users.  
 
-14. Re-audit recommendation  
+## 14. Re-audit recommendation  
 Re-audit is recommended after completion of all remediation items above, especially after GDPR, data governance, security reviews, and production approval are obtained. Validation of audit logging, monitoring activation, incident response readiness, and exception handling completeness must be included. A formal re-assessment will ensure readiness for broader production deployment and employee-facing restricted HR data use.

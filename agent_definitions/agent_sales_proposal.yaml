@@ -1,17 +1,18 @@
 # Kelvior Agent Definition
 # Agent: Sales Proposal Agent
 # Purpose: Portfolio audit input for Kelvior Agent Decision Gate
-# Version: 1.0
+# Version: 1.1
 
 agent_id: AGT-SAL-PRO-001
 name: Sales Proposal Agent
+version: "1.1"
 description: >
   Active AI agent that retrieves approved customer and product context and drafts
   sales proposal content for Sales teams. The agent supports proposal preparation
   but does not approve pricing, commit offers, send proposals, or modify CRM records.
 
 status: active
-environment: production_limited
+environment: limited_production
 
 business_context:
   business_unit_id: BU-OUT

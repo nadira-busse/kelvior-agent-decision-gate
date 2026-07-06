@@ -1,7 +1,7 @@
 ---
 document_id: KEL-AGT-ITO-001
 title: IT Ticket Triage Agent Evidence
-version: "1.0"
+version: "1.1"
 source: Kelvior Systems Agent Definition YAML
 source_file: agent_it_ticket_triage.yaml
 source_type: derived_agent_evidence

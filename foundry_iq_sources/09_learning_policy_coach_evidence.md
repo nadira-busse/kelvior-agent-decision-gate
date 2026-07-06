@@ -1,7 +1,7 @@
 ---
 document_id: KEL-AGT-ACD-001
 title: Learning Policy Coach Agent Evidence
-version: "1.0"
+version: "1.1"
 source: Kelvior Systems Agent Definition YAML
 source_type: derived_agent_evidence
 derived_from_yaml: true
@@ -40,7 +40,7 @@ This document does not include an expected verdict, test result, weighted readin
 | ----------------------- | --------------------- |
 | Agent ID                | AGT-ACD-LRN-001       |
 | Name                    | Learning Policy Coach |
-| Version                 | 1.0                   |
+| Version                 | 1.1                   |
 | Status                  | pilot                 |
 | Environment             | controlled_pilot      |
 | Declared risk level     | medium                |

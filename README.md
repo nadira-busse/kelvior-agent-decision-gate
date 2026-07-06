@@ -616,8 +616,6 @@ This project is an independent synthetic enterprise simulation. It is not affili
 
 Created by Nadira Büsse.
 
-LinkedIn: [Nadira Büsse](https://www.linkedin.com/in/...)
-
 Originally built and submitted for the Microsoft Agents League Hackathon 2026, Reasoning Agents track.
 
 Now maintained as a portfolio project focused on Microsoft Foundry reasoning agents, retrieval-grounded assessment, AI governance, audit traceability and risk-based deployment decisions.

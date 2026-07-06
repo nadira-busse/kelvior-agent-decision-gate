@@ -1,10 +1,11 @@
 # Kelvior Agent Definition
 # Agent: Learning Policy Coach
 # Purpose: Portfolio audit input for Kelvior Agent Decision Gate
-# Version: 1.0
+# Version: 1.1
 
 agent_id: AGT-ACD-LRN-001
 name: Learning Policy Coach
+version: "1.1"
 description: >
   Pilot AI agent that answers learning policy questions, explains course requirements,
   and recommends learning paths for Kelvior Academy users based on approved Academy,

@@ -39,8 +39,8 @@ business_context:
     review preparation inside the Procure-to-Pay process.
 
 ownership:
-  business_owner: null
-  technical_owner: "Data & AI Lead"
+  business_owner: Finance Operations Manager
+  technical_owner: "ERP Automation Lead "
   deputy_business_owner: null
   executive_sponsor: null
   support_team: Finance Operations

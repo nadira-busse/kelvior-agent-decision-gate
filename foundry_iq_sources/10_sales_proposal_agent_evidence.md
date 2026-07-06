@@ -1,7 +1,7 @@
 ---
 document_id: KEL-AGT-SAL-001
 title: Sales Proposal Agent Evidence
-version: "1.0"
+version: "1.1"
 source: Kelvior Systems Agent Definition YAML
 source_type: derived_agent_evidence
 derived_from_yaml: true
@@ -55,7 +55,7 @@ This document does not contain expected verdicts, test results, weighted scores 
 | Description              | Active AI agent that retrieves approved customer and product context and drafts sales proposal content for Sales teams. |
 | Status                   | active                                                                                                                  |
 | Environment              | limited_production                                                                                                     |
-| Version                  | 1.0                                                                                                                     |
+| Version                  | 1.1                                                                                                                     |
 | Business unit ID         | BU-OUT                                                                                                                  |
 | Business unit name       | Kelvior Outdoor                                                                                                         |
 | Department ID            | DEP-SAL                                                                                                                 |
