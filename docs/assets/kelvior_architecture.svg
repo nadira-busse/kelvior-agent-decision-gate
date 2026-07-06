@@ -43,6 +43,8 @@
     </marker>
   </defs>
 
+  <rect x="0" y="0" width="1200" height="1850" fill="#f2f2f2"/>
+
   <!-- Top row -->
   <rect class="box" x="40" y="40" width="210" height="90"/>
   <text class="label" x="145" y="78">
