@@ -154,43 +154,9 @@ For the editable Mermaid source, see:
 
 ## Core architecture choices
 
-### 1. Evidence before verdict
+The architecture rests on four choices: evidence must ground every verdict, one Microsoft Foundry reasoning agent implements the audit logic rather than separate production services, Foundry IQ grounds the agent in the synthetic Kelvior evidence set, and the Decision Gate supports human decision-makers rather than replacing them.
 
-The agent must use Kelvior evidence before assigning a score or verdict.
-
-The evidence set includes:
-
-- AI policy
-- data governance policy
-- security policy
-- agent approval procedure
-- enterprise risk register excerpt
-- agent-specific evidence documents
-- Evidence Source Manifest
-
-This matters because a readiness decision without source evidence is just an opinion.
-
-### 2. One Microsoft Foundry reasoning agent
-
-The audit domains, blocking logic, score caps, risk checks and traceability checks are implemented as reasoning controls inside the Microsoft Foundry agent.
-
-They are not presented as separate production audit services.
-
-That boundary is intentional. This is an MVP reasoning-agent implementation, not a full governance platform.
-
-### 3. Foundry IQ as grounding layer
-
-Foundry IQ is used to ground the reasoning agent in the synthetic Kelvior evidence set.
-
-The MVP uses retrieval-optimized Markdown files so the agent can retrieve policy, risk and agent-specific evidence during assessment.
-
-In a production version, this pattern would need stronger controls around identity, permissions, metadata filtering, access scope and evidence freshness.
-
-### 4. Human decision support
-
-The Decision Gate does not replace a governance board, security reviewer, data owner or business owner.
-
-It produces a structured Evidence Pack so those people can review the decision path more clearly.
+The full rationale for each choice is documented in [docs/architecture_overview.md](docs/architecture_overview.md#architecture-flow).
 
 ---
 
@@ -231,39 +197,17 @@ In production, those markers should be replaced or strengthened with chunk-level
 
 ## Evidence Source Manifest
 
-The Evidence Source Manifest maps source documents to canonical document IDs, titles and evidence roles.
+The Evidence Source Manifest maps source documents to canonical document IDs, titles and evidence roles, which reduces the risk of unclear source attribution or invented document references.
 
-This reduces the risk of unclear source attribution or invented document references.
-
-In the MVP, this is handled as a retrieval-visible Markdown file.
-
-In production, this source identity should be enforced through ingestion metadata, access policy and audit logging.
+See [docs/architecture_overview.md](docs/architecture_overview.md#7-evidence-traceability) and [foundry_iq_sources/README.md](foundry_iq_sources/README.md#evidence-traceability) for the full traceability model.
 
 ---
 
 ## Ingestion Security and Ethics Layer
 
-The architecture includes a lightweight **Ingestion Security and Ethics Layer** before retrieval and reasoning.
+The architecture includes a lightweight **Ingestion Security and Ethics Layer** before retrieval and reasoning. In this MVP, it is a design concept covering sensitivity label validation, allowed data scope validation, prompt-injection detection and misuse-prevention checks — not full production enforcement.
 
-In this MVP, that layer is a design concept. It represents the checks that should happen before agent definitions and evidence are trusted by the reasoning layer.
-
-It covers four concerns:
-
-- sensitivity label validation
-- allowed data scope validation
-- prompt-injection or instruction-override detection
-- ethics and misuse-prevention checks
-
-This is not full production enforcement.
-
-A production version would require controls such as:
-
-- Microsoft Purview sensitivity labels
-- Azure RBAC
-- managed identities
-- scoped retrieval permissions
-- policy-driven access control
-- ingestion validation logs
+The full layer design and required production controls are documented in [docs/architecture_overview.md](docs/architecture_overview.md#2-ingestion-security-and-ethics-layer).
 
 ---
 
@@ -389,7 +333,7 @@ scripts/
 .gitattributes
 .gitignore
 README.md
-LICENSE    
+LICENSE
 ```
 
 ---
@@ -402,31 +346,31 @@ This project requires a configured Microsoft Foundry project with Foundry IQ con
 
 2. Configure a Microsoft Foundry reasoning agent with the instruction in:
 
-   ```text
+```text
    agent_instructions/kelvior_agent_decision_gate_instruction.md
-   ```
+```
 
 3. Connect the Foundry IQ knowledge base to the reasoning agent.
 
 4. Run an assessment prompt, for example:
 
-   ```text
+```text
    Perform a full deployment readiness assessment for the Finance Invoice Assistant using the connected Kelvior Foundry IQ knowledge base.
-   ```
+```
 
 5. For regression-style testing, use the stricter prompt below:
 
-   ```text
+```text
    Perform a full deployment readiness assessment for the [AGENT NAME] using the connected Kelvior Foundry IQ knowledge base. Produce the full 14-section Agent Deployment Evidence Pack. Base the assessment only on retrieved Kelvior evidence. Do not use expected verdicts, sample outputs or prior test results.
-   ```
+```
 
-   Replace `[AGENT NAME]` with one of the assessed agents:
+Replace `[AGENT NAME]` with one of the assessed agents:
 
-   - `Finance Invoice Assistant`
-   - `IT Ticket Triage`
-   - `Learning Policy Coach`
-   - `Sales Proposal Agent`
-   - `HR Onboarding Helper`
+- `Finance Invoice Assistant`
+- `IT Ticket Triage`
+- `Learning Policy Coach`
+- `Sales Proposal Agent`
+- `HR Onboarding Helper`
 
 6. Review the generated Agent Deployment Evidence Pack.
 
@@ -508,54 +452,19 @@ The Sales Proposal Agent receives a `CONDITIONAL GO` because key governance, sec
 
 ## MVP boundary
 
-This project demonstrates the decision pattern first.
+This project demonstrates the decision pattern first: evidence-grounded reasoning, mandatory blocking rules, weighted scoring and human review support.
 
-The MVP focuses on:
+It does not implement live production enforcement, real-time policy enforcement, production-grade access control or automated approval execution.
 
-- evidence-grounded reasoning through Foundry IQ
-- structured deployment-readiness assessment
-- mandatory blocking rules
-- weighted readiness scoring and score caps
-- source traceability through the Evidence Source Manifest
-- ethics and misuse-prevention checks
-- human governance review support
+That boundary is intentional. I wanted the project to show the reasoning and evidence model before pretending it was a full enterprise platform.
 
-The MVP does not implement:
-
-- live production enforcement
-- real-time Microsoft Purview policy enforcement
-- production-grade Azure RBAC enforcement
-- managed identity access enforcement
-- production metadata-filtered retrieval permissions
-- live MCP action enforcement
-- automated approval workflow execution
-- enterprise audit trail storage
-- live CRM, ERP, HR or ITSM system actions
-- continuous control monitoring
-
-That boundary is intentional.
-
-I wanted the project to show the reasoning and evidence model before pretending it was a full enterprise platform.
+The full MVP scope and boundary is documented in [docs/architecture_overview.md](docs/architecture_overview.md#mvp-boundary).
 
 ---
 
 ## Production hardening path
 
-A production version would need stronger implementation controls, including:
-
-- Microsoft Purview sensitivity labels
-- Azure RBAC
-- managed identities
-- scoped retrieval permissions
-- Azure AI Search / Foundry IQ metadata filters
-- policy-as-code validation
-- approval workflow integration
-- audit trail and run history
-- stronger ingestion validation
-- evidence freshness checks
-- monitoring and evaluation pipelines
-- change management
-- security review
+A production version would need stronger implementation controls: Microsoft Purview sensitivity labels, Azure RBAC, managed identities, scoped retrieval permissions, audit trail and run history, monitoring pipelines and security review.
 
 The reusable pattern is:
 
@@ -566,15 +475,7 @@ governed evidence enters retrieval
 → humans review the final deployment decision
 ```
 
----
-
-## Synthetic enterprise environment
-
-Kelvior Systems is a fictional enterprise simulation environment created for educational, architectural and portfolio purposes.
-
-All data, employees, customers, vendors, processes, policies, systems and documents are synthetic.
-
-No real customer, employee, vendor or confidential business data is used.
+The full hardening path is documented in [docs/architecture_overview.md](docs/architecture_overview.md#production-hardening-path).
 
 ---
 

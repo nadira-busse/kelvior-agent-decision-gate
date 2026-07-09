@@ -27,20 +27,20 @@ confidentiality: public_demo_safe
 Document ID: KEL-DAI-DGOV-001  
 Document title: Kelvior Data Governance Policy  
 Foundry IQ source document: 03_kelvior_data_governance_policy.md  
-Evidence role: Data governance policy evidence for data classification, permitted use, data stewardship, privacy constraints and review requirements  
+Evidence role: Data governance policy evidence for data classification, permitted use, data stewardship, privacy constraints and review requirements
 
 ## Document Metadata
 
-| Field | Value |
-| --- | --- |
-| Document ID | KEL-DAI-DGOV-001 |
-| Title | Kelvior Data Governance Policy |
-| Evidence role | Data governance policy evidence for data classification, permitted use, data stewardship, privacy constraints and review requirements |
-| Foundry IQ source document | 03_kelvior_data_governance_policy.md |
-| Source set | Kelvior Agent Decision Gate Foundry IQ Source Set |
-| Project | Kelvior Agent Decision Gate |
-| Data status | synthetic |
-| Confidentiality | public_demo_safe |
+| Field                      | Value                                                                                                                                 |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Document ID                | KEL-DAI-DGOV-001                                                                                                                      |
+| Title                      | Kelvior Data Governance Policy                                                                                                        |
+| Evidence role              | Data governance policy evidence for data classification, permitted use, data stewardship, privacy constraints and review requirements |
+| Foundry IQ source document | 03_kelvior_data_governance_policy.md                                                                                                  |
+| Source set                 | Kelvior Agent Decision Gate Foundry IQ Source Set                                                                                     |
+| Project                    | Kelvior Agent Decision Gate                                                                                                           |
+| Data status                | synthetic                                                                                                                             |
+| Confidentiality            | public_demo_safe                                                                                                                      |
 
 ## 1. Purpose
 
@@ -48,11 +48,11 @@ This policy defines data governance requirements for AI agents that access, retr
 
 It supports the Kelvior Agent Decision Gate by providing evidence for readiness assessment across five audit domains:
 
-* Inventory
-* Governance
-* Security
-* Policy
-* Process
+- Inventory
+- Governance
+- Security
+- Policy
+- Process
 
 This document does not define final deployment verdicts for any specific agent. It provides data governance policy evidence only.
 
@@ -60,15 +60,15 @@ This document does not define final deployment verdicts for any specific agent. 
 
 This policy applies to AI agents that interact with:
 
-* finance data;
-* HR data;
-* customer data;
-* vendor data;
-* employee data;
-* operational records;
-* confidential or restricted business documents;
-* enterprise knowledge sources;
-* system data from ERP, CRM, HRMS, ITSM, LMS or Microsoft 365.
+- finance data;
+- HR data;
+- customer data;
+- vendor data;
+- employee data;
+- operational records;
+- confidential or restricted business documents;
+- enterprise knowledge sources;
+- system data from ERP, CRM, HRMS, ITSM, LMS or Microsoft 365.
 
 The policy applies to Microsoft Foundry agents, Foundry IQ-grounded agents and agents using enterprise system connectors.
 
@@ -89,15 +89,15 @@ Agents processing confidential or restricted data require documented data govern
 
 A data governance review is required when an AI agent:
 
-* accesses confidential data;
-* accesses restricted data;
-* retrieves financial records;
-* retrieves HR or employee records;
-* retrieves customer or vendor records;
-* combines data from multiple enterprise systems;
-* uses enterprise knowledge sources with unclear ownership;
-* generates recommendations based on sensitive data;
-* performs controlled or write-capable actions using sensitive context.
+- accesses confidential data;
+- accesses restricted data;
+- retrieves financial records;
+- retrieves HR or employee records;
+- retrieves customer or vendor records;
+- combines data from multiple enterprise systems;
+- uses enterprise knowledge sources with unclear ownership;
+- generates recommendations based on sensitive data;
+- performs controlled or write-capable actions using sensitive context.
 
 The review must be completed before production deployment or continued active use in production-like conditions.
 
@@ -145,13 +145,13 @@ AI agents must maintain traceability to the systems and documents used for groun
 
 Traceability evidence should include:
 
-* source system name;
-* source document title or identifier;
-* source owner;
-* data classification;
-* retrieval scope;
-* applicable business process;
-* applicable policy or approval requirement.
+- source system name;
+- source document title or identifier;
+- source owner;
+- data classification;
+- retrieval scope;
+- applicable business process;
+- applicable policy or approval requirement.
 
 Agents with unclear source traceability present a governance and audit risk.
 
@@ -163,24 +163,24 @@ AI agents must apply stronger controls when handling sensitive enterprise data.
 
 Sensitive data includes:
 
-* invoice data;
-* payment-related data;
-* vendor data;
-* employee records;
-* HR onboarding data;
-* customer records;
-* legal or compliance documents;
-* security procedures;
-* restricted operational records.
+- invoice data;
+- payment-related data;
+- vendor data;
+- employee records;
+- HR onboarding data;
+- customer records;
+- legal or compliance documents;
+- security procedures;
+- restricted operational records.
 
 Agents using sensitive data must show:
 
-* data governance review;
-* security review where applicable;
-* least-privilege access;
-* audit logging;
-* monitoring;
-* human approval gates where business impact is material.
+- data governance review;
+- security review where applicable;
+- least-privilege access;
+- audit logging;
+- monitoring;
+- human approval gates where business impact is material.
 
 ## 9. Finance Data Requirements
 
@@ -190,14 +190,14 @@ Finance data requires heightened control because it may affect payment workflows
 
 AI agents accessing finance data must provide evidence for:
 
-* finance data owner approval;
-* process mapping to finance process;
-* data classification;
-* human approval gate for payment-related recommendations or status changes;
-* audit logging;
-* monitoring;
-* security review;
-* re-audit after material change.
+- finance data owner approval;
+- process mapping to finance process;
+- data classification;
+- human approval gate for payment-related recommendations or status changes;
+- audit logging;
+- monitoring;
+- security review;
+- re-audit after material change.
 
 Finance agents that process confidential or restricted invoice data without data governance review create a critical policy risk.
 
@@ -209,14 +209,14 @@ HR data requires heightened privacy and confidentiality controls.
 
 AI agents accessing HR data must provide evidence for:
 
-* HR data owner approval;
-* privacy or GDPR review where applicable;
-* data minimization;
-* access restrictions;
-* security review;
-* audit logging;
-* monitoring;
-* exception handling.
+- HR data owner approval;
+- privacy or GDPR review where applicable;
+- data minimization;
+- access restrictions;
+- security review;
+- audit logging;
+- monitoring;
+- exception handling.
 
 HR-specific evidence is included in this source set for HR Onboarding Helper readiness assessment.
 
@@ -226,11 +226,11 @@ Foundry IQ-grounded agents must retrieve only from approved knowledge sources.
 
 Knowledge-source boundaries must define:
 
-* which folders, documents or repositories are in scope;
-* which logical knowledge base the document belongs to;
-* which audit domain the document supports;
-* whether the source is policy, risk, process, security or agent evidence;
-* whether the content is public-demo-safe, internal, confidential or restricted.
+- which folders, documents or repositories are in scope;
+- which logical knowledge base the document belongs to;
+- which audit domain the document supports;
+- whether the source is policy, risk, process, security or agent evidence;
+- whether the content is public-demo-safe, internal, confidential or restricted.
 
 For this MVP, the physical upload scope is one Foundry IQ knowledge base. Logical knowledge boundaries are preserved through document-level metadata.
 
@@ -240,54 +240,54 @@ For this MVP, the physical upload scope is one Foundry IQ knowledge base. Logica
 
 The agent must identify:
 
-* data sources;
-* source systems;
-* data classification;
-* owner department;
-* business owner;
-* technical owner;
-* connected systems and connectors.
+- data sources;
+- source systems;
+- data classification;
+- owner department;
+- business owner;
+- technical owner;
+- connected systems and connectors.
 
 ### Governance
 
 The agent must show:
 
-* data owner accountability;
-* business owner accountability;
-* approval status;
-* data governance review status;
-* re-audit triggers.
+- data owner accountability;
+- business owner accountability;
+- approval status;
+- data governance review status;
+- re-audit triggers.
 
 ### Security
 
 The agent must show:
 
-* access boundaries;
-* least-privilege expectation;
-* security review where applicable;
-* audit logging;
-* monitoring;
-* incident response ownership where needed.
+- access boundaries;
+- least-privilege expectation;
+- security review where applicable;
+- audit logging;
+- monitoring;
+- incident response ownership where needed.
 
 ### Policy
 
 The agent must comply with:
 
-* data classification rules;
-* sensitive-data handling requirements;
-* permitted-use boundaries;
-* privacy and confidentiality requirements;
-* source-system traceability.
+- data classification rules;
+- sensitive-data handling requirements;
+- permitted-use boundaries;
+- privacy and confidentiality requirements;
+- source-system traceability.
 
 ### Process
 
 The agent must map data use to:
 
-* business process;
-* process owner;
-* human review points;
-* exception handling;
-* operational support model.
+- business process;
+- process owner;
+- human review points;
+- exception handling;
+- operational support model.
 
 ## 13. Minimum Data Governance Readiness Controls
 
@@ -295,17 +295,17 @@ Evidence source: KEL-DAI-DGOV-001 — 03_kelvior_data_governance_policy.md
 
 An AI agent is not data-governance-ready unless the following are evidenced where applicable:
 
-* data classification;
-* data owner;
-* source-system owner;
-* permitted use;
-* access boundaries;
-* retrieval scope;
-* data governance review;
-* human approval gate for high-impact data use;
-* audit logging;
-* monitoring;
-* re-audit trigger.
+- data classification;
+- data owner;
+- source-system owner;
+- permitted use;
+- access boundaries;
+- retrieval scope;
+- data governance review;
+- human approval gate for high-impact data use;
+- audit logging;
+- monitoring;
+- re-audit trigger.
 
 ## 14. Use in Kelvior Agent Decision Gate
 

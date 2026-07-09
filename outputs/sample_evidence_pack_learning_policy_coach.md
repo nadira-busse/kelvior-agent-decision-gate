@@ -2,22 +2,22 @@
 
 ## 1. Agent summary
 
-| Field | Value |
-| --- | --- |
-| Agent ID | AGT-ACD-LRN-001 |
-| Name | Learning Policy Coach |
-| Version | 1.0 |
-| Status | pilot |
-| Environment | controlled_pilot |
-| Declared Risk Level | medium |
-| Actual Risk Indicator | medium |
-| Business Impact | medium |
-| Learner Decision Impact | advisory_only |
-| Deployment Scope | controlled_academy_pilot |
-| Approval Reference | PILOT-ACD-LRN-2026-01 |
-| Change Control Reference | CHG-ACD-LRN-2026-04 |
-| Last Reviewed | 2026-05-20 |
-| Next Review Due | 2026-07-20 |
+| Field                    | Value                    |
+| ------------------------ | ------------------------ |
+| Agent ID                 | AGT-ACD-LRN-001          |
+| Name                     | Learning Policy Coach    |
+| Version                  | 1.0                      |
+| Status                   | pilot                    |
+| Environment              | controlled_pilot         |
+| Declared Risk Level      | medium                   |
+| Actual Risk Indicator    | medium                   |
+| Business Impact          | medium                   |
+| Learner Decision Impact  | advisory_only            |
+| Deployment Scope         | controlled_academy_pilot |
+| Approval Reference       | PILOT-ACD-LRN-2026-01    |
+| Change Control Reference | CHG-ACD-LRN-2026-04      |
+| Last Reviewed            | 2026-05-20               |
+| Next Review Due          | 2026-07-20               |
 
 The Learning Policy Coach answers learning policy questions, explains course requirements and recommends learning paths for Kelvior Academy users.
 
@@ -27,13 +27,13 @@ It uses approved Academy, HR and Data & AI knowledge sources. It does not make f
 
 ## 2. Business context
 
-| Field | Value |
-| --- | --- |
-| Business unit | BU-ACD — Kelvior Academy |
-| Department | DEP-ACD — Academy |
-| Business process | Learn-to-Certify |
+| Field            | Value                    |
+| ---------------- | ------------------------ |
+| Business unit    | BU-ACD — Kelvior Academy |
+| Department       | DEP-ACD — Academy        |
+| Business process | Learn-to-Certify         |
 | Deployment model | Controlled Academy pilot |
-| Decision impact | Advisory only |
+| Decision impact  | Advisory only            |
 
 The agent supports the Learn-to-Certify process within Kelvior Academy for training and certification workflows.
 
@@ -55,15 +55,15 @@ MCP connectors and system integrations are defined but controlled for advisory s
 
 ## 4. Data classification
 
-| Data / control area | Status |
-| --- | --- |
-| Academy learning and certification data | In scope |
-| HR data | Conditionally approved |
-| GDPR assessment | Completed and positive |
-| Data governance review | Completed |
-| Security review | Completed |
-| EU AI Act risk indicator | potential_high_risk |
-| Learner decision impact | advisory_only |
+| Data / control area                     | Status                 |
+| --------------------------------------- | ---------------------- |
+| Academy learning and certification data | In scope               |
+| HR data                                 | Conditionally approved |
+| GDPR assessment                         | Completed and positive |
+| Data governance review                  | Completed              |
+| Security review                         | Completed              |
+| EU AI Act risk indicator                | potential_high_risk    |
+| Learner decision impact                 | advisory_only          |
 
 The HR knowledge source is conditionally approved and requires stricter retrieval filtering before full rollout.
 
@@ -73,31 +73,31 @@ The agent operates in an employee-related learning context. This creates sensiti
 
 ## 5. Audit domain scores
 
-| Domain | Score | Notes |
-| --- | ---: | --- |
-| Inventory | 100 | Complete agent identity, ownership, environment, business unit, process and connector details. |
-| Governance | 80 | Pilot approval exists and ownership is defined. Some escalation and exception ownership gaps require clarification across Academy, HR and Legal. |
-| Security | 85 | Security review completed. RBAC, least privilege, audit logging, monitoring and incident response owner are assigned. |
-| Policy | 82 | AI, data governance and GDPR reviews are completed. HR knowledge source is conditionally approved and requires stronger retrieval controls before production expansion. |
-| Process | 78 | Process alignment is clear with Learn-to-Certify. Advisory use is limited. Exception handling and escalation are defined, but cross-department SLA clarity is still needed. |
+| Domain     | Score | Notes                                                                                                                                                                       |
+| ---------- | ----: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Inventory  |   100 | Complete agent identity, ownership, environment, business unit, process and connector details.                                                                              |
+| Governance |    80 | Pilot approval exists and ownership is defined. Some escalation and exception ownership gaps require clarification across Academy, HR and Legal.                            |
+| Security   |    85 | Security review completed. RBAC, least privilege, audit logging, monitoring and incident response owner are assigned.                                                       |
+| Policy     |    82 | AI, data governance and GDPR reviews are completed. HR knowledge source is conditionally approved and requires stronger retrieval controls before production expansion.     |
+| Process    |    78 | Process alignment is clear with Learn-to-Certify. Advisory use is limited. Exception handling and escalation are defined, but cross-department SLA clarity is still needed. |
 
 ---
 
 ## 6. Weighted readiness score
 
-| Domain | Score | Weight | Weighted contribution |
-| --- | ---: | ---: | ---: |
-| Inventory | 100 | 15% | 15.00 |
-| Governance | 80 | 25% | 20.00 |
-| Security | 85 | 25% | 21.25 |
-| Policy | 82 | 20% | 16.40 |
-| Process | 78 | 15% | 11.70 |
+| Domain     | Score | Weight | Weighted contribution |
+| ---------- | ----: | -----: | --------------------: |
+| Inventory  |   100 |    15% |                 15.00 |
+| Governance |    80 |    25% |                 20.00 |
+| Security   |    85 |    25% |                 21.25 |
+| Policy     |    82 |    20% |                 16.40 |
+| Process    |    78 |    15% |                 11.70 |
 
 Calculated weighted readiness score:
 
 ```text
 15 + 20 + 21.25 + 16.4 + 11.7 = 84.35 ≈ 84
-````
+```
 
 Final score cap: because the agent is in controlled pilot scope with conditional pilot approval, a final score cap of maximum 84 applies.
 
@@ -271,21 +271,21 @@ The overall readiness score of 84 aligns with controlled pilot conditional appro
 
 ## 12. Required remediation plan
 
-* Clarify and formalize cross-department ownership and escalation responsibilities for certification exceptions involving Academy, HR and Legal.
-* Implement stricter retrieval filtering for HR knowledge sources before full production rollout.
-* Define and document clear Service Level Agreements for exception handling and escalation timing.
-* Continue pilot monitoring, sampling review and operational readiness validation before expanding deployment beyond pilot scope.
-* Prepare for full production approval by resolving operational control gaps and governance clarity.
+- Clarify and formalize cross-department ownership and escalation responsibilities for certification exceptions involving Academy, HR and Legal.
+- Implement stricter retrieval filtering for HR knowledge sources before full production rollout.
+- Define and document clear Service Level Agreements for exception handling and escalation timing.
+- Continue pilot monitoring, sampling review and operational readiness validation before expanding deployment beyond pilot scope.
+- Prepare for full production approval by resolving operational control gaps and governance clarity.
 
 ---
 
 ## 13. Human approval checklist
 
-* Human approval gate is implemented for certification exceptions, disputed eligibility, mandatory training conflicts, learner complaints and policy interpretation conflicts.
-* Escalation path is defined with assigned escalation owner: Academy Manager.
-* Cross-department escalation roles still require clarification.
-* Exception handling procedures are in place for learner support scenarios.
-* Certification exception operational ownership still needs formalization.
+- Human approval gate is implemented for certification exceptions, disputed eligibility, mandatory training conflicts, learner complaints and policy interpretation conflicts.
+- Escalation path is defined with assigned escalation owner: Academy Manager.
+- Cross-department escalation roles still require clarification.
+- Exception handling procedures are in place for learner support scenarios.
+- Certification exception operational ownership still needs formalization.
 
 ---
 
@@ -295,11 +295,9 @@ Re-audit is recommended before transition from controlled pilot to full producti
 
 The re-audit should verify remediation completion for:
 
-* governance clarity;
-* operational SLAs;
-* HR knowledge-source controls;
-* confirmed full production approval.
+- governance clarity;
+- operational SLAs;
+- HR knowledge-source controls;
+- confirmed full production approval.
 
 Continued monitoring and sampling review during pilot deployment are recommended to confirm control effectiveness.
-
-

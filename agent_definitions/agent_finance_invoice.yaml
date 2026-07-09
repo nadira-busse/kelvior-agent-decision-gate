@@ -40,7 +40,7 @@ business_context:
 
 ownership:
   business_owner: Finance Operations Manager
-  technical_owner: "ERP Automation Lead "
+  technical_owner: "ERP Automation Lead"
   deputy_business_owner: null
   executive_sponsor: null
   support_team: Finance Operations

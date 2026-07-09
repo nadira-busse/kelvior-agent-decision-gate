@@ -33,12 +33,14 @@ status: planned
 last_updated: 2026-06-12
 ---
 
-# HR Onboarding Helper Agent Evidence
+Document ID: KEL-AGT-HRO-001  
+Document title: HR Onboarding Helper Agent Evidence  
+Foundry IQ source document: 11_hr_onboarding_helper_evidence.md  
+Evidence role: Agent-specific evidence for HR Onboarding Helper deployment readiness assessment, grounded through KB-DAI with restricted HR policy context from KB-HR  
 
-Document ID: KEL-AGT-HRO-001   
-Document title: HR Onboarding Helper Agent Evidence 
-Foundry IQ source document: 11_hr_onboarding_helper_evidence.md 
-Evidence role: Agent-specific evidence for HR Onboarding Helper deployment readiness assessment, grounded through KB-DAI with restricted HR policy context from KB-HR
+---
+
+# HR Onboarding Helper Agent Evidence
 
 ## Document Metadata
 

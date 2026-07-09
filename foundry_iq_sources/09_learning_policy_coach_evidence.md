@@ -24,6 +24,16 @@ data_status: synthetic
 confidentiality: public_demo_safe
 ---
 
+Document ID: KEL-AGT-ACD-001
+
+Document title: Learning Policy Coach Agent Evidence
+
+Foundry IQ source document: 09_learning_policy_coach_evidence.md
+
+Evidence role: Agent-specific evidence for Learning Policy Coach deployment readiness assessment.
+
+---
+
 # Learning Policy Coach Agent Evidence
 
 ## 1. Document Purpose

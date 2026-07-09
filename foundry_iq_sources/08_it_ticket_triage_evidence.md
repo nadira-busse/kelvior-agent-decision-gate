@@ -24,8 +24,6 @@ data_status: synthetic
 confidentiality: public_demo_safe
 ---
 
-# IT Ticket Triage Agent Evidence
-
 Document ID: KEL-AGT-ITO-001  
 
 Document title: IT Ticket Triage Agent Evidence  
@@ -33,6 +31,10 @@ Document title: IT Ticket Triage Agent Evidence
 Foundry IQ source document: 08_it_ticket_triage_evidence.md  
 
 Evidence role: Agent-specific evidence for IT Ticket Triage deployment readiness assessment
+
+---
+
+# IT Ticket Triage Agent Evidence
 
 ## 1. Document Purpose
 

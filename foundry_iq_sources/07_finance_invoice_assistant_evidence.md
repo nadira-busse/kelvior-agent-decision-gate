@@ -23,6 +23,16 @@ data_status: synthetic
 confidentiality: public_demo_safe
 ---
 
+Document ID: KEL-AGT-FIN-001
+
+Document title: Finance Invoice Assistant Agent Evidence
+
+Foundry IQ source document: 07_finance_invoice_assistant_evidence.md
+
+Evidence role: Agent-specific evidence for Finance Invoice Assistant deployment readiness assessment.
+
+---
+
 # Finance Invoice Assistant Agent Evidence
 
 ## 1. Purpose

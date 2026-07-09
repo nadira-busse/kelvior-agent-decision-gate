@@ -3,7 +3,7 @@
 ## 1. Agent summary
 
 | Field                 | Value            |
-|-----------------------|------------------|
+| --------------------- | ---------------- |
 | Agent ID              | AGT-ITO-TKT-001  |
 | Name                  | IT Ticket Triage |
 | Version               | 1.1              |
@@ -21,17 +21,17 @@ The IT Ticket Triage agent supports IT Operations by classifying incoming Servic
 
 ## 2. Business context
 
-| Field               | Value                    |
-|---------------------|--------------------------|
-| Business unit ID    | BU-DIG                   |
-| Business unit name  | Kelvior Digital          |
-| Department ID       | DEP-ITO                  |
-| Department name     | IT Operations            |
-| Process ID          | P06                      |
-| Process name        | Incident-to-Recovery     |
-| Process owner       | IT Operations            |
+| Field               | Value                                                                 |
+| ------------------- | --------------------------------------------------------------------- |
+| Business unit ID    | BU-DIG                                                                |
+| Business unit name  | Kelvior Digital                                                       |
+| Department ID       | DEP-ITO                                                               |
+| Department name     | IT Operations                                                         |
+| Process ID          | P06                                                                   |
+| Process name        | Incident-to-Recovery                                                  |
+| Process owner       | IT Operations                                                         |
 | Business capability | Incident triage, priority suggestion, assignment group recommendation |
-| Primary user groups | Service Desk Analysts, Service Desk Lead, IT Operations team |
+| Primary user groups | Service Desk Analysts, Service Desk Lead, IT Operations team          |
 
 Agent is aligned with IT Operations Incident-to-Recovery process providing classification and recommendation support.
 
@@ -44,7 +44,7 @@ System of record: ServiceNow ITSM
 MCP connector:
 
 | Connector ID | Name                   | Target System   | Access Type              | Controlled Actions Enabled | Write Access Enabled | Production Use Approved |
-|--------------|------------------------|-----------------|--------------------------|----------------------------|----------------------|-------------------------|
+| ------------ | ---------------------- | --------------- | ------------------------ | -------------------------- | -------------------- | ----------------------- |
 | MCP-ITSM     | Kelvior ITSM Connector | ServiceNow ITSM | read_recommendation_only | false                      | false                | true                    |
 
 All MCP tools used are approved and limited to read or recommendation actions.
@@ -52,7 +52,7 @@ All MCP tools used are approved and limited to read or recommendation actions.
 ## 4. Data classification
 
 | Data Type                  | Status |
-|----------------------------|--------|
+| -------------------------- | ------ |
 | Financial data             | False  |
 | Personal data              | False  |
 | Restricted data            | False  |
@@ -66,11 +66,11 @@ Prohibited data scope includes privileged credentials, secrets, production syste
 
 ## 5. Audit domain scores
 
-| Domain     | Score | Notes                                                                                     |
-|------------|-------|-------------------------------------------------------------------------------------------|
+| Domain     | Score | Notes                                                                                    |
+| ---------- | ----- | ---------------------------------------------------------------------------------------- |
 | Inventory  | 100   | Complete agent identity, owners, business unit, department, process, systems, connectors |
 | Governance | 95    | Business & technical owners defined, accountable, full production approval, human gate   |
-| Security   | 95    | Security review completed, least privilege, RBAC, audit logging and monitoring active     |
+| Security   | 95    | Security review completed, least privilege, RBAC, audit logging and monitoring active    |
 | Policy     | 95    | Data governance review completed, complies with AI, data and security policy             |
 | Process    | 95    | Clear process alignment, operational boundaries, exception handling, escalation defined  |
 
@@ -86,13 +86,14 @@ No final score cap applies since full production approval and no remediation is 
 
 ## 7. Mandatory blocking rule evaluation
 
-No mandatory blocking conditions triggered:  
-- Full production approval is evidenced.  
-- Agent is read-only, recommendation-only with mandatory human approval gate.  
-- Audit logging, monitoring, security review, incident response plan are complete and active.  
-- No restricted confidential data processed.  
-- Escalation path and exception handling are defined.  
-- No write or controlled actions enabled without human approval.  
+No mandatory blocking conditions triggered:
+
+- Full production approval is evidenced.
+- Agent is read-only, recommendation-only with mandatory human approval gate.
+- Audit logging, monitoring, security review, incident response plan are complete and active.
+- No restricted confidential data processed.
+- Escalation path and exception handling are defined.
+- No write or controlled actions enabled without human approval.
 
 ## 8. Findings by domain
 
@@ -148,17 +149,20 @@ Citation or source reference: Business process P06 Incident-to-Recovery, IT Oper
 
 ## 10. Risk assessment
 
-Triggered risks:  
-* None identified.
+Triggered risks:
 
-Mitigated or not-triggered risks:  
-- Medium risk level aligned with agent data scope and use case.  
-- Security review completed, audit logging and monitoring active mitigates operational risks.  
-- Human approval gate prevents unauthorized write actions.  
+- None identified.
+
+Mitigated or not-triggered risks:
+
+- Medium risk level aligned with agent data scope and use case.
+- Security review completed, audit logging and monitoring active mitigates operational risks.
+- Human approval gate prevents unauthorized write actions.
 - Data governance review completed mitigates data handling risks.
 
-Not applicable risks:  
-- Financial, HR confidential, customer personal data risks not applicable due to data scope.  
+Not applicable risks:
+
+- Financial, HR confidential, customer personal data risks not applicable due to data scope.
 - Write-capable controlled actions risk not applicable due to read-only, recommendation-only design.
 
 ## 11. Deployment verdict
@@ -171,9 +175,9 @@ No required remediation. Optional continuous improvement items only.
 
 ## 13. Human approval checklist
 
-- Human approval gate is enabled and mandatory for all recommendations that affect ticket priority, assignment group, or incident status.  
-- Approved user roles defined: Service Desk Analyst, Service Desk Lead.  
-- Required human decision points confirmed and operational.  
+- Human approval gate is enabled and mandatory for all recommendations that affect ticket priority, assignment group, or incident status.
+- Approved user roles defined: Service Desk Analyst, Service Desk Lead.
+- Required human decision points confirmed and operational.
 
 ## 14. Re-audit recommendation
 

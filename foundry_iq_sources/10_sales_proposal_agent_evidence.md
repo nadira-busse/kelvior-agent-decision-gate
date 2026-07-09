@@ -36,6 +36,16 @@ status: active
 last_updated: 2026-06-12
 ---
 
+Document ID: KEL-AGT-SAL-001
+
+Document title: Sales Proposal Agent Evidence
+
+Foundry IQ source document: 10_sales_proposal_agent_evidence.md
+
+Evidence role: Agent-specific evidence for Sales Proposal Agent deployment readiness assessment.
+
+---
+
 # Sales Proposal Agent Deployment Readiness Evidence
 
 ## 1. Evidence purpose

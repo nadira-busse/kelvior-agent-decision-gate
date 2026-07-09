@@ -30,22 +30,22 @@ Document title: Kelvior Security Policy for AI Agents
 Foundry IQ source document: 04_kelvior_security_policy.md  
 Evidence role: Security policy evidence for access control, audit logging, monitoring, incident response and least-privilege assessment  
 Primary logical KB: KB-DAI  
-Related logical KB: KB-IT  
+Related logical KB: KB-IT
 
 ## Document Metadata
 
-| Field | Value |
-| --- | --- |
-| Document ID | KEL-SEC-SECPOL-001 |
-| Title | Kelvior Security Policy for AI Agents |
-| Evidence role | Security policy evidence for access control, audit logging, monitoring, incident response and least-privilege assessment |
-| Foundry IQ source document | 04_kelvior_security_policy.md |
-| Source set | Kelvior Agent Decision Gate Foundry IQ Source Set |
-| Project | Kelvior Agent Decision Gate |
-| Primary logical KB | KB-DAI |
-| Related logical KB | KB-IT |
-| Data status | synthetic |
-| Confidentiality | public_demo_safe |
+| Field                      | Value                                                                                                                    |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Document ID                | KEL-SEC-SECPOL-001                                                                                                       |
+| Title                      | Kelvior Security Policy for AI Agents                                                                                    |
+| Evidence role              | Security policy evidence for access control, audit logging, monitoring, incident response and least-privilege assessment |
+| Foundry IQ source document | 04_kelvior_security_policy.md                                                                                            |
+| Source set                 | Kelvior Agent Decision Gate Foundry IQ Source Set                                                                        |
+| Project                    | Kelvior Agent Decision Gate                                                                                              |
+| Primary logical KB         | KB-DAI                                                                                                                   |
+| Related logical KB         | KB-IT                                                                                                                    |
+| Data status                | synthetic                                                                                                                |
+| Confidentiality            | public_demo_safe                                                                                                         |
 
 ## 1. Purpose
 
@@ -53,11 +53,11 @@ This policy defines security requirements for AI agents that access Kelvior ente
 
 It supports the Kelvior Agent Decision Gate by providing security evidence for readiness assessment across five audit domains:
 
-* Inventory
-* Governance
-* Security
-* Policy
-* Process
+- Inventory
+- Governance
+- Security
+- Policy
+- Process
 
 This document does not define final deployment verdicts for any specific agent. It provides security policy evidence only.
 
@@ -65,14 +65,14 @@ This document does not define final deployment verdicts for any specific agent. 
 
 This policy applies to AI agents that:
 
-* access enterprise applications;
-* use MCP connectors or system integrations;
-* retrieve enterprise knowledge;
-* process confidential or restricted data;
-* generate recommendations for business users;
-* support finance, HR, IT, sales, academy or operational workflows;
-* perform controlled or write-capable actions;
-* operate in pilot, active or production-like environments.
+- access enterprise applications;
+- use MCP connectors or system integrations;
+- retrieve enterprise knowledge;
+- process confidential or restricted data;
+- generate recommendations for business users;
+- support finance, HR, IT, sales, academy or operational workflows;
+- perform controlled or write-capable actions;
+- operate in pilot, active or production-like environments.
 
 The policy applies to Microsoft Foundry agents, Foundry IQ-grounded agents and agents connected to ERP, CRM, HRMS, ITSM, LMS or Microsoft 365 systems.
 
@@ -80,14 +80,14 @@ The policy applies to Microsoft Foundry agents, Foundry IQ-grounded agents and a
 
 A security review is required when an AI agent:
 
-* accesses an enterprise system;
-* uses an MCP connector;
-* processes confidential data;
-* processes restricted data;
-* performs controlled or write-capable actions;
-* influences financial, HR, legal, compliance or operational workflows;
-* retrieves security-sensitive enterprise documents;
-* is active in production or production-like use.
+- accesses an enterprise system;
+- uses an MCP connector;
+- processes confidential data;
+- processes restricted data;
+- performs controlled or write-capable actions;
+- influences financial, HR, legal, compliance or operational workflows;
+- retrieves security-sensitive enterprise documents;
+- is active in production or production-like use.
 
 Agents without required security review evidence are not ready for production deployment.
 
@@ -116,11 +116,11 @@ AI agents must operate with least-privilege access.
 
 Least privilege means the agent may only access:
 
-* systems required for its approved business purpose;
-* documents required for its approved knowledge scope;
-* records required for its approved process role;
-* actions required for its approved capability scope;
-* data classifications permitted by policy and approval evidence.
+- systems required for its approved business purpose;
+- documents required for its approved knowledge scope;
+- records required for its approved process role;
+- actions required for its approved capability scope;
+- data classifications permitted by policy and approval evidence.
 
 Agents must not receive broad enterprise access when a narrower retrieval or connector scope is sufficient.
 
@@ -146,23 +146,23 @@ Connector permissions must be reviewed before production use.
 
 Audit logging is required for AI agents that:
 
-* operate in production or active use;
-* access confidential or restricted data;
-* use enterprise system connectors;
-* perform controlled or write-capable actions;
-* generate finance, HR, legal, compliance or operational recommendations;
-* retrieve enterprise policy or security evidence;
-* require human approval gates.
+- operate in production or active use;
+- access confidential or restricted data;
+- use enterprise system connectors;
+- perform controlled or write-capable actions;
+- generate finance, HR, legal, compliance or operational recommendations;
+- retrieve enterprise policy or security evidence;
+- require human approval gates.
 
 Audit logs should capture:
 
-* user request;
-* retrieved evidence references where available;
-* agent recommendation or output;
-* human approval decision where required;
-* connector or system action where applicable;
-* timestamp;
-* responsible user, business owner or process owner where applicable.
+- user request;
+- retrieved evidence references where available;
+- agent recommendation or output;
+- human approval decision where required;
+- connector or system action where applicable;
+- timestamp;
+- responsible user, business owner or process owner where applicable.
 
 Agents with disabled or missing audit logging create a security and governance risk.
 
@@ -174,15 +174,15 @@ Active or production-like AI agents must have monitoring expectations.
 
 Monitoring should detect:
 
-* unexpected or unsafe outputs;
-* unauthorized access attempts;
-* repeated failed retrieval;
-* policy violations;
-* missing approval events;
-* connector failures;
-* unusual system interaction patterns;
-* user-reported errors;
-* process exceptions.
+- unexpected or unsafe outputs;
+- unauthorized access attempts;
+- repeated failed retrieval;
+- policy violations;
+- missing approval events;
+- connector failures;
+- unusual system interaction patterns;
+- user-reported errors;
+- process exceptions.
 
 Monitoring responsibility must be assigned before production readiness can be confirmed.
 
@@ -194,13 +194,13 @@ AI agents must have an incident response owner when they access enterprise syste
 
 Incident response evidence should include:
 
-* named incident response owner;
-* escalation path;
-* severity classification approach;
-* process for disabling or restricting the agent;
-* process for reviewing logs and retrieved evidence;
-* re-audit requirement after security incidents;
-* communication path to business and technical owners.
+- named incident response owner;
+- escalation path;
+- severity classification approach;
+- process for disabling or restricting the agent;
+- process for reviewing logs and retrieved evidence;
+- re-audit requirement after security incidents;
+- communication path to business and technical owners.
 
 Agents without incident response ownership are not ready for production deployment.
 
@@ -212,15 +212,15 @@ Finance agents require heightened security controls when they access invoice, ve
 
 Finance agents must provide evidence for:
 
-* security review;
-* data governance review;
-* least-privilege ERP access;
-* connector permission review;
-* audit logging;
-* monitoring;
-* human approval gate for payment-related recommendations or status changes;
-* incident response ownership;
-* re-audit after remediation or capability change.
+- security review;
+- data governance review;
+- least-privilege ERP access;
+- connector permission review;
+- audit logging;
+- monitoring;
+- human approval gate for payment-related recommendations or status changes;
+- incident response ownership;
+- re-audit after remediation or capability change.
 
 A finance agent with ERP access, confidential data and missing security review creates a high security risk.
 
@@ -230,15 +230,15 @@ HR agents require heightened controls because they may access employee or restri
 
 HR agents must provide evidence for:
 
-* security review;
-* HR data owner approval;
-* restricted data handling;
-* privacy or GDPR review where applicable;
-* least-privilege access;
-* audit logging;
-* monitoring;
-* escalation path;
-* incident response ownership.
+- security review;
+- HR data owner approval;
+- restricted data handling;
+- privacy or GDPR review where applicable;
+- least-privilege access;
+- audit logging;
+- monitoring;
+- escalation path;
+- incident response ownership.
 
 HR-specific evidence is included in this source set for HR Onboarding Helper readiness assessment.
 
@@ -248,14 +248,14 @@ IT operations agents may access incident, change or asset records.
 
 IT operations agents must provide evidence for:
 
-* ServiceNow or ITSM access scope;
-* recommendation-only or action-capable status;
-* assignment-group review;
-* audit logging;
-* monitoring;
-* incident response ownership;
-* escalation path;
-* production approval where applicable.
+- ServiceNow or ITSM access scope;
+- recommendation-only or action-capable status;
+- assignment-group review;
+- audit logging;
+- monitoring;
+- incident response ownership;
+- escalation path;
+- production approval where applicable.
 
 Recommendation-only IT triage agents with human oversight, logging and monitoring may present lower deployment risk than agents that execute changes autonomously.
 
@@ -267,74 +267,74 @@ Evidence source: KEL-SEC-SECPOL-001 — 04_kelvior_security_policy.md
 
 The agent must identify:
 
-* primary systems;
-* connectors;
-* access scope;
-* data classification;
-* risk level;
-* business owner;
-* technical owner;
-* operational owner where applicable.
+- primary systems;
+- connectors;
+- access scope;
+- data classification;
+- risk level;
+- business owner;
+- technical owner;
+- operational owner where applicable.
 
 ### Governance
 
 The agent must show:
 
-* accountable business owner;
-* accountable technical owner;
-* security review status;
-* production approval status;
-* incident response ownership;
-* risk acceptance where applicable.
+- accountable business owner;
+- accountable technical owner;
+- security review status;
+- production approval status;
+- incident response ownership;
+- risk acceptance where applicable.
 
 ### Security
 
 The agent must show:
 
-* least-privilege access;
-* connector permission review;
-* audit logging;
-* monitoring;
-* incident response owner;
-* escalation path;
-* authentication and authorization scope.
+- least-privilege access;
+- connector permission review;
+- audit logging;
+- monitoring;
+- incident response owner;
+- escalation path;
+- authentication and authorization scope.
 
 ### Policy
 
 The agent must comply with:
 
-* security policy;
-* AI policy;
-* data governance policy;
-* approval procedure;
-* process-specific access controls.
+- security policy;
+- AI policy;
+- data governance policy;
+- approval procedure;
+- process-specific access controls.
 
 ### Process
 
 The agent must map security controls to:
 
-* business process;
-* process owner;
-* human review point;
-* operational support model;
-* exception handling;
-* re-audit triggers.
+- business process;
+- process owner;
+- human review point;
+- operational support model;
+- exception handling;
+- re-audit triggers.
 
 ## 14. Minimum Security Readiness Controls
 
 An AI agent is not security-ready unless the following are evidenced where applicable:
 
-* system access scope;
-* connector access scope;
-* least-privilege validation;
-* authentication model;
-* authorization model;
-* security review;
-* audit logging;
-* monitoring;
-* incident response owner;
-* escalation path;
-* re-audit trigger.
+- system access scope;
+- connector access scope;
+- least-privilege validation;
+- authentication model;
+- authorization model;
+- security review;
+- audit logging;
+- monitoring;
+- incident response owner;
+- escalation path;
+- re-audit trigger.
 
 ## 15. Use in Kelvior Agent Decision Gate
 

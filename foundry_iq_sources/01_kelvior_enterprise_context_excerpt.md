@@ -46,18 +46,17 @@ Evidence role: Enterprise context evidence for Kelvior Agent Decision Gate deplo
 
 Evidence source: KEL-ENT-CTX-001 — 01_kelvior_enterprise_context_excerpt.md
 
-
 ## 1. Purpose
 
 This document provides a focused enterprise context excerpt for the Kelvior Agent Decision Gate project.
 
 It is designed as a Foundry IQ grounding source for evaluating whether AI agents are ready for enterprise deployment. The document gives the reasoning agent enough organizational, application, process and knowledge architecture context to assess agent readiness across five audit domains:
 
-* Inventory
-* Governance
-* Security
-* Policy
-* Process
+- Inventory
+- Governance
+- Security
+- Policy
+- Process
 
 This excerpt is derived from the broader Kelvior Systems Enterprise Environment V3.0. It intentionally excludes broad operational detail that is not required for the deployment-readiness demo.
 
@@ -79,10 +78,10 @@ Kelvior Corporate owns executive functions, HR, Finance, Legal and enterprise go
 
 Relevant departments:
 
-* DEP-FIN — Finance
-* DEP-HR — Human Resources
-* DEP-LEG — Legal
-* DEP-STR — Corporate Strategy
+- DEP-FIN — Finance
+- DEP-HR — Human Resources
+- DEP-LEG — Legal
+- DEP-STR — Corporate Strategy
 
 ### BU-DIG — Kelvior Digital
 
@@ -92,9 +91,9 @@ Kelvior Digital owns AI, data platforms, workflow automation, integrations, IT o
 
 Relevant departments:
 
-* DEP-DAI — Data & AI
-* DEP-ITO — IT Operations
-* DEP-SEC — Security & Compliance
+- DEP-DAI — Data & AI
+- DEP-ITO — IT Operations
+- DEP-SEC — Security & Compliance
 
 ### BU-ACD — Kelvior Academy
 
@@ -106,7 +105,7 @@ Relevant department:
 
 Evidence source: KEL-ENT-CTX-001 — 01_kelvior_enterprise_context_excerpt.md
 
-* DEP-ACD — Academy
+- DEP-ACD — Academy
 
 ### BU-OUT — Kelvior Outdoor
 
@@ -116,9 +115,9 @@ Kelvior Outdoor includes sales, product management and marketing activities. It 
 
 Relevant departments:
 
-* DEP-SAL — Sales
-* DEP-PM — Product Management
-* DEP-MKT — Marketing
+- DEP-SAL — Sales
+- DEP-PM — Product Management
+- DEP-MKT — Marketing
 
 ## 4. Relevant Departments for AI-Agent Readiness
 
@@ -130,13 +129,13 @@ Data & AI is responsible for AI platform design, data governance alignment, AI-a
 
 Primary readiness concerns:
 
-* AI-agent inventory
-* Model and agent lifecycle governance
-* Data source traceability
-* Knowledge grounding
-* AI safety controls
-* Evaluation evidence
-* Foundry IQ knowledge architecture
+- AI-agent inventory
+- Model and agent lifecycle governance
+- Data source traceability
+- Knowledge grounding
+- AI safety controls
+- Evaluation evidence
+- Foundry IQ knowledge architecture
 
 ### DEP-SEC — Security & Compliance
 
@@ -146,12 +145,12 @@ Security & Compliance is responsible for security review, access controls, monit
 
 Primary readiness concerns:
 
-* Security review completion
-* Least-privilege access
-* External system access
-* Audit logging
-* Monitoring
-* Incident response readiness
+- Security review completion
+- Least-privilege access
+- External system access
+- Audit logging
+- Monitoring
+- Incident response readiness
 
 ### DEP-FIN — Finance
 
@@ -161,12 +160,12 @@ Finance owns financial operations, invoice processes, payment workflows and fina
 
 Primary readiness concerns:
 
-* Financial data handling
-* Payment-related system actions
-* Segregation of duties
-* Human approval gates
-* Audit logging
-* Financial risk exposure
+- Financial data handling
+- Payment-related system actions
+- Segregation of duties
+- Human approval gates
+- Audit logging
+- Financial risk exposure
 
 ### DEP-ITO — IT Operations
 
@@ -176,11 +175,11 @@ IT Operations owns production support, incident management, service recovery and
 
 Primary readiness concerns:
 
-* Production readiness
-* Incident-to-recovery process integration
-* Operational monitoring
-* Support ownership
-* Change management
+- Production readiness
+- Incident-to-recovery process integration
+- Operational monitoring
+- Support ownership
+- Change management
 
 ## 5. Relevant Application Landscape
 
@@ -192,9 +191,9 @@ Dynamics 365 Business Central is Kelvior’s ERP system for orders, invoices and
 
 Readiness relevance:
 
-* Finance agents may read or update invoice/payment-related records.
-* Any agent with write-capable finance actions requires strict approval, audit logging and human oversight.
-* Payment-status updates or payment recommendations are high-risk when not controlled by human approval gates.
+- Finance agents may read or update invoice/payment-related records.
+- Any agent with write-capable finance actions requires strict approval, audit logging and human oversight.
+- Payment-status updates or payment recommendations are high-risk when not controlled by human approval gates.
 
 ### Dynamics 365 Sales
 
@@ -202,9 +201,9 @@ Dynamics 365 Sales is Kelvior’s CRM system for customers, leads and opportunit
 
 Readiness relevance:
 
-* Sales agents may access customer and opportunity data.
-* Read-only access is lower risk than external sending, pricing approval or contract generation.
-* Human review remains required for customer-facing commitments.
+- Sales agents may access customer and opportunity data.
+- Read-only access is lower risk than external sending, pricing approval or contract generation.
+- Human review remains required for customer-facing commitments.
 
 ### Workday HRMS
 
@@ -212,8 +211,8 @@ Workday is Kelvior’s HR system for employees, managers and learning status.
 
 Readiness relevance:
 
-* HR agents may process personal or restricted HR data.
-* HR-related agents require privacy, GDPR, data governance and security review evidence.
+- HR agents may process personal or restricted HR data.
+- HR-related agents require privacy, GDPR, data governance and security review evidence.
 
 ### ServiceNow ITSM
 
@@ -221,8 +220,8 @@ ServiceNow is Kelvior’s IT service management system for incidents, changes an
 
 Readiness relevance:
 
-* IT triage agents may classify tickets, recommend priority and suggest assignment groups.
-* Recommendation-only agents with human oversight are lower risk than agents that execute changes autonomously.
+- IT triage agents may classify tickets, recommend priority and suggest assignment groups.
+- Recommendation-only agents with human oversight are lower risk than agents that execute changes autonomously.
 
 ### Moodle LMS
 
@@ -230,8 +229,8 @@ Moodle is Kelvior’s learning management system for courses, enrollments and ce
 
 Readiness relevance:
 
-* Learning agents may retrieve course, training and certification information.
-* Certification exception handling and escalation rules should be defined before broader rollout.
+- Learning agents may retrieve course, training and certification information.
+- Certification exception handling and escalation rules should be defined before broader rollout.
 
 ### Microsoft 365
 
@@ -239,8 +238,8 @@ Microsoft 365 is used for collaboration through SharePoint, Teams and Outlook.
 
 Readiness relevance:
 
-* Policy and governance documents may be stored in SharePoint.
-* Agents using collaboration data must respect permissions, confidentiality and information governance boundaries.
+- Policy and governance documents may be stored in SharePoint.
+- Agents using collaboration data must respect permissions, confidentiality and information governance boundaries.
 
 ## 6. Relevant Core Processes
 
@@ -254,9 +253,9 @@ End: Vendor paid
 
 Readiness relevance:
 
-* Finance invoice agents operate near payment and vendor-processing workflows.
-* Agents that influence invoice validation, payment recommendation or payment status require strong control evidence.
-* Human approval gates are mandatory for high-risk finance automation.
+- Finance invoice agents operate near payment and vendor-processing workflows.
+- Agents that influence invoice validation, payment recommendation or payment status require strong control evidence.
+- Human approval gates are mandatory for high-risk finance automation.
 
 ### P04 — Order-to-Cash
 
@@ -266,8 +265,8 @@ End: Invoice paid
 
 Readiness relevance:
 
-* Sales and finance agents may interact with customer, order and invoice information.
-* Customer-facing or financially material outputs require review and approval controls.
+- Sales and finance agents may interact with customer, order and invoice information.
+- Customer-facing or financially material outputs require review and approval controls.
 
 ### P06 — Incident-to-Recovery
 
@@ -277,8 +276,8 @@ End: Service restored
 
 Readiness relevance:
 
-* IT ticket triage agents support operational routing and prioritization.
-* Recommendation-only triage with audit logging and monitoring may be suitable for production if governance controls are complete.
+- IT ticket triage agents support operational routing and prioritization.
+- Recommendation-only triage with audit logging and monitoring may be suitable for production if governance controls are complete.
 
 ### P08 — Learn-to-Certify
 
@@ -288,8 +287,8 @@ End: Certification completed
 
 Readiness relevance:
 
-* Learning agents operate in training and certification workflows.
-* Certification-related recommendations require exception handling, escalation paths and learner support controls.
+- Learning agents operate in training and certification workflows.
+- Certification-related recommendations require exception handling, escalation paths and learner support controls.
 
 ## 7. Foundry IQ Knowledge Architecture
 
@@ -305,80 +304,80 @@ Evidence source: KEL-ENT-CTX-001 — 01_kelvior_enterprise_context_excerpt.md
 
 Scope:
 
-* Corporate policies
-* Strategy
-* Governance
-* Enterprise decision controls
+- Corporate policies
+- Strategy
+- Governance
+- Enterprise decision controls
 
 Readiness relevance:
 
-* Governance policy
-* Approval requirements
-* Risk acceptance
-* Accountability expectations
+- Governance policy
+- Approval requirements
+- Risk acceptance
+- Accountability expectations
 
 ### KB-DAI — Kelvior Data AI Knowledge
 
 Scope:
 
-* AI governance
-* Data governance
-* Foundry IQ guidance
-* AI-agent lifecycle controls
+- AI governance
+- Data governance
+- Foundry IQ guidance
+- AI-agent lifecycle controls
 
 Readiness relevance:
 
-* AI policy
-* Agent inventory
-* Knowledge grounding
-* Deployment readiness
-* Data governance review
-* Evaluation requirements
+- AI policy
+- Agent inventory
+- Knowledge grounding
+- Deployment readiness
+- Data governance review
+- Evaluation requirements
 
 ### KB-FIN — Kelvior Finance Knowledge
 
 Scope:
 
-* Finance and procurement policies
-* Invoice controls
-* Payment-related operating procedures
+- Finance and procurement policies
+- Invoice controls
+- Payment-related operating procedures
 
 Readiness relevance:
 
-* Finance agent approval
-* Payment workflow controls
-* Segregation of duties
-* Financial audit requirements
+- Finance agent approval
+- Payment workflow controls
+- Segregation of duties
+- Financial audit requirements
 
 ### KB-IT — Kelvior IT Operations Knowledge
 
 Scope:
 
-* IT operations
-* Security procedures
-* Production support controls
+- IT operations
+- Security procedures
+- Production support controls
 
 Readiness relevance:
 
-* Security review
-* Monitoring
-* Incident response
-* Operational ownership
-* Production readiness
+- Security review
+- Monitoring
+- Incident response
+- Operational ownership
+- Production readiness
 
 ### KB-HR — Kelvior HR Knowledge
 
 Scope:
 
-* Employee policies
-* HR procedures
-* HR data handling
+- Employee policies
+- HR procedures
+- HR data handling
 
 Readiness relevance:
 
-* HR data processing
-* Privacy review
-* Restricted personal data controls
+- HR data processing
+- Privacy review
+- Restricted personal data controls
 
 MVP note:
 
@@ -392,17 +391,17 @@ The Inventory domain verifies whether the agent is clearly identified, owned, cl
 
 Evidence may include:
 
-* Agent ID
-* Agent name
-* Business unit
-* Owner department
-* Business owner
-* Technical owner
-* Status
-* Primary systems
-* MCP connectors
-* Risk level
-* Data classification
+- Agent ID
+- Agent name
+- Business unit
+- Owner department
+- Business owner
+- Technical owner
+- Status
+- Primary systems
+- MCP connectors
+- Risk level
+- Data classification
 
 ### Governance
 
@@ -410,14 +409,14 @@ The Governance domain verifies whether the agent has appropriate accountability,
 
 Evidence may include:
 
-* Business owner
-* Technical owner
-* Production approval
-* Human approval gate
-* Escalation path
-* Governance review
-* AI lifecycle status
-* Risk acceptance
+- Business owner
+- Technical owner
+- Production approval
+- Human approval gate
+- Escalation path
+- Governance review
+- AI lifecycle status
+- Risk acceptance
 
 ### Security
 
@@ -425,13 +424,13 @@ The Security domain verifies whether the agent has appropriate access, monitorin
 
 Evidence may include:
 
-* Security review status
-* Access level
-* Least-privilege controls
-* Audit logging
-* Monitoring
-* Incident response readiness
-* External system access
+- Security review status
+- Access level
+- Least-privilege controls
+- Audit logging
+- Monitoring
+- Incident response readiness
+- External system access
 
 ### Policy
 
@@ -439,12 +438,12 @@ The Policy domain verifies whether the agent complies with AI policy, data gover
 
 Evidence may include:
 
-* AI policy alignment
-* Data governance review
-* Confidential or restricted data handling
-* Human oversight requirements
-* Approval procedure compliance
-* Policy exceptions
+- AI policy alignment
+- Data governance review
+- Confidential or restricted data handling
+- Human oversight requirements
+- Approval procedure compliance
+- Policy exceptions
 
 ### Process
 
@@ -452,13 +451,13 @@ The Process domain verifies whether the agent fits into an enterprise process an
 
 Evidence may include:
 
-* Process ID
-* Process owner
-* Start and end state
-* Human review points
-* Exception handling
-* Operational support owner
-* Re-audit requirement
+- Process ID
+- Process owner
+- Start and end state
+- Human review points
+- Exception handling
+- Operational support owner
+- Re-audit requirement
 
 ## 9. MCP and System Access Context
 
@@ -474,8 +473,8 @@ Access policy: read with controlled actions
 
 Readiness relevance:
 
-* Finance agents using MCP-ERP require strong controls if they can influence invoice or payment status.
-* Controlled actions must be paired with human approval, audit logging and monitoring.
+- Finance agents using MCP-ERP require strong controls if they can influence invoice or payment status.
+- Controlled actions must be paired with human approval, audit logging and monitoring.
 
 ### MCP-CRM
 
@@ -485,7 +484,7 @@ Access policy: read-only for agent queries
 
 Readiness relevance:
 
-* Read-only CRM access is lower risk than write access or customer-facing automated commitments.
+- Read-only CRM access is lower risk than write access or customer-facing automated commitments.
 
 ### MCP-HR
 
@@ -495,7 +494,7 @@ Access policy: restricted HR context
 
 Readiness relevance:
 
-* HR agents require strict privacy, data governance and security review controls.
+- HR agents require strict privacy, data governance and security review controls.
 
 ### MCP-ITSM
 
@@ -505,7 +504,7 @@ Access policy: support and IT agents
 
 Readiness relevance:
 
-* IT agents may support incident triage when actions remain advisory and human-controlled.
+- IT agents may support incident triage when actions remain advisory and human-controlled.
 
 ### MCP-LMS
 
@@ -515,7 +514,7 @@ Access policy: academy agent
 
 Readiness relevance:
 
-* Learning agents require certification exception handling and learner support controls.
+- Learning agents require certification exception handling and learner support controls.
 
 ## 10. Use in Kelvior Agent Decision Gate
 
@@ -523,19 +522,19 @@ The Kelvior Agent Decision Gate uses this context to support deployment-readines
 
 The Foundry reasoning agent uses retrieved enterprise evidence to produce an Agent Deployment Evidence Pack with:
 
-* Agent summary
-* Business context
-* Systems and MCP connectors
-* Data classification
-* Audit domain scores
-* Weighted readiness score
-* Mandatory blocking rule evaluation
-* Findings by domain
-* Evidence references
-* Risk assessment
-* Deployment verdict
-* Required remediation plan
-* Human approval checklist
-* Re-audit recommendation
+- Agent summary
+- Business context
+- Systems and MCP connectors
+- Data classification
+- Audit domain scores
+- Weighted readiness score
+- Mandatory blocking rule evaluation
+- Findings by domain
+- Evidence references
+- Risk assessment
+- Deployment verdict
+- Required remediation plan
+- Human approval checklist
+- Re-audit recommendation
 
 This context document does not define final verdicts for any specific agent. It provides the enterprise background needed to reason over separate agent evidence, policy evidence, approval evidence, security evidence and risk evidence.
