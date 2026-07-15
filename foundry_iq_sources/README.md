@@ -2,9 +2,9 @@
 
 This folder contains the focused Foundry IQ source set for **Kelvior Agent Decision Gate**.
 
-The files in this folder are input evidence for the Microsoft Foundry reasoning agent. They are not demo outputs, expected verdicts or generated Evidence Packs.
+The files in this folder are retrieval-ready evidence sources for the Microsoft Foundry reasoning agent. They are not demo outputs, expected verdicts or generated Evidence Packs.
 
-The purpose of this source set is to ground the reasoning agent in synthetic Kelvior enterprise evidence before it evaluates whether an AI agent is ready for deployment.
+The purpose of this source set is to give the reasoning agent synthetic Kelvior enterprise evidence to retrieve before it evaluates whether an AI agent is ready for deployment.
 
 ---
 
@@ -37,9 +37,9 @@ It should not be retrieved from a pre-written answer.
 
 The MVP uses one physical Foundry IQ knowledge base.
 
-That choice keeps the MVP manageable. Logical evidence boundaries are represented through document-level metadata and source-document separation, but they are not enforced as production access boundaries in this MVP.
+That choice keeps the MVP manageable. Logical evidence roles are represented through retrieval-visible document fields and source-document separation, but they are not enforced as production access boundaries in this MVP.
 
-The evidence documents include metadata fields such as:
+The evidence documents include retrieval-visible fields such as:
 
 - `kb_id`
 - `mvp_source_set`
@@ -59,7 +59,7 @@ The following documents are intended for the Foundry IQ upload set:
 
 | File                                       | Role                                                                                                                |
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
-| `00_evidence_source_manifest.md`           | Source registry for document IDs, titles, evidence roles and Foundry IQ source mapping.                             |
+| `00_evidence_source_manifest.md`           | Traceability registry for canonical document IDs, titles, evidence roles and Foundry IQ source mapping.                             |
 | `01_kelvior_enterprise_context_excerpt.md` | Enterprise context, systems, processes and logical knowledge architecture.                                          |
 | `02_kelvior_ai_policy.md`                  | AI governance, oversight and production-readiness requirements.                                                     |
 | `03_kelvior_data_governance_policy.md`     | Data classification, source ownership and sensitive-data review requirements.                                       |
@@ -118,14 +118,7 @@ The Markdown files support retrieval in Foundry IQ.
 
 The Markdown evidence documents include the operational facts needed for deployment-readiness assessment, but intentionally exclude assessment outcomes.
 
-The evidence documents do not include:
-
-- expected verdicts
-- actual verdicts
-- weighted scores
-- test results
-- demo results
-- Foundry-generated assessment outputs
+They intentionally exclude all expected or generated assessment outcomes listed above.
 
 This keeps the retrieval layer clean.
 
@@ -148,7 +141,7 @@ The manifest defines the authoritative:
 - evidence role
 - Foundry IQ source document
 
-The assessment output uses this mapping in Section 9 of each **Agent Deployment Evidence Pack**.
+The reasoning-agent instruction requires Section 9 of each Agent Deployment Evidence Pack to reference sources using this mapping.
 
 This helps prevent:
 
@@ -203,7 +196,7 @@ That would weaken the project.
 The Decision Gate should follow this chain:
 
 ```text
-source evidence → audit finding → risk assessment → remediation need → deployment verdict
+source evidence → finding → risk → verdict → remediation plan → re-audit
 ```
 
 Not this chain:

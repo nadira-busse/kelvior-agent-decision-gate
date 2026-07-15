@@ -1,207 +1,822 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1850" viewBox="0 0 1200 1850">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1400"
+     height="1800"
+     viewBox="0 0 1400 1800"
+     role="img"
+     aria-labelledby="title desc">
+
+  <title id="title">Kelvior Agent Decision Gate </title>
+
+  <desc id="desc">
+    Architecture for the Kelvior Agent Decision Gate, showing
+    source evidence, Foundry IQ retrieval, Microsoft Foundry reasoning,
+    Evidence Pack output, and the external human decision process.
+  </desc>
+
   <defs>
     <style>
-      .box {
-        fill: #eef0ff;
-        stroke: #8f84d8;
-        stroke-width: 1.5;
-        rx: 8;
-        ry: 8;
+      .page-title {
+        font: 700 34px Arial, Helvetica, sans-serif;
+        fill: #0f172a;
       }
-      .subgraph {
-        fill: #f2f1cf;
-        stroke: #b7b06c;
-        stroke-width: 1.5;
-        rx: 8;
-        ry: 8;
+
+      .section-title {
+        font: 700 18px Arial, Helvetica, sans-serif;
+        fill: #111827;
       }
-      .label {
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 16px;
-        fill: #333;
-        text-anchor: middle;
+
+      .box-title {
+        font: 700 15px Arial, Helvetica, sans-serif;
+        fill: #111827;
       }
+
+      .body {
+        font: 13px Arial, Helvetica, sans-serif;
+        fill: #1f2937;
+      }
+
       .small {
-        font-size: 15px;
+        font: 12px Arial, Helvetica, sans-serif;
+        fill: #374151;
       }
-      .subgraph-title {
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 18px;
-        fill: #333;
+
+      .tiny {
+        font: 10.5px Arial, Helvetica, sans-serif;
+        fill: #4b5563;
+      }
+
+      .center {
         text-anchor: middle;
       }
-      .arrow {
-        stroke: #4a4a4a;
-        stroke-width: 1.8;
+
+      .left {
+        text-anchor: start;
+      }
+
+      .box {
+        rx: 14;
+        ry: 14;
+        stroke-width: 1.5;
+      }
+
+      .source {
+        fill: #f8fafc;
+        stroke: #64748b;
+        stroke-dasharray: 6 5;
+      }
+
+      .retrieval {
+        fill: #eff6ff;
+        stroke: #3b82f6;
+      }
+
+      .governance {
+        fill: #f0fdf4;
+        stroke: #4f9b5f;
+      }
+
+      .tracebox {
+        fill: #fff7ed;
+        stroke: #f59e0b;
+      }
+
+      .concept {
+        fill: #fffaf5;
+        stroke: #f97316;
+        stroke-dasharray: 8 6;
+      }
+
+      .implemented {
+        fill: #f5f3ff;
+        stroke: #8b5cf6;
+      }
+
+      .agent {
+        fill: #fffbea;
+        stroke: #d4a72c;
+      }
+
+      .output {
+        fill: #ecfdf5;
+        stroke: #0f9f8f;
+      }
+
+      .external {
+        fill: #fff1f2;
+        stroke: #ef476f;
+      }
+
+      .legend {
+        fill: #ffffff;
+        stroke: #cbd5e1;
+      }
+
+      .flow {
+        stroke: #1f2937;
+        stroke-width: 1.4;
         fill: none;
-        marker-end: url(#arrowhead);
+        marker-end: url(#arrow);
+      }
+
+      .trace {
+        stroke: #b45309;
+        stroke-width: 1.3;
+        stroke-dasharray: 6 5;
+        fill: none;
+        marker-end: url(#arrowTrace);
+      }
+
+      .boundary {
+        stroke: #4f46e5;
+        stroke-width: 1.5;
+        stroke-dasharray: 10 7;
       }
     </style>
 
-    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#4a4a4a"/>
+    <marker
+      id="arrow"
+      markerWidth="8"
+      markerHeight="8"
+      refX="7"
+      refY="4"
+      orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#1f2937"/>
+    </marker>
+
+    <marker
+      id="arrowTrace"
+      markerWidth="8"
+      markerHeight="8"
+      refX="7"
+      refY="4"
+      orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#b45309"/>
     </marker>
   </defs>
 
-  <rect x="0" y="0" width="1200" height="1850" fill="#f2f2f2"/>
+  <rect width="1400" height="1800" fill="#ffffff"/>
 
-  <!-- Top row -->
-  <rect class="box" x="40" y="40" width="210" height="90"/>
-  <text class="label" x="145" y="78">
-    <tspan x="145" dy="0">Agent definitions</tspan>
-    <tspan x="145" dy="22">YAML reference files</tspan>
+  <text x="625" y="48" class="page-title center">
+    Kelvior Agent Decision Gate 
   </text>
 
-  <rect class="box" x="300" y="20" width="280" height="130"/>
-  <text class="label" x="440" y="58">
-    <tspan x="440" dy="0">Governance evidence</tspan>
-    <tspan x="440" dy="22">AI policy, data governance policy,</tspan>
-    <tspan x="440" dy="22">security policy, approval procedure,</tspan>
-    <tspan x="440" dy="22">risk register</tspan>
+  <!-- ========================================================= -->
+  <!-- SOURCE ROW                                                -->
+  <!-- ========================================================= -->
+
+  <rect
+    x="40"
+    y="95"
+    width="230"
+    height="120"
+    class="box source"/>
+
+  <text x="155" y="128" class="box-title center">
+    YAML agent definition
   </text>
 
-  <rect class="box" x="640" y="40" width="240" height="90"/>
-  <text class="label" x="760" y="78">
-    <tspan x="760" dy="0">Agent evidence documents</tspan>
-    <tspan x="760" dy="22">Retrieval-optimized Markdown</tspan>
+  <text x="155" y="164" class="body center">
+    Source-controlled reference
   </text>
 
-  <rect class="box" x="930" y="40" width="230" height="90"/>
-  <text class="label" x="1045" y="78">
-    <tspan x="1045" dy="0">Evidence Source Manifest</tspan>
-    <tspan x="1045" dy="22">Canonical document IDs</tspan>
-    <tspan x="1045" dy="22">Source traceability</tspan>
+  <rect
+    x="320"
+    y="95"
+    width="270"
+    height="120"
+    class="box retrieval"/>
+
+  <text x="455" y="128" class="box-title center">
+    Agent evidence documents
   </text>
 
-  <!-- Evidence source set -->
-  <rect class="box" x="470" y="210" width="220" height="60"/>
-  <text class="label" x="580" y="247">Evidence source set</text>
-
-  <!-- Arrows to source set -->
-  <path class="arrow" d="M145 130 C145 180, 240 200, 470 240"/>
-  <path class="arrow" d="M440 150 C440 185, 480 200, 540 210"/>
-  <path class="arrow" d="M760 130 C760 180, 700 200, 650 240"/>
-  <path class="arrow" d="M1045 130 C1045 180, 910 200, 690 240"/>
-
-  <!-- Ingestion -->
-  <rect class="box" x="410" y="330" width="340" height="170"/>
-  <text class="label" x="580" y="365">
-    <tspan x="580" dy="0">Ingestion Security &amp; Ethics Layer</tspan>
-    <tspan x="580" dy="22">MVP validation boundary</tspan>
-    <tspan x="580" dy="30">Sensitivity label validation</tspan>
-    <tspan x="580" dy="22">Allowed data scope validation</tspan>
-    <tspan x="580" dy="22">Input sanitization</tspan>
-    <tspan x="580" dy="22">Misuse prevention checks</tspan>
+  <text x="455" y="156" class="body center">
+    Retrieval-ready Markdown
   </text>
 
-  <path class="arrow" d="M580 270 L580 330"/>
-
-  <!-- KB -->
-  <rect class="box" x="440" y="560" width="280" height="95"/>
-  <text class="label" x="580" y="598">
-    <tspan x="580" dy="0">Foundry IQ Knowledge Base</tspan>
-    <tspan x="580" dy="28">Kelvior governance and agent evidence</tspan>
+  <text x="455" y="180" class="small center">
+    Purpose, scope, systems,
   </text>
 
-  <path class="arrow" d="M580 500 L580 560"/>
-
-  <!-- Retrieval -->
-  <rect class="box" x="420" y="715" width="320" height="110"/>
-  <text class="label" x="580" y="750">
-    <tspan x="580" dy="0">Evidence retrieval layer</tspan>
-    <tspan x="580" dy="24">Grounded Kelvior evidence</tspan>
-    <tspan x="580" dy="24">Policy, risk and source metadata</tspan>
+  <text x="455" y="198" class="small center">
+    data, actions and controls
   </text>
 
-  <path class="arrow" d="M580 655 L580 715"/>
+  <rect
+  x="640"
+  y="95"
+  width="290"
+  height="120"
+  class="box governance"/>
 
-  <!-- Reasoning agent subgraph -->
-  <rect class="subgraph" x="150" y="900" width="900" height="370"/>
-  <text class="subgraph-title" x="600" y="935">Microsoft Foundry Reasoning Agent</text>
-  <text class="subgraph-title" x="600" y="958">Kelvior Agent Decision Gate</text>
-
-  <!-- AGT_IN -->
-  <rect class="box" x="450" y="980" width="260" height="70"/>
-  <text class="label" x="580" y="1010">
-    <tspan x="580" dy="0">Retrieved evidence enters</tspan>
-    <tspan x="580" dy="24">Kelvior Agent Decision Gate</tspan>
+  <text x="785" y="122" class="box-title center">
+    Kelvior governance
   </text>
 
-  <path class="arrow" d="M580 825 L580 980"/>
-
-  <!-- Three internal boxes -->
-  <rect class="box" x="190" y="1090" width="220" height="150"/>
-  <text class="label small" x="300" y="1125">
-    <tspan x="300" dy="0">Five audit domains</tspan>
-    <tspan x="300" dy="22">Inventory 15%</tspan>
-    <tspan x="300" dy="22">Governance 25%</tspan>
-    <tspan x="300" dy="22">Security 25%</tspan>
-    <tspan x="300" dy="22">Policy 20%</tspan>
-    <tspan x="300" dy="22">Process 15%</tspan>
+  <text x="785" y="142" class="box-title center">
+    and risk evidence
   </text>
 
-  <rect class="box" x="470" y="1090" width="220" height="150"/>
-  <text class="label small" x="580" y="1125">
-    <tspan x="580" dy="0">Decision logic</tspan>
-    <tspan x="580" dy="22">Mandatory blocking rules</tspan>
-    <tspan x="580" dy="22">Weighted readiness score</tspan>
-    <tspan x="580" dy="22">Score caps</tspan>
-    <tspan x="580" dy="22">Risk assessment</tspan>
+  <text x="785" y="170" class="small center">
+  AI, data governance and security policy
+</text>
+
+<text x="785" y="188" class="small center">
+  Approval procedure and risk register
+</text>
+
+  <rect
+    x="960"
+    y="95"
+    width="230"
+    height="120"
+    class="box tracebox"/>
+
+  <text x="1075" y="128" class="box-title center">
+    Evidence Source Manifest
   </text>
 
-  <rect class="box" x="750" y="1090" width="220" height="150"/>
-  <text class="label small" x="860" y="1125">
-    <tspan x="860" dy="0">Evidence traceability</tspan>
-    <tspan x="860" dy="22">Section 9 source references</tspan>
-    <tspan x="860" dy="22">Manifest-based document IDs</tspan>
+  <text x="1075" y="158" class="body center">
+    Canonical document IDs
   </text>
 
-  <path class="arrow" d="M540 1050 C500 1065, 420 1075, 350 1090"/>
-  <path class="arrow" d="M580 1050 L580 1090"/>
-  <path class="arrow" d="M620 1050 C680 1065, 760 1075, 860 1090"/>
-
-  <!-- Evidence Pack -->
-  <rect class="box" x="430" y="1335" width="300" height="100"/>
-  <text class="label" x="580" y="1370">
-    <tspan x="580" dy="0">Agent Deployment Evidence Pack</tspan>
-    <tspan x="580" dy="30">14 sections</tspan>
+  <text x="1075" y="180" class="body center">
+    and evidence roles
   </text>
 
-  <path class="arrow" d="M300 1240 C300 1290, 420 1310, 500 1335"/>
-  <path class="arrow" d="M580 1240 L580 1335"/>
-  <path class="arrow" d="M860 1240 C860 1290, 740 1310, 660 1335"/>
+  <!-- YAML to Markdown representation -->
 
-  <!-- Bottom row -->
-  <rect class="box" x="25" y="1495" width="250" height="120"/>
-  <text class="label" x="150" y="1530">
-    <tspan x="150" dy="0">Deployment readiness verdict</tspan>
-    <tspan x="150" dy="28">GO / CONDITIONAL GO /</tspan>
-    <tspan x="150" dy="28">REMEDIATE / BLOCK</tspan>
+  <path
+    d="M270 155 L320 155"
+    class="flow"/>
+
+  <!-- ========================================================= -->
+  <!-- CURATED ASSESSMENT SOURCE SET                             -->
+  <!-- ========================================================= -->
+
+  <rect
+    x="320"
+    y="265"
+    width="590"
+    height="100"
+    class="box retrieval"/>
+
+  <text x="615" y="297" class="section-title center">
+    Curated assessment source set
   </text>
 
-  <rect class="box" x="345" y="1530" width="220" height="70"/>
-  <text class="label" x="455" y="1570">Required remediation plan</text>
-
-  <rect class="box" x="635" y="1530" width="220" height="70"/>
-  <text class="label" x="745" y="1570">Human approval checklist</text>
-
-  <rect class="box" x="925" y="1530" width="220" height="70"/>
-  <text class="label" x="1035" y="1570">Re-audit recommendation</text>
-
-  <path class="arrow" d="M500 1435 C430 1470, 300 1485, 150 1495"/>
-  <path class="arrow" d="M545 1435 C520 1470, 490 1500, 455 1530"/>
-  <path class="arrow" d="M615 1435 C640 1470, 700 1500, 745 1530"/>
-  <path class="arrow" d="M660 1435 C760 1470, 900 1490, 1035 1530"/>
-
-  <!-- Final governance review -->
-  <rect class="box" x="430" y="1695" width="300" height="105"/>
-  <text class="label" x="580" y="1732">
-    <tspan x="580" dy="0">Human governance review</tspan>
-    <tspan x="580" dy="28">Deployment decision support</tspan>
+  <text x="615" y="326" class="body center">
+    Evidence about the assessed agent + organizational requirements
   </text>
 
-  <path class="arrow" d="M150 1615 C150 1670, 360 1675, 430 1748"/>
-  <path class="arrow" d="M455 1600 C455 1650, 500 1670, 540 1695"/>
-  <path class="arrow" d="M745 1600 C745 1650, 670 1670, 620 1695"/>
-  <path class="arrow" d="M1035 1600 C1035 1670, 820 1675, 730 1748"/>
+  <text x="615" y="348" class="small center">
+    Policies, controls, processes and risks
+  </text>
+
+  <path
+  d="M455 215 L515 265"
+  class="flow"/>
+
+  <path
+  d="M785 215 L715 265"
+  class="flow"/>
+
+  <!-- ========================================================= -->
+<!-- LEGEND — compact, right of traceability line               -->
+<!-- ========================================================= -->
+
+<rect
+  x="1110"
+  y="255"
+  width="220"
+  height="415"
+  class="box legend"/>
+
+<text x="1220" y="288" class="box-title center">
+  Legend
+</text>
+
+<!-- Source-controlled reference -->
+<rect
+  x="1135"
+  y="320"
+  width="18"
+  height="18"
+  class="source"/>
+
+<text x="1168" y="334" class="tiny left">
+  Source-controlled reference
+</text>
+
+<!-- Retrieval evidence -->
+<rect
+  x="1135"
+  y="365"
+  width="18"
+  height="18"
+  class="retrieval"/>
+
+<text x="1168" y="379" class="tiny left">
+  Retrieval evidence
+</text>
+
+<!-- Governance and risk evidence -->
+<rect
+  x="1135"
+  y="410"
+  width="18"
+  height="18"
+  class="governance"/>
+
+<text x="1168" y="424" class="tiny left">
+  Governance and risk evidence
+</text>
+
+<!-- Traceability support -->
+<rect
+  x="1135"
+  y="455"
+  width="18"
+  height="18"
+  class="tracebox"/>
+
+<text x="1168" y="469" class="tiny left">
+  Traceability support
+</text>
+
+<!-- Conceptual boundary -->
+<rect
+  x="1135"
+  y="500"
+  width="18"
+  height="18"
+  class="concept"/>
+
+<text x="1168" y="514" class="tiny left">
+  Conceptual boundary
+</text>
+
+<text x="1168" y="531" class="tiny left">
+  Not enforced in the MVP
+</text>
+
+<!-- Implemented MVP component -->
+<rect
+  x="1135"
+  y="555"
+  width="18"
+  height="18"
+  class="implemented"/>
+
+<text x="1168" y="569" class="tiny left">
+  Implemented MVP functionality
+</text>
+
+<!-- Generated output -->
+<rect
+  x="1135"
+  y="600"
+  width="18"
+  height="18"
+  class="output"/>
+
+<text x="1168" y="614" class="tiny left">
+  Generated output
+</text>
+
+<!-- Manual / external -->
+<rect
+  x="1135"
+  y="635"
+  width="18"
+  height="18"
+  class="external"/>
+
+<text x="1168" y="649" class="tiny left">
+  Manual / external
+</text>
+
+  <!-- ========================================================= -->
+  <!-- CONCEPTUAL INGESTION LAYER                                -->
+  <!-- ========================================================= -->
+
+  <rect
+    x="282.5"
+    y="420"
+    width="665"
+    height="145"
+    class="box concept"/>
+
+  <text x="615" y="452" class="section-title center">
+    Ingestion Security and Ethics Layer
+  </text>
+
+  <text x="615" y="480" class="body center">
+    Conceptual control boundary — not enforced in this MVP
+  </text>
+
+  <text x="370" y="522" class="small center">
+    Sensitivity label validation
+  </text>
+
+  <text x="550" y="522" class="small center">
+    Allowed data scope validation
+  </text>
+
+  <text x="705" y="522" class="small center">
+    Input sanitization
+  </text>
+
+  <text x="855" y="522" class="small center">
+    Misuse-prevention checks
+  </text>
+
+  <path
+    d="M615 365 L615 420"
+    class="flow"/>
+
+  <!-- ========================================================= -->
+  <!-- FOUNDRY IQ KNOWLEDGE BASE                                 -->
+  <!-- ========================================================= -->
+
+  <rect
+    x="395"
+    y="620"
+    width="440"
+    height="90"
+    class="box implemented"/>
+
+  <text x="615" y="651" class="section-title center">
+    Foundry IQ Knowledge Base
+  </text>
+
+  <text x="615" y="686" class="body center">
+    Indexed Kelvior evidence in Foundry IQ
+  </text>
+
+  <path
+    d="M615 565 L615 620"
+    class="flow"/>
+
+  <!-- ========================================================= -->
+  <!-- EVIDENCE RETRIEVAL LAYER                                  -->
+  <!-- ========================================================= -->
+
+  <rect
+    x="395"
+    y="755"
+    width="440"
+    height="90"
+    class="box implemented"/>
+
+  <text x="615" y="786" class="section-title center">
+    Evidence retrieval layer
+  </text>
+
+  <text x="615" y="821" class="body center">
+    Retrieved Kelvior evidence
+  </text>
+
+  <path
+    d="M615 710 L615 755"
+    class="flow"/>
+
+  <!-- Manifest to retrieval only -->
+
+  <path
+    d="M1075 215 L1075 800 L835 800"
+    class="trace"/>
+
+  <text x="1000" y="780" class="small center">
+    canonical source identity
+  </text>
+
+  <!-- ========================================================= -->
+  <!-- MICROSOFT FOUNDRY REASONING AGENT                         -->
+  <!-- ========================================================= -->
+
+  <rect
+    x="170"
+    y="890"
+    width="850"
+    height="330"
+    class="box agent"/>
+
+  <text x="595" y="923" class="section-title center">
+    Microsoft Foundry Reasoning Agent — Kelvior Agent Decision Gate
+  </text>
+
+  <rect
+  x="470"
+  y="945"
+  width="250"
+  height="64"
+  fill="#ffffff"
+  stroke="#94a3b8"
+  stroke-width="1.3"
+  rx="14"
+  ry="14"/>
+
+<text x="595" y="972" class="body center">
+  Retrieved evidence enters
+</text>
+
+<text x="595" y="992" class="body center">
+  the Decision Gate
+</text>
+
+  <path
+    d="M615 845 L615 890"
+    class="flow"/>
+
+  <!-- Audit domains -->
+
+  <rect
+  x="205"
+  y="1075"
+  width="230"
+  height="115"
+  class="box implemented"/>
+
+  <text x="320" y="1102" class="box-title center">
+    Audit domains
+  </text>
+
+  <text x="320" y="1130" class="small center">
+    Inventory 15% · Governance 25%
+  </text>
+
+  <text x="320" y="1150" class="small center">
+    Security 25% · Policy 20%
+  </text>
+
+  <text x="320" y="1170" class="small center">
+    Process 15%
+  </text>
+
+  <!-- Decision logic -->
+
+  <rect
+  x="480"
+  y="1075"
+  width="230"
+  height="115"
+  class="box implemented"/>
+
+  <text x="595" y="1102" class="box-title center">
+    Decision logic
+  </text>
+
+  <text x="595" y="1130" class="small center">
+    Mandatory blocking rules
+  </text>
+
+  <text x="595" y="1150" class="small center">
+    Weighted score · score caps
+  </text>
+
+  <text x="595" y="1170" class="small center">
+    Risk assessment
+  </text>
+
+  <!-- Evidence traceability -->
+
+  <rect
+  x="755"
+  y="1075"
+  width="230"
+  height="115"
+  class="box implemented"/>
+
+  <text x="870" y="1102" class="box-title center">
+    Evidence traceability
+  </text>
+
+  <text x="870" y="1130" class="small center">
+    Section 9 source references
+  </text>
+
+  <text x="870" y="1150" class="small center">
+    Manifest-based document IDs
+  </text>
+
+  <text x="870" y="1170" class="small center">
+    Evidence roles
+  </text>
+
+  <path
+    d="M595 1011 L320 1075"
+    class="flow"/>
+
+  <path
+    d="M595 1011 L595 1075"
+    class="flow"/>
+
+  <path
+    d="M595 1011 L870 1075"
+    class="flow"/>
+
+  <!-- Manifest to traceability only -->
+
+  <path
+    d="M1075 800 L1075 1135 L1022 1135"
+    class="trace"/>
+
+  <!-- ========================================================= -->
+  <!-- AGENT DEPLOYMENT EVIDENCE PACK                            -->
+  <!-- ========================================================= -->
+
+  <rect
+    x="85"
+    y="1270"
+    width="1020"
+    height="175"
+    class="box output"/>
+
+  <text x="595" y="1302" class="section-title center">
+    Agent Deployment Evidence Pack — 14 sections — generated output
+  </text>
+
+  <rect
+    x="110"
+    y="1340"
+    width="225"
+    height="80"
+    class="box output"/>
+
+  <text x="222.5" y="1365" class="box-title center">
+    Deployment-readiness verdict
+  </text>
+
+  <text x="222.5" y="1392" class="small center">
+    GO / CONDITIONAL GO /
+  </text>
+
+  <text x="222.5" y="1410" class="small center">
+    REMEDIATE / BLOCK
+  </text>
+
+  <rect
+    x="355"
+    y="1340"
+    width="225"
+    height="80"
+    class="box output"/>
+
+  <text x="467.5" y="1365" class="box-title center">
+    Required remediation plan
+  </text>
+
+  <text x="467.5" y="1392" class="small center">
+    Gaps, actions, owners and target dates
+  </text>
+
+  <text x="467.5" y="1410" class="small center">
+    Re-audit triggers
+  </text>
+
+  <rect
+    x="600"
+    y="1340"
+    width="225"
+    height="80"
+    class="box output"/>
+
+  <text x="712.5" y="1365" class="box-title center">
+    Human approval checklist
+  </text>
+
+  <text x="712.5" y="1392" class="small center">
+    Review items for
+  </text>
+
+  <text x="712.5" y="1410" class="small center">
+    human decision-makers
+  </text>
+
+  <rect
+    x="845"
+    y="1340"
+    width="235"
+    height="80"
+    class="box output"/>
+
+  <text x="962.5" y="1365" class="box-title center">
+    Re-audit recommendation
+  </text>
+
+  <text x="962.5" y="1392" class="small center">
+    Conditions and frequency
+  </text>
+
+  <text x="962.5" y="1410" class="small center">
+    for the next assessment
+  </text>
+
+  <path
+    d="M320 1190 L320 1270"
+    class="flow"/>
+
+  <path
+    d="M595 1190 L595 1270"
+    class="flow"/>
+
+  <path
+    d="M870 1190 L870 1270"
+    class="flow"/>
+
+  <!-- ========================================================= -->
+  <!-- MVP SYSTEM BOUNDARY                                       -->
+  <!-- ========================================================= -->
+
+  <line
+  x1="30"
+  y1="1495"
+  x2="385"
+  y2="1495"
+  class="boundary"/>
+
+<line
+  x1="810"
+  y1="1495"
+  x2="1370"
+  y2="1495"
+  class="boundary"/>
+
+<rect
+  x="385"
+  y="1476"
+  width="410"
+  height="38"
+  fill="#ffffff"/>
+
+<text
+  x="490"
+  y="1500"
+  class="box-title center"
+  fill="#4f46e5">
+  MVP SYSTEM BOUNDARY
+</text>
+
+<text
+  x="700"
+  y="1500"
+  class="box-title center"
+  fill="#4f46e5">
+  implementation ends here
+</text>
+
+<path
+  d="M595 1445 L595 1476"
+  stroke="#1f2937"
+  stroke-width="1.4"
+  fill="none"/>
+
+  <!-- ========================================================= -->
+  <!-- EXTERNAL HUMAN REVIEW                                     -->
+  <!-- ========================================================= -->
+
+  <rect
+    x="340"
+    y="1535"
+    width="510"
+    height="82"
+    class="box external"/>
+
+  <text x="595" y="1572" class="section-title center">
+    External human review
+  </text>
+
+  <text x="595" y="1598" class="body center">
+    May request additional evidence or remediation
+  </text>
+
+  <path
+    d="M595 1445 L595 1535"
+    class="flow"/>
+
+  <!-- ========================================================= -->
+  <!-- ORGANIZATIONAL DEPLOYMENT DECISION                        -->
+  <!-- ========================================================= -->
+
+  <rect
+    x="340"
+    y="1640"
+    width="510"
+    height="82"
+    class="box external"/>
+
+  <text x="595" y="1680" class="section-title center">
+    Organizational deployment decision
+  </text>
+
+  <text x="595" y="1706" class="body center">
+    Final decision according to internal governance
+  </text>
+
+  <path
+    d="M595 1617 L595 1640"
+    class="flow"/>
+
 </svg>

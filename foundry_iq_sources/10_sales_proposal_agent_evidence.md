@@ -50,7 +50,7 @@ Evidence role: Agent-specific evidence for Sales Proposal Agent deployment readi
 
 ## 1. Evidence purpose
 
-This document provides retrieval-optimized evidence for assessing the Sales Proposal Agent through Kelvior Agent Decision Gate.
+This document provides retrieval-ready evidence for assessing the Sales Proposal Agent through Kelvior Agent Decision Gate.
 
 This document is a derived evidence representation of the YAML source of truth. It is intended for Foundry IQ retrieval and enterprise deployment readiness assessment.
 

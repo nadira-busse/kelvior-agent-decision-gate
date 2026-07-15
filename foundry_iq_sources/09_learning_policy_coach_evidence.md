@@ -38,9 +38,9 @@ Evidence role: Agent-specific evidence for Learning Policy Coach deployment read
 
 ## 1. Document Purpose
 
-This document provides retrieval-optimized evidence for assessing the Learning Policy Coach agent with Kelvior Agent Decision Gate.
+This document provides retrieval-ready evidence for assessing the Learning Policy Coach agent with Kelvior Agent Decision Gate.
 
-This document is a retrieval-optimized Markdown representation derived from the source-controlled YAML agent definition. The YAML file is not uploaded to Foundry IQ as a knowledge source.
+This document is a retrieval-ready Markdown representation derived from the source-controlled YAML agent definition. The YAML file is not uploaded to Foundry IQ as a knowledge source.
 
 This document does not include an expected verdict, test result, weighted readiness score, actual Foundry verdict or demo conclusion.
 

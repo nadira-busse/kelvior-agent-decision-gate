@@ -63,7 +63,7 @@ Evidence source: KEL-AGT-HRO-001 — 11_hr_onboarding_helper_evidence.md
 
 ## 1. Evidence Purpose
 
-This document provides retrieval-optimized evidence for assessing the HR Onboarding Helper agent against the Kelvior Agent Decision Gate readiness domains:
+This document provides retrieval-ready evidence for assessing the HR Onboarding Helper agent against the Kelvior Agent Decision Gate readiness domains:
 
 - Inventory
 - Governance

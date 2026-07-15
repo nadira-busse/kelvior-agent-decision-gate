@@ -40,9 +40,9 @@ Evidence role: Agent-specific evidence for IT Ticket Triage deployment readiness
 
 Evidence source: KEL-AGT-ITO-001 — 08_it_ticket_triage_evidence.md
 
-This document provides retrieval-optimized evidence for assessing the IT Ticket Triage agent with Kelvior Agent Decision Gate.
+This document provides retrieval-ready evidence for assessing the IT Ticket Triage agent with Kelvior Agent Decision Gate.
 
-This document is a retrieval-optimized Markdown representation derived from the source-controlled YAML agent definition. The YAML file is not uploaded to Foundry IQ as a knowledge source.
+This document is a retrieval-ready Markdown representation derived from the source-controlled YAML agent definition. The YAML file is not uploaded to Foundry IQ as a knowledge source.
 
 The YAML file remains the structured source-controlled agent definition. This Markdown document is the Foundry IQ retrieval representation used for evidence grounding.
 
