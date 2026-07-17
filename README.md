@@ -350,9 +350,7 @@ The Foundry IQ knowledge base uses Azure AI Search for indexing and retrieval. M
 
 ## Demo
 
-Demo video:
-
-[https://youtu.be/CVQdw8PbgjE](https://youtu.be/CVQdw8PbgjE)
+[Demo video](https://youtu.be/gCxCNNIsIQ0)
 
 I picked three cases for the demo that show different sides of the same system.
 
